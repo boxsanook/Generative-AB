@@ -6,11 +6,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{69C4BD22-844C-4C2D-BCE1-3DC942324749}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>Generative_AB.My.MyApplication</StartupObject>
+    <StartupObject>Sub Main</StartupObject>
     <RootNamespace>Generative_AB</RootNamespace>
     <AssemblyName>Generative-AB</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <MyType>WindowsForms</MyType>
+    <MyType>WindowsFormsWithCustomSubMain</MyType>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -47,11 +47,40 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>font-ab-_2_.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BB Framework Code">
+      <HintPath>E:\IT\Project\KITZ\Project VB\BB Framework Code\BB Framework Code\bin\Debug\BB Framework Code.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NtpClient, Version=1.0.14.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NtpClient.1.0.14\lib\net40\NtpClient.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -73,14 +102,22 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.vb">
+    <Compile Include="FRM_Main.designer.vb">
+      <DependentUpon>FRM_Main.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FRM_Main.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <Compile Include="Menu_Tools\FRM_Convert_Image.Designer.vb">
+      <DependentUpon>FRM_Convert_Image.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Menu_Tools\FRM_Convert_Image.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Model\CryptographyZ.vb" />
+    <Compile Include="Model\processCount.vb" />
+    <Compile Include="Model\TimeServer_API.vb" />
+    <Compile Include="Model\TripleDES.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -96,10 +133,36 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="PC_Config\GetMicrosoft_Product.vb" />
+    <Compile Include="PC_Config\Get_Object_OS.vb" />
+    <Compile Include="Programs.vb" />
+    <Compile Include="RegisterApp\API_register.vb" />
+    <Compile Include="RegisterApp\FRM_Register.Designer.vb">
+      <DependentUpon>FRM_Register.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RegisterApp\FRM_Register.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegisterApp\FRM_Register_User.Designer.vb">
+      <DependentUpon>FRM_Register_User.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RegisterApp\FRM_Register_User.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegisterApp\RegistryB.vb" />
+    <Compile Include="TEST.Designer.vb">
+      <DependentUpon>TEST.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TEST.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <EmbeddedResource Include="FRM_Main.resx">
+      <DependentUpon>FRM_Main.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu_Tools\FRM_Convert_Image.resx">
+      <DependentUpon>FRM_Convert_Image.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -107,8 +170,18 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="RegisterApp\FRM_Register.resx">
+      <DependentUpon>FRM_Register.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegisterApp\FRM_Register_User.resx">
+      <DependentUpon>FRM_Register_User.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TEST.resx">
+      <DependentUpon>TEST.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -119,6 +192,11 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="font-ab-_2_.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
