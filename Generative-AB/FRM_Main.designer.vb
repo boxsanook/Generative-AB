@@ -43,7 +43,6 @@ Partial Class FRM_Main
         Me.btnMedia = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.PanelChildForm = New System.Windows.Forms.Panel()
-        Me.PictureBox9 = New System.Windows.Forms.PictureBox()
         Me.Panel_bar = New System.Windows.Forms.Panel()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.label4 = New System.Windows.Forms.Label()
@@ -51,17 +50,18 @@ Partial Class FRM_Main
         Me.LongDate = New System.Windows.Forms.Label()
         Me.pictureBox7 = New System.Windows.Forms.PictureBox()
         Me.ToDayTime = New System.Windows.Forms.Label()
-        Me.Main_Time_today = New System.Windows.Forms.Timer(Me.components)
+        Me.PictureBox9 = New System.Windows.Forms.PictureBox()
         Me.Button7 = New System.Windows.Forms.Button()
+        Me.Main_Time_today = New System.Windows.Forms.Timer(Me.components)
         Me.panelLogo.SuspendLayout()
         CType(Me.pictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelSideMenu.SuspendLayout()
         Me.PanelToolsSubmenu.SuspendLayout()
         Me.PanelMediaSubmenu.SuspendLayout()
         Me.PanelChildForm.SuspendLayout()
-        CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel_bar.SuspendLayout()
         CType(Me.pictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'panelLogo
@@ -147,7 +147,7 @@ Partial Class FRM_Main
         Me.button2.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
         Me.button2.Size = New System.Drawing.Size(248, 40)
         Me.button2.TabIndex = 0
-        Me.button2.Text = "Open files"
+        Me.button2.Text = "Media Generative AB "
         Me.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.button2.UseVisualStyleBackColor = True
         '
@@ -272,7 +272,7 @@ Partial Class FRM_Main
         Me.button12.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
         Me.button12.Size = New System.Drawing.Size(248, 40)
         Me.button12.TabIndex = 1
-        Me.button12.Text = "Effects and filters"
+        Me.button12.Text = "Miricanvas CSV"
         Me.button12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.button12.UseVisualStyleBackColor = True
         '
@@ -308,7 +308,7 @@ Partial Class FRM_Main
         Me.btnTools.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
         Me.btnTools.Size = New System.Drawing.Size(248, 45)
         Me.btnTools.TabIndex = 6
-        Me.btnTools.Text = "  Tools"
+        Me.btnTools.Text = "  Media Tools"
         Me.btnTools.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnTools.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnTools.UseVisualStyleBackColor = True
@@ -341,11 +341,10 @@ Partial Class FRM_Main
         Me.btnMedia.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
         Me.btnMedia.Size = New System.Drawing.Size(248, 45)
         Me.btnMedia.TabIndex = 1
-        Me.btnMedia.Text = "  Media"
+        Me.btnMedia.Text = "  Generative AI"
         Me.btnMedia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnMedia.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnMedia.UseVisualStyleBackColor = True
-        Me.btnMedia.Visible = False
         '
         'Panel1
         '
@@ -366,17 +365,6 @@ Partial Class FRM_Main
         Me.PanelChildForm.Name = "PanelChildForm"
         Me.PanelChildForm.Size = New System.Drawing.Size(996, 713)
         Me.PanelChildForm.TabIndex = 2
-        '
-        'PictureBox9
-        '
-        Me.PictureBox9.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.PictureBox9.Image = CType(resources.GetObject("PictureBox9.Image"), System.Drawing.Image)
-        Me.PictureBox9.Location = New System.Drawing.Point(305, 92)
-        Me.PictureBox9.Name = "PictureBox9"
-        Me.PictureBox9.Size = New System.Drawing.Size(478, 430)
-        Me.PictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox9.TabIndex = 0
-        Me.PictureBox9.TabStop = False
         '
         'Panel_bar
         '
@@ -464,12 +452,20 @@ Partial Class FRM_Main
         Me.ToDayTime.Location = New System.Drawing.Point(750, 3)
         Me.ToDayTime.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.ToDayTime.Name = "ToDayTime"
-        Me.ToDayTime.Size = New System.Drawing.Size(149, 39)
+        Me.ToDayTime.Size = New System.Drawing.Size(143, 38)
         Me.ToDayTime.TabIndex = 1
         Me.ToDayTime.Text = "21:49:45"
         '
-        'Main_Time_today
+        'PictureBox9
         '
+        Me.PictureBox9.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.PictureBox9.Image = CType(resources.GetObject("PictureBox9.Image"), System.Drawing.Image)
+        Me.PictureBox9.Location = New System.Drawing.Point(305, 92)
+        Me.PictureBox9.Name = "PictureBox9"
+        Me.PictureBox9.Size = New System.Drawing.Size(478, 430)
+        Me.PictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox9.TabIndex = 0
+        Me.PictureBox9.TabStop = False
         '
         'Button7
         '
@@ -483,6 +479,9 @@ Partial Class FRM_Main
         Me.Button7.Size = New System.Drawing.Size(36, 33)
         Me.Button7.TabIndex = 10
         Me.Button7.UseVisualStyleBackColor = True
+        '
+        'Main_Time_today
+        '
         '
         'FRM_Main
         '
@@ -504,10 +503,10 @@ Partial Class FRM_Main
         Me.PanelToolsSubmenu.ResumeLayout(False)
         Me.PanelMediaSubmenu.ResumeLayout(False)
         Me.PanelChildForm.ResumeLayout(False)
-        CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel_bar.ResumeLayout(False)
         Me.Panel_bar.PerformLayout()
         CType(Me.pictureBox7, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

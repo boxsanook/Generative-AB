@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FRM_Register
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class FRM_Register
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRM_Register))
         Me.BarraTitulo = New System.Windows.Forms.Panel()
@@ -39,7 +39,7 @@ Partial Class FRM_Register
         Me.Label4 = New System.Windows.Forms.Label()
         Me.RegisterKey = New System.Windows.Forms.TextBox()
         Me.label2 = New System.Windows.Forms.Label()
-        Me.Button6 = New System.Windows.Forms.Button()
+        Me.Update_Register = New System.Windows.Forms.Button()
         Me.btnRegister = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
@@ -47,7 +47,6 @@ Partial Class FRM_Register
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.Panel6 = New System.Windows.Forms.Panel()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.BarraTitulo.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
@@ -56,7 +55,6 @@ Partial Class FRM_Register
         Me.Panel4.SuspendLayout()
         Me.Panel5.SuspendLayout()
         Me.Panel6.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'BarraTitulo
@@ -69,7 +67,7 @@ Partial Class FRM_Register
         Me.BarraTitulo.Location = New System.Drawing.Point(0, 0)
         Me.BarraTitulo.Margin = New System.Windows.Forms.Padding(4)
         Me.BarraTitulo.Name = "BarraTitulo"
-        Me.BarraTitulo.Size = New System.Drawing.Size(670, 47)
+        Me.BarraTitulo.Size = New System.Drawing.Size(669, 47)
         Me.BarraTitulo.TabIndex = 16
         '
         'PictureBox1
@@ -88,7 +86,7 @@ Partial Class FRM_Register
         Me.MeText.AutoSize = True
         Me.MeText.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MeText.ForeColor = System.Drawing.Color.White
-        Me.MeText.Location = New System.Drawing.Point(70, 14)
+        Me.MeText.Location = New System.Drawing.Point(69, 14)
         Me.MeText.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.MeText.Name = "MeText"
         Me.MeText.Size = New System.Drawing.Size(220, 20)
@@ -245,7 +243,7 @@ Partial Class FRM_Register
         Me.RegisterKey.Margin = New System.Windows.Forms.Padding(4)
         Me.RegisterKey.Multiline = True
         Me.RegisterKey.Name = "RegisterKey"
-        Me.RegisterKey.Size = New System.Drawing.Size(477, 211)
+        Me.RegisterKey.Size = New System.Drawing.Size(477, 122)
         Me.RegisterKey.TabIndex = 89
         '
         'label2
@@ -261,22 +259,22 @@ Partial Class FRM_Register
         Me.label2.TabIndex = 90
         Me.label2.Text = "Product Key :"
         '
-        'Button6
+        'Update_Register
         '
-        Me.Button6.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.Button6.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.Button6.FlatAppearance.BorderSize = 0
-        Me.Button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button6.ForeColor = System.Drawing.Color.White
-        Me.Button6.Location = New System.Drawing.Point(152, 684)
-        Me.Button6.Margin = New System.Windows.Forms.Padding(4)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(166, 43)
-        Me.Button6.TabIndex = 91
-        Me.Button6.Text = "Register Web"
-        Me.Button6.UseVisualStyleBackColor = False
-        Me.Button6.Visible = False
+        Me.Update_Register.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.Update_Register.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Update_Register.FlatAppearance.BorderSize = 0
+        Me.Update_Register.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Update_Register.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Update_Register.ForeColor = System.Drawing.Color.White
+        Me.Update_Register.Location = New System.Drawing.Point(152, 407)
+        Me.Update_Register.Margin = New System.Windows.Forms.Padding(4)
+        Me.Update_Register.Name = "Update_Register"
+        Me.Update_Register.Size = New System.Drawing.Size(165, 43)
+        Me.Update_Register.TabIndex = 91
+        Me.Update_Register.Text = "Update Register"
+        Me.Update_Register.UseVisualStyleBackColor = False
+        Me.Update_Register.Visible = False
         '
         'btnRegister
         '
@@ -286,7 +284,7 @@ Partial Class FRM_Register
         Me.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnRegister.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnRegister.ForeColor = System.Drawing.Color.White
-        Me.btnRegister.Location = New System.Drawing.Point(496, 684)
+        Me.btnRegister.Location = New System.Drawing.Point(496, 407)
         Me.btnRegister.Margin = New System.Windows.Forms.Padding(4)
         Me.btnRegister.Name = "btnRegister"
         Me.btnRegister.Size = New System.Drawing.Size(133, 43)
@@ -297,7 +295,8 @@ Partial Class FRM_Register
         'Panel1
         '
         Me.Panel1.Controls.Add(Me.Label6)
-        Me.Panel1.Location = New System.Drawing.Point(1, 77)
+        Me.Panel1.Location = New System.Drawing.Point(1, 78)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(144, 25)
         Me.Panel1.TabIndex = 93
@@ -306,6 +305,7 @@ Partial Class FRM_Register
         '
         Me.Panel2.Controls.Add(Me.Label7)
         Me.Panel2.Location = New System.Drawing.Point(1, 111)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(144, 25)
         Me.Panel2.TabIndex = 94
@@ -314,6 +314,7 @@ Partial Class FRM_Register
         '
         Me.Panel3.Controls.Add(Me.Label4)
         Me.Panel3.Location = New System.Drawing.Point(1, 145)
+        Me.Panel3.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(144, 25)
         Me.Panel3.TabIndex = 95
@@ -321,7 +322,8 @@ Partial Class FRM_Register
         'Panel4
         '
         Me.Panel4.Controls.Add(Me.Label3)
-        Me.Panel4.Location = New System.Drawing.Point(0, 179)
+        Me.Panel4.Location = New System.Drawing.Point(0, 178)
+        Me.Panel4.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(144, 25)
         Me.Panel4.TabIndex = 95
@@ -330,6 +332,7 @@ Partial Class FRM_Register
         '
         Me.Panel5.Controls.Add(Me.Label5)
         Me.Panel5.Location = New System.Drawing.Point(1, 213)
+        Me.Panel5.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Size = New System.Drawing.Size(144, 25)
         Me.Panel5.TabIndex = 95
@@ -338,26 +341,17 @@ Partial Class FRM_Register
         '
         Me.Panel6.Controls.Add(Me.label2)
         Me.Panel6.Location = New System.Drawing.Point(1, 246)
+        Me.Panel6.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Size = New System.Drawing.Size(144, 25)
         Me.Panel6.TabIndex = 96
-        '
-        'DataGridView1
-        '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(152, 464)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.RowTemplate.Height = 24
-        Me.DataGridView1.Size = New System.Drawing.Size(477, 150)
-        Me.DataGridView1.TabIndex = 97
         '
         'FRM_Register
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(45, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(670, 749)
-        Me.Controls.Add(Me.DataGridView1)
+        Me.ClientSize = New System.Drawing.Size(669, 473)
         Me.Controls.Add(Me.Panel6)
         Me.Controls.Add(Me.Panel5)
         Me.Controls.Add(Me.Panel4)
@@ -365,7 +359,7 @@ Partial Class FRM_Register
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.btnRegister)
-        Me.Controls.Add(Me.Button6)
+        Me.Controls.Add(Me.Update_Register)
         Me.Controls.Add(Me.RegisterKey)
         Me.Controls.Add(Me.ExpiryDate)
         Me.Controls.Add(Me.txt_uKey)
@@ -375,6 +369,7 @@ Partial Class FRM_Register
         Me.Controls.Add(Me.BarraTitulo)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Name = "FRM_Register"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "FRM_Register"
@@ -393,7 +388,6 @@ Partial Class FRM_Register
         Me.Panel5.PerformLayout()
         Me.Panel6.ResumeLayout(False)
         Me.Panel6.PerformLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -415,7 +409,7 @@ Partial Class FRM_Register
     Private WithEvents Label4 As Label
     Public WithEvents RegisterKey As TextBox
     Private WithEvents label2 As Label
-    Private WithEvents Button6 As Button
+    Private WithEvents Update_Register As Button
     Private WithEvents btnRegister As Button
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Panel2 As Panel
@@ -423,5 +417,4 @@ Partial Class FRM_Register
     Friend WithEvents Panel4 As Panel
     Friend WithEvents Panel5 As Panel
     Friend WithEvents Panel6 As Panel
-    Friend WithEvents DataGridView1 As DataGridView
 End Class

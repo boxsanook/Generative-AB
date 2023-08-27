@@ -11,20 +11,20 @@ Public Class FRM_Register
     <DllImport("user32.DLL", EntryPoint:="SendMessage")>
     Private Shared Sub SendMessage(ByVal hWnd As System.IntPtr, ByVal wMsg As Integer, ByVal wParam As Integer, ByVal lParam As Integer)
     End Sub
-    Private Sub PanelBarraTitulo_MouseClick(sender As Object, e As MouseEventArgs) Handles BarraTitulo.MouseClick, MeText.MouseClick
+    Private Sub PanelBarraTitulo_MouseClick(sender As Object, e As MouseEventArgs) Handles BarraTitulo.MouseClick, MeText.MouseClick, Me.MouseClick
         If Me.WindowState = FormWindowState.Maximized Then
             Me.WindowState = FormWindowState.Normal
 
         End If
 
     End Sub
-    Private Sub PanelBarraTitulo_MouseDown(sender As Object, e As MouseEventArgs) Handles BarraTitulo.MouseDown, MeText.MouseDown
+    Private Sub PanelBarraTitulo_MouseDown(sender As Object, e As MouseEventArgs) Handles BarraTitulo.MouseDown, MeText.MouseDown, Me.MouseDown
         If Me.WindowState = FormWindowState.Maximized Then
             Me.WindowState = FormWindowState.Normal
 
         End If
     End Sub
-    Private Sub PanelBarraTitulo_MouseMove(sender As Object, e As MouseEventArgs) Handles BarraTitulo.MouseMove, MeText.MouseMove
+    Private Sub PanelBarraTitulo_MouseMove(sender As Object, e As MouseEventArgs) Handles BarraTitulo.MouseMove, MeText.MouseMove, Me.MouseMove
         ReleaseCapture()
         SendMessage(Me.Handle, &H112&, &HF012&, 0)
     End Sub
@@ -37,51 +37,63 @@ Public Class FRM_Register
     Private Sub FRM_Register_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         MainLoad()
     End Sub
-    Dim dateTime As DateTime = DateTime.UtcNow.Date
+    Dim dateTime As DateTime = DateTime.UtcNow
     Dim NextMonth As DateTime
+    Dim regitry As String
     Public Sub MainLoad()
-        Dim SerialNumber As String = Get_Object_OS.CIM_SystemWin32("CIM_BIOSElement", "SerialNumber")
-        If SerialNumber = "" Then
-            SerialNumber = Get_Object_OS.CIM_SystemWin32("CIM_DiskDrive", "SerialNumber")
-        End If
-        If SerialNumber = "" Then
-            SerialNumber = Get_Object_OS.CIM_SystemWin32("CIM_PhysicalMemory", "SerialNumber")
+        If RegistryB.GetValueFromRegistry("Cliente_ID") IsNot Nothing Then
+            RegistryB.Regit_run("regit")
+            regitry = "regit"
+            Update_Register.Visible = True
+            btnRegister.Visible = False
+        Else
+            Update_Register.Visible = False
+            btnRegister.Visible = True
+            RegistryB.Regit_run("New")
+            regitry = "New"
         End If
 
-        ' Remove the trailing dash at the end of the string
+
+
         ProductCode.Text = RegistryB.ProductCode
-        txt_Cliente_ID.Text = API_register.RegexCode(SerialNumber)
-        txt_sKey.Text = API_register.RegexCode(API_register.random_code())
-        txt_uKey.Text = API_register.RegexCode(API_register.random_code())
-        NextMonth = dateTime.AddDays(Integer.Parse(15))
-        ExpiryDate.Text = NextMonth.ToString("yyyy-MM-dd HH:mm:ss")
+        txt_Cliente_ID.Text = RegistryB.str_Cliente_ID 'API_register.RegexCode(SerialNumber)
+        txt_sKey.Text = RegistryB.str_sKey '= API_register.RegexCode(API_register.random_code())
+        txt_uKey.Text = RegistryB.str_uKey '= API_register.RegexCode(API_register.random_code()) 
+        ExpiryDate.Text = RegistryB.str_ExpiryDate '= xTime.tImeConvert(NextMonth.ToString("yyyy-MM-dd HH:mm:ss"))
         RegisterKey.Text = $"{ProductCode.Text}|{ txt_Cliente_ID.Text}|{txt_sKey.Text}|{ txt_uKey.Text }|{ ExpiryDate.Text}|"
-        RegisterKey.Text = BB_Framework_Code.TripleDES.xEncrypt(RegisterKey.Text)
+        RegisterKey.Text = BB_Framework_Code.BCryptography.Encrypt(RegisterKey.Text)
     End Sub
     Private Sub btnRegister_Click(sender As Object, e As EventArgs) Handles btnRegister.Click
 
         Try
+            Dim Product_Key1 As String = $"{ProductCode.Text}|{ txt_Cliente_ID.Text}|{txt_sKey.Text}|"
+            Dim Product_Key2 As String = $"{ txt_uKey.Text }|{ExpiryDate.Text}|"
+            Product_Key1 = BB_Framework_Code.BCryptography.Encrypt(Product_Key1)
+            Product_Key2 = BB_Framework_Code.BCryptography.Encrypt(Product_Key2)
+
             Dim table As New DataTable
-            table.Columns.Add(New DataColumn("Product_Code", GetType(String)))
-            table.Columns.Add(New DataColumn("Cliente_ID", GetType(String)))
-            table.Columns.Add(New DataColumn("Product_Key", GetType(String)))
-            table.Rows.Add(ProductCode.Text, txt_Cliente_ID.Text, RegisterKey.Text)
-            Dim jsonb = API_register.register_app(table)
+            table.Columns.Add(New DataColumn("Product_Key1", GetType(String)))
+            table.Columns.Add(New DataColumn("Product_Key2", GetType(String)))
+            table.Rows.Add(Product_Key1, Product_Key2)
+            Dim jsonb = API_register.register_app("register_app", table)
 
             Dim response As New With {
             .status = "",
-            .message = ""
+            .message = "",
+            .Product_Key1 = "",
+            .Product_Key2 = ""
             }
+            Dim tdes As New BB_Framework_Code.BCryptography()
             response = JsonConvert.DeserializeAnonymousType(jsonb, response)
             Console.WriteLine("register_app: " & jsonb.ToString)
             If response.status.ToUpper() = "OK" Then
                 RegistryB.SaveValueToRegistry("Product_Code", ProductCode.Text)
                 RegistryB.SaveValueToRegistry("Cliente_ID", txt_Cliente_ID.Text)
-                RegistryB.SaveValueToRegistry("Product_Key", ProductCode.Text)
                 RegistryB.SaveValueToRegistry("sKey", txt_sKey.Text)
                 RegistryB.SaveValueToRegistry("uKey", txt_uKey.Text)
-                RegistryB.SaveValueToRegistry("Expiry_Date", BB_Framework_Code.TripleDES.xEncrypt(ExpiryDate.Text))
+                RegistryB.SaveValueToRegistry("Expiry_Date", BB_Framework_Code.BCryptography.Encrypt(ExpiryDate.Text))
                 MessageBox.Show(response.message)
+                Application.Restart()
             Else
                 MessageBox.Show(response.message)
             End If
@@ -89,5 +101,13 @@ Public Class FRM_Register
         Catch ex As Exception
             Console.WriteLine("ERROR register : " & ex.Message)
         End Try
+    End Sub
+
+    Private Sub Update_Register_Click(sender As Object, e As EventArgs) Handles Update_Register.Click
+        If RegistryB.Check_register_app(regitry) = True Then
+            Application.Restart()
+        Else
+            MessageBox.Show("ไม่สามารถลงทะเบียนได้โปรดติดต่อ ผู้ให้บริการ" & vbNewLine & "Unable to register, please contact service provider.", "Unable to register !!", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
     End Sub
 End Class

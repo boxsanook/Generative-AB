@@ -59,7 +59,7 @@ Public Class FRM_Register_User
         NextMonth = dateTime.AddDays(Integer.Parse(15))
         Dim ExpiryDate = NextMonth.ToString("yyyy-MM-dd HH:mm:ss")
         Dim Register = $"{ProductCode }|{ txt_Cliente_ID }|{txt_sKey }|{ txt_uKey  }|{ ExpiryDate }|"
-        Key.Text = BB_Framework_Code.TripleDES.xEncrypt(Register)
+        Key.Text = BB_Framework_Code.BCryptography.Encrypt(Register)
 
     End Sub
     Private Sub RUsername_Enter(ByVal sender As Object, ByVal e As EventArgs) Handles RUsername.Enter

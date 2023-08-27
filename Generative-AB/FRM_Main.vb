@@ -68,9 +68,10 @@
     End Sub
 
     Private Sub button2_Click(sender As Object, e As EventArgs) Handles button2.Click
-        openChildForm(New FRM_Register())
+        openChildForm(New FRM_Generative_AI_AIR())
         ResetButtonAppearance(PanelSideMenu)
-        active_button(button2)
+        Dim clickedButton As Button = DirectCast(sender, Button)
+        active_button(clickedButton)
 
         '...
         'your codes
@@ -107,16 +108,16 @@
     End Sub
 
     Private Sub button12_Click(sender As Object, e As EventArgs) Handles button12.Click
-        ResetButtonAppearance(PanelSideMenu)
-        Dim clickedButton As Button = DirectCast(sender, Button)
-        active_button(clickedButton)
+        'ResetButtonAppearance(PanelSideMenu)
+        'Dim clickedButton As Button = DirectCast(sender, Button)
+        'active_button(clickedButton)
     End Sub
 
     Private Sub button10_Click(sender As Object, e As EventArgs) Handles button10.Click
-        openChildForm(New TEST())
-        ResetButtonAppearance(PanelSideMenu)
-        Dim clickedButton As Button = DirectCast(sender, Button)
-        active_button(clickedButton)
+        'openChildForm(New TEST())
+        'ResetButtonAppearance(PanelSideMenu)
+        'Dim clickedButton As Button = DirectCast(sender, Button)
+        'active_button(clickedButton)
     End Sub
 #End Region
 
@@ -125,6 +126,7 @@
         hideSubmenu()
         Main_Time_today.Interval = 1000
         Main_Time_today.Start()
+
     End Sub
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
         Application.Exit()
@@ -137,20 +139,31 @@
         Panel_bar.Visible = True
     End Sub
     Private Sub btnTools_Click(sender As Object, e As EventArgs) Handles btnTools.Click
-        showSubmenu(PanelToolsSubmenu)
-    End Sub
-    Private Sub btnRegister_App_Click(sender As Object, e As EventArgs) Handles btnRegister_App.Click
-        openChildForm(New FRM_Register_User())
+
+        'Dim buttonName As String = clickedButton.Name
+
         ResetButtonAppearance(PanelSideMenu)
         Dim clickedButton As Button = DirectCast(sender, Button)
         active_button(clickedButton)
+        showSubmenu(PanelToolsSubmenu)
     End Sub
+    Private Sub btnRegister_App_Click(sender As Object, e As EventArgs) Handles btnRegister_App.Click
+        'openChildForm(New FRM_Register_User())
+        'ResetButtonAppearance(PanelSideMenu)
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+
         openChildForm(New FRM_Register())
         ResetButtonAppearance(PanelSideMenu)
         Dim clickedButton As Button = DirectCast(sender, Button)
         active_button(clickedButton)
+
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        'openChildForm(New FRM_Register())
+        'ResetButtonAppearance(PanelSideMenu)
+        'Dim clickedButton As Button = DirectCast(sender, Button)
+        'active_button(clickedButton)
     End Sub
 
     Private Sub Main_Time_today_Tick(sender As Object, e As EventArgs) Handles Main_Time_today.Tick

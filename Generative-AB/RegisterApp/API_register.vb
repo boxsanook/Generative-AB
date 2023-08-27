@@ -75,11 +75,11 @@ Public Class API_register
     End Function
 
 
-    Public Shared Function register_app(table As DataTable) As String
+    Public Shared Function register_app(path As String, table As DataTable) As String
         Try
             'http://localhost:801/bot/register.php
 
-            Dim UrlAPI As String = WEB_Register & "windows.php/register_app"
+            Dim UrlAPI As String = WEB_Register & "windows.php/" & path
             Dim body = DataTableToJSONWithStringBuilder(table)
             Dim httpWebRequest = CType(WebRequest.Create(UrlAPI), HttpWebRequest)
             httpWebRequest.ContentType = "application/json"

@@ -14,6 +14,8 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -51,11 +53,17 @@
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>font-ab-_2_.ico</ApplicationIcon>
+    <ApplicationIcon>AB.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BB Framework Code">
       <HintPath>E:\IT\Project\KITZ\Project VB\BB Framework Code\BB Framework Code\bin\Debug\BB Framework Code.dll</HintPath>
+    </Reference>
+    <Reference Include="Magick.NET-Q16-AnyCPU, Version=13.2.0.0, Culture=neutral, PublicKeyToken=2004825badfa91ec, processorArchitecture=MSIL">
+      <HintPath>..\packages\Magick.NET-Q16-AnyCPU.13.2.0\lib\netstandard20\Magick.NET-Q16-AnyCPU.dll</HintPath>
+    </Reference>
+    <Reference Include="Magick.NET.Core, Version=13.2.0.0, Culture=neutral, PublicKeyToken=2004825badfa91ec, processorArchitecture=MSIL">
+      <HintPath>..\packages\Magick.NET.Core.13.2.0\lib\netstandard20\Magick.NET.Core.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -81,6 +89,7 @@
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -114,7 +123,21 @@
     <Compile Include="Menu_Tools\FRM_Convert_Image.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Menu_Tools\FRM_Generative_AI_AIR.Designer.vb">
+      <DependentUpon>FRM_Generative_AI_AIR.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Menu_Tools\FRM_Generative_AI_AIR.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu_Tools\FRM_Remove_Color_Image.Designer.vb">
+      <DependentUpon>FRM_Remove_Color_Image.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Menu_Tools\FRM_Remove_Color_Image.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Model\ConverterImage.vb" />
     <Compile Include="Model\CryptographyZ.vb" />
+    <Compile Include="Model\FilesInFolder.vb" />
     <Compile Include="Model\processCount.vb" />
     <Compile Include="Model\TimeServer_API.vb" />
     <Compile Include="Model\TripleDES.vb" />
@@ -137,6 +160,7 @@
     <Compile Include="PC_Config\Get_Object_OS.vb" />
     <Compile Include="Programs.vb" />
     <Compile Include="RegisterApp\API_register.vb" />
+    <Compile Include="RegisterApp\CountdownTimer.vb" />
     <Compile Include="RegisterApp\FRM_Register.Designer.vb">
       <DependentUpon>FRM_Register.vb</DependentUpon>
     </Compile>
@@ -150,6 +174,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RegisterApp\RegistryB.vb" />
+    <Compile Include="RegisterApp\xTime.vb" />
     <Compile Include="TEST.Designer.vb">
       <DependentUpon>TEST.vb</DependentUpon>
     </Compile>
@@ -163,6 +188,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Menu_Tools\FRM_Convert_Image.resx">
       <DependentUpon>FRM_Convert_Image.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu_Tools\FRM_Generative_AI_AIR.resx">
+      <DependentUpon>FRM_Generative_AI_AIR.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu_Tools\FRM_Remove_Color_Image.resx">
+      <DependentUpon>FRM_Remove_Color_Image.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -196,7 +227,15 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="AB.ico" />
     <Content Include="font-ab-_2_.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="..\packages\Magick.NET-Q16-AnyCPU.13.2.0\build\netstandard20\Magick.NET-Q16-AnyCPU.targets" Condition="Exists('..\packages\Magick.NET-Q16-AnyCPU.13.2.0\build\netstandard20\Magick.NET-Q16-AnyCPU.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Magick.NET-Q16-AnyCPU.13.2.0\build\netstandard20\Magick.NET-Q16-AnyCPU.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Magick.NET-Q16-AnyCPU.13.2.0\build\netstandard20\Magick.NET-Q16-AnyCPU.targets'))" />
+  </Target>
 </Project>

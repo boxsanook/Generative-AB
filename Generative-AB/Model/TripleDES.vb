@@ -2,8 +2,9 @@
 Imports System.Text
 Imports System.IO
 Imports System.Security.Cryptography
+Imports System.Web
 
-Public Class TripleDES
+Public Class TripleDES_xBox
     Public tripleDESStr As String = "TripleDES"
     Public Key64String As String = "Taqz+rpX5TW1XGpXdWNA/PigxpP8zfgi"
     Public IV64String As String = "TXlJVjEyMwA="
@@ -47,38 +48,30 @@ Public Class TripleDES
         Return Convert_IV
     End Function
 
-    Public Function xDecrypt(ByVal strToDecrypt As String) As String
+    Public Function xDecrypt(ByVal encryptedData As String) As String
+
+        ' URL Decoding
+        Dim decodedString As String = HttpUtility.UrlDecode(encryptedData)
+        Console.WriteLine(decodedString) ' Output: Hello World!
+        encryptedData = decodedString
+        Dim decryptedText As String = Nothing
         Try
-            'initialize our key
-            'https://bytes.com/topic/php/answers/873350-encrypt-vb-net-decrypt-php-vice-versa
-            Dim tripleDESKey As SymmetricAlgorithm = SymmetricAlgorithm.Create(tripleDESStr)
-            tripleDESKey.Key = Convert.FromBase64String(Key64String)
-            tripleDESKey.IV = Convert.FromBase64String(IV64String)
+            Dim key As Byte() = Convert.FromBase64String(Key64String)
+            Dim iv As Byte() = Convert.FromBase64String(IV64String)
 
-            'load our encrypted value into a memory stream
-            Dim encryptedValue As String = strToDecrypt
-            Dim encryptedStream As MemoryStream = New MemoryStream()
-            encryptedStream.Write(Convert.FromBase64String(encryptedValue), 0, Convert.FromBase64String(encryptedValue).Length)
-            encryptedStream.Position = 0
+            Dim tripleDes As New TripleDESCryptoServiceProvider()
+            tripleDes.Key = key
+            tripleDes.IV = iv
+            tripleDes.Padding = PaddingMode.PKCS7
+            Dim encryptedBytes As Byte() = Convert.FromBase64String(encryptedData)
+            Dim decryptor As ICryptoTransform = tripleDes.CreateDecryptor()
+            Dim decryptedBytes As Byte() = decryptor.TransformFinalBlock(encryptedBytes, 0, encryptedBytes.Length)
 
-            'set up a stream to do the decryption
-            Dim cs As CryptoStream = New CryptoStream(encryptedStream, tripleDESKey.CreateDecryptor, CryptoStreamMode.Read)
-            Dim decryptedStream As MemoryStream = New MemoryStream()
-            Dim buf() As Byte = New Byte(2048) {}
-            Dim bytesRead As Integer
-
-            'keep reading from encrypted stream via the crypto stream
-            'and store that in the decrypted stream
-            bytesRead = cs.Read(buf, 0, buf.Length)
-            While (bytesRead > 0)
-                decryptedStream.Write(buf, 0, bytesRead)
-                bytesRead = cs.Read(buf, 0, buf.Length)
-            End While
-            'reassemble the decrypted stream into a string    
-            Dim decryptedValue As String = Encoding.UTF8.GetString(decryptedStream.ToArray())
-            Return (decryptedValue.ToString())
+            decryptedText = Encoding.UTF8.GetString(decryptedBytes)
+            Return decryptedText
         Catch ex As Exception
             MsgBox(ex.Message)
+            Return decryptedText
         End Try
     End Function
 
@@ -95,8 +88,11 @@ Public Class TripleDES
         Dim cs As CryptoStream = New CryptoStream(mS, trans, CryptoStreamMode.Write)
         cs.Write(inputByteArray, 0, inputByteArray.Length)
         cs.FlushFinalBlock()
+        ' URL Encoding
+        Dim encodedString As String = HttpUtility.UrlEncode(Convert.ToBase64String(mS.ToArray).ToString)
+        Console.WriteLine(encodedString) ' Output: Hello%20World%21
 
-        Return Convert.ToBase64String(mS.ToArray).ToString
+        Return encodedString
     End Function
 
 

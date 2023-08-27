@@ -22,12 +22,17 @@ Partial Class TEST
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(TEST))
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.TextBox5 = New System.Windows.Forms.TextBox()
+        Me.Button5 = New System.Windows.Forms.Button()
+        Me.TextBox6 = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'Button1
@@ -41,7 +46,7 @@ Partial Class TEST
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(592, 236)
+        Me.Button2.Location = New System.Drawing.Point(637, 192)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(75, 23)
         Me.Button2.TabIndex = 1
@@ -76,17 +81,57 @@ Partial Class TEST
         Me.TextBox4.Size = New System.Drawing.Size(376, 22)
         Me.TextBox4.TabIndex = 4
         '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(581, 274)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(75, 23)
+        Me.Button3.TabIndex = 6
+        Me.Button3.Text = "Button3"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'TextBox5
+        '
+        Me.TextBox5.Location = New System.Drawing.Point(198, 274)
+        Me.TextBox5.Multiline = True
+        Me.TextBox5.Name = "TextBox5"
+        Me.TextBox5.Size = New System.Drawing.Size(310, 138)
+        Me.TextBox5.TabIndex = 7
+        Me.TextBox5.Text = "pSwJ4HkDxZaXkzAJTu6sJtRW4C4oeA=="
+        '
+        'Button5
+        '
+        Me.Button5.Location = New System.Drawing.Point(623, 398)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(75, 23)
+        Me.Button5.TabIndex = 8
+        Me.Button5.Text = "Button5"
+        Me.Button5.UseVisualStyleBackColor = True
+        '
+        'TextBox6
+        '
+        Me.TextBox6.Location = New System.Drawing.Point(258, 246)
+        Me.TextBox6.Name = "TextBox6"
+        Me.TextBox6.Size = New System.Drawing.Size(100, 22)
+        Me.TextBox6.TabIndex = 9
+        Me.TextBox6.Text = "2048"
+        '
         'TEST
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.TextBox6)
+        Me.Controls.Add(Me.Button5)
+        Me.Controls.Add(Me.TextBox5)
+        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.TextBox3)
         Me.Controls.Add(Me.TextBox4)
         Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "TEST"
         Me.Text = "TEST"
         Me.ResumeLayout(False)
@@ -100,4 +145,8 @@ Partial Class TEST
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents TextBox3 As TextBox
     Friend WithEvents TextBox4 As TextBox
+    Friend WithEvents Button3 As Button
+    Friend WithEvents TextBox5 As TextBox
+    Friend WithEvents Button5 As Button
+    Friend WithEvents TextBox6 As TextBox
 End Class
