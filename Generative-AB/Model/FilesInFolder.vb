@@ -1,6 +1,36 @@
 ﻿Imports System.IO
+Imports System.Text.RegularExpressions
 
 Public Class FilesInFolder
+    Public Shared Function DriveInfoPaht() As Boolean
+        'Dim driveDExists As Boolean = DriveInfo.GetDrives().Any(Function(d) d.Name.Equals("D:\", StringComparison.OrdinalIgnoreCase))
+        Return DriveInfo.GetDrives().Any(Function(d) d.Name.Equals("C:\", StringComparison.OrdinalIgnoreCase))
+        'If driveCExists Then
+        '    'Console.WriteLine("Drive C exists.")
+
+        '    If dbPath <> "c:\Generative AB.ai\" Then
+        '        dbPath = "c:\Generative AB.ai\"
+        '    End If
+        'Else
+        '    If dbPath <> "d:\Generative AB.ai\" Then
+        '        dbPath = "d:\Generative AB.ai\"
+        '    End If
+
+        'End If
+    End Function
+
+    Public Shared Function GetInt(inputString As String)
+        Dim extractedNumber As Integer = 0
+        ' Try to parse the number from the string
+        If Integer.TryParse(Regex.Match(inputString, "\d+").Value, extractedNumber) Then
+            ' 'extractedNumber' now contains the extracted integer value
+            Console.WriteLine("Extracted Number: " & extractedNumber)
+        Else
+            Console.WriteLine("No valid number found in the string.")
+            extractedNumber = inputString
+        End If
+        Return extractedNumber
+    End Function
     Public Shared Function CheckFile(filePath As String) As Boolean
         If File.Exists(filePath) Then
             Return False

@@ -22,9 +22,9 @@
     Private Sub hideSubmenu()
 
         PanelMediaSubmenu.Visible = False
-
         PanelToolsSubmenu.Visible = False
-
+        Panel_Config.Visible = False
+        PanelHelp.Visible = False
     End Sub
 
     Private Sub showSubmenu(submenu As Panel)
@@ -58,7 +58,7 @@
 
 #Region "Buttons Media Submenu"
 
-    Private Sub btnMedia_Click(sender As Object, e As EventArgs) Handles btnMedia.Click
+    Private Sub btnMedia_Click(sender As Object, e As EventArgs) Handles btnMenuAi.Click
 
         'Dim buttonName As String = clickedButton.Name
         showSubmenu(PanelMediaSubmenu)
@@ -92,13 +92,6 @@
         active_button(clickedButton)
     End Sub
 
-    Private Sub button5_Click(sender As Object, e As EventArgs) Handles button5.Click
-        ResetButtonAppearance(PanelSideMenu)
-        Dim clickedButton As Button = DirectCast(sender, Button)
-        active_button(clickedButton)
-    End Sub
-
-
 
     Private Sub button13_Click(sender As Object, e As EventArgs) Handles button13.Click
         openChildForm(New FRM_Convert_Image())
@@ -108,12 +101,13 @@
     End Sub
 
     Private Sub button12_Click(sender As Object, e As EventArgs) Handles button12.Click
-        'ResetButtonAppearance(PanelSideMenu)
-        'Dim clickedButton As Button = DirectCast(sender, Button)
-        'active_button(clickedButton)
+        openChildForm(New FRM_Crop_Image())
+        ResetButtonAppearance(PanelSideMenu)
+        Dim clickedButton As Button = DirectCast(sender, Button)
+        active_button(clickedButton)
     End Sub
 
-    Private Sub button10_Click(sender As Object, e As EventArgs) Handles button10.Click
+    Private Sub button10_Click(sender As Object, e As EventArgs)
         'openChildForm(New TEST())
         'ResetButtonAppearance(PanelSideMenu)
         'Dim clickedButton As Button = DirectCast(sender, Button)
@@ -121,12 +115,29 @@
     End Sub
 #End Region
 
+    Dim MaxSizeTime As Integer = 1 ' 60 seconds
+    Private Sub MaxSize_Tick(sender As Object, e As EventArgs) Handles MaxSize.Tick
+        MaxSizeTime -= 1
+        If MaxSizeTime <= 0 Then
+            MaxSize.Stop()
+            Me.WindowState = FormWindowState.Maximized
+        End If
+    End Sub
+    Private Sub Home_Menu()
+        'btnMenuAi.Visible = False
+        'btnTools.Visible = True
+        'btnSettings.Visible = False
+        'btnHelp.Visible = False
+    End Sub
+
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Home_Menu()
         hideSubmenu()
         Main_Time_today.Interval = 1000
         Main_Time_today.Start()
-
+        MaxSize.Interval = 500
+        MaxSize.Start()
     End Sub
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
         Application.Exit()
@@ -147,23 +158,13 @@
         active_button(clickedButton)
         showSubmenu(PanelToolsSubmenu)
     End Sub
-    Private Sub btnRegister_App_Click(sender As Object, e As EventArgs) Handles btnRegister_App.Click
-        'openChildForm(New FRM_Register_User())
-        'ResetButtonAppearance(PanelSideMenu)
 
+    Private Sub btnHelp_Click(sender As Object, e As EventArgs) Handles btnHelp.Click
 
-        openChildForm(New FRM_Register())
         ResetButtonAppearance(PanelSideMenu)
         Dim clickedButton As Button = DirectCast(sender, Button)
         active_button(clickedButton)
-
-    End Sub
-
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        'openChildForm(New FRM_Register())
-        'ResetButtonAppearance(PanelSideMenu)
-        'Dim clickedButton As Button = DirectCast(sender, Button)
-        'active_button(clickedButton)
+        showSubmenu(PanelHelp)
     End Sub
 
     Private Sub Main_Time_today_Tick(sender As Object, e As EventArgs) Handles Main_Time_today.Tick
@@ -172,4 +173,40 @@
         ToDayTime.Text = currentDate.ToString("HH:mm:ss")
     End Sub
 
+    Private Sub btnConfig_Click(sender As Object, e As EventArgs) Handles btnSettings.Click
+        'Dim buttonName As String = clickedButton.Name
+        showSubmenu(Panel_Config)
+        ResetButtonAppearance(PanelSideMenu)
+        Dim clickedButton As Button = DirectCast(sender, Button)
+        active_button(clickedButton)
+    End Sub
+
+    Private Sub bntSubRegisterApp_Click(sender As Object, e As EventArgs) Handles btnSubRegisterApp.Click
+        openChildForm(New FRM_Register())
+        ResetButtonAppearance(PanelSideMenu)
+        Dim clickedButton As Button = DirectCast(sender, Button)
+        active_button(clickedButton)
+
+    End Sub
+
+    Private Sub btnOptions_Click(sender As Object, e As EventArgs) Handles btnOptions.Click
+        openChildForm(New FRM_Options())
+        ResetButtonAppearance(PanelSideMenu)
+        Dim clickedButton As Button = DirectCast(sender, Button)
+        active_button(clickedButton)
+    End Sub
+
+    Private Sub btnAbout_Click(sender As Object, e As EventArgs) Handles btnAbout.Click
+        Dim ShowAbout As New AboutBoxMe
+        Dim clickedButton As Button = DirectCast(sender, Button)
+        active_button(clickedButton)
+        ShowAbout.ShowDialog()
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim ShowAbout As New FRM_Main_SettingSQL
+        Dim clickedButton As Button = DirectCast(sender, Button)
+        active_button(clickedButton)
+        ShowAbout.ShowDialog()
+    End Sub
 End Class

@@ -7,7 +7,7 @@ Imports System.Text.RegularExpressions
 
 Public Class API_register
     Public urlx As String
-    Public Shared WEB_Register As String = "http://localhost/My_API/"
+    Public Shared WEB_Register As String = "https://boxs.me/Generative%20AB.ai/"
     Public Shared random As New Random()
 
     Public Function ValidateRemoteCertificate(ByVal sender As Object, ByVal certificate As X509Certificate, ByVal chain As X509Chain, ByVal sslPolicyErrors As SslPolicyErrors) As Boolean
@@ -77,8 +77,6 @@ Public Class API_register
 
     Public Shared Function register_app(path As String, table As DataTable) As String
         Try
-            'http://localhost:801/bot/register.php
-
             Dim UrlAPI As String = WEB_Register & "windows.php/" & path
             Dim body = DataTableToJSONWithStringBuilder(table)
             Dim httpWebRequest = CType(WebRequest.Create(UrlAPI), HttpWebRequest)
@@ -90,7 +88,20 @@ Public Class API_register
             MessageBox.Show(ex.Message, "Error register app", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return "{""status"":""error"",""message"":""" & ex.Message & """,""code"":""404""}"
         End Try
-
+    End Function
+    Public Shared Function post_api_app(path As String, table As DataTable) As String
+        Try
+            Dim UrlAPI As String = WEB_Register & path
+            Dim body = DataTableToJSONWithStringBuilder(table)
+            Dim httpWebRequest = CType(WebRequest.Create(UrlAPI), HttpWebRequest)
+            httpWebRequest.ContentType = "application/json"
+            httpWebRequest.Method = "POST"
+            Dim Contentx = NewPostDataAPI(body, httpWebRequest)
+            Return Contentx
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error register app", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return "{""status"":""error"",""message"":""" & ex.Message & """,""code"":""404""}"
+        End Try
     End Function
 
 
@@ -115,26 +126,26 @@ Public Class API_register
     '        Return "{""status"":""error"",""message"":""" & ex.Message & """,""code"":""404""}"
     '    End Try
     'End Function
-    Public Function show_register(table As DataTable) As String
-        Try
-            'http://localhost:801/bot/register.php 
-            Dim UrlAPI As String = WEB_Register & "/show_register.php"
-            'Dim client = New RestClient(UrlAPI)
-            'client.Timeout = -1
-            'Dim request = New RestRequest(Method.POST)
+    'Public Function show_register(table As DataTable) As String
+    '    Try
+    '        'http://localhost:801/bot/register.php 
+    '        Dim UrlAPI As String = WEB_Register & "/show_register.php"
+    '        'Dim client = New RestClient(UrlAPI)
+    '        'client.Timeout = -1
+    '        'Dim request = New RestRequest(Method.POST)
 
-            Dim body = DataTableToJSONWithStringBuilder(table)
-            Dim httpWebRequest = CType(WebRequest.Create(UrlAPI), HttpWebRequest)
-            httpWebRequest.ContentType = "application/json"
-            httpWebRequest.Method = "POST"
-            Dim Contentx = NewPostDataAPI(body, httpWebRequest)
-            Return Contentx
+    '        Dim body = DataTableToJSONWithStringBuilder(table)
+    '        Dim httpWebRequest = CType(WebRequest.Create(UrlAPI), HttpWebRequest)
+    '        httpWebRequest.ContentType = "application/json"
+    '        httpWebRequest.Method = "POST"
+    '        Dim Contentx = NewPostDataAPI(body, httpWebRequest)
+    '        Return Contentx
 
-        Catch ex As Exception
-            MessageBox.Show(ex.Message, "GetUser")
+    '    Catch ex As Exception
+    '        MessageBox.Show(ex.Message, "GetUser")
 
-        End Try
+    '    End Try
 
-    End Function
+    'End Function
 
 End Class

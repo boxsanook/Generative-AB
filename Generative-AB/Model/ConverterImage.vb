@@ -3,6 +3,56 @@ Imports ImageMagick
 Public Class ConverterImage
 
 
+    Private Sub FindCroppingAreaX(sourcePath As String, outputPath As String, minAlpha As Integer, maxAlpha As Integer, margin As Integer)
+        Dim sourceImage As New Bitmap(sourcePath)
+        Dim sourceWidth As Integer = sourceImage.Width
+        Dim sourceHeight As Integer = sourceImage.Height
+
+        Dim leftCrop As Integer = sourceWidth
+        Dim topCrop As Integer = sourceHeight
+        Dim rightCrop As Integer = 0
+        Dim bottomCrop As Integer = 0
+
+        Dim foundNonTransparentRegion As Boolean = False
+
+        For y As Integer = 0 To sourceHeight - 1
+            For x As Integer = 0 To sourceWidth - 1
+                Dim pixelColor As Color = sourceImage.GetPixel(x, y)
+                Dim alphaValue As Integer = pixelColor.A
+                If alphaValue > 0 AndAlso alphaValue >= minAlpha AndAlso alphaValue <= maxAlpha Then
+                    foundNonTransparentRegion = True
+                    leftCrop = Math.Min(leftCrop, x)
+                    rightCrop = Math.Max(rightCrop, x)
+                    topCrop = Math.Min(topCrop, y)
+                    bottomCrop = Math.Max(bottomCrop, y)
+                End If
+            Next
+        Next
+
+        If foundNonTransparentRegion Then
+            leftCrop = Math.Max(0, leftCrop - margin)
+            topCrop = Math.Max(0, topCrop - margin)
+            rightCrop = Math.Min(sourceWidth - 1, rightCrop + margin)
+            bottomCrop = Math.Min(sourceHeight - 1, bottomCrop + margin)
+
+            Dim croppedWidth As Integer = rightCrop - leftCrop + 1
+            Dim croppedHeight As Integer = bottomCrop - topCrop + 1
+
+            Dim croppedImage As New Bitmap(croppedWidth, croppedHeight)
+            Using g As Graphics = Graphics.FromImage(croppedImage)
+                g.DrawImage(sourceImage, New Rectangle(0, 0, croppedWidth, croppedHeight), New Rectangle(leftCrop, topCrop, croppedWidth, croppedHeight), GraphicsUnit.Pixel)
+            End Using
+
+            croppedImage.Save(outputPath, Imaging.ImageFormat.Png)
+
+            croppedImage.Dispose()
+        Else
+            MessageBox.Show("No suitable non-transparent regions found.")
+        End If
+
+        sourceImage.Dispose()
+    End Sub
+
     Public Shared Function GetSvgDimensions_Size(svgFilePath As String) As Size
         Dim Size As Size = New Size(768, 768)
         Try
@@ -182,6 +232,48 @@ Public Class ConverterImage
             ' Save the result as PNG
             image.Format = MagickFormat.Png
             image.Write(outputFilePath)
+        End Using
+    End Sub
+
+    Public Shared Sub ConvertImage_RemoveBackground(svgFilePath As String, pngFilePath As String, width As Integer, height As Integer, image_Format As MagickFormat, backgroundColor As MagickColor)
+        Dim newDpi As New Density(300, 300) ' Set the new DPI value, 300 DPI in this example
+
+        Using image As New MagickImage(svgFilePath)
+            ' Get the original SVG image size
+            Dim originalWidth As Integer = image.Width
+            Dim originalHeight As Integer = image.Height
+            ' Set the color to be replaced (background color)
+            Dim targetColor As New MagickColor($"rgb({backgroundColor.R}, {backgroundColor.G}, {backgroundColor.B})") ' Replace with your background color
+            Dim replacementColor As New MagickColor("transparent") ' Set the replacement color to transparent
+
+            ' Replace the background color with transparency
+            image.ColorFuzz = New Percentage(10) ' Adjust the fuzziness as needed
+            image.Opaque(targetColor, replacementColor)
+
+            ' Set the resolution (DPI) value, for example, 300 DPI
+
+            image.Density = newDpi
+
+            ' Optionally, you can also set the quality for JPEG images
+            image.Quality = 90
+            ' Calculate the new size to maintain the original aspect ratio
+            Dim newWidth As Integer
+            Dim newHeight As Integer
+
+            If originalWidth > originalHeight Then
+                newWidth = width
+                newHeight = originalHeight * width / originalWidth
+            Else
+                newHeight = height
+                newWidth = originalWidth * height / originalHeight
+            End If
+
+            ' Resize the image to the new dimensions
+            image.Resize(newWidth, newHeight)
+
+            ' Convert to JPG 
+            image.Format = image_Format
+            image.Write(pngFilePath)
         End Using
     End Sub
 

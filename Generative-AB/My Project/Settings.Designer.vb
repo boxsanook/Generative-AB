@@ -65,6 +65,18 @@ Namespace My
                 Me("mutexCount") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property accessToken_AI() As String
+            Get
+                Return CType(Me("accessToken_AI"),String)
+            End Get
+            Set
+                Me("accessToken_AI") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

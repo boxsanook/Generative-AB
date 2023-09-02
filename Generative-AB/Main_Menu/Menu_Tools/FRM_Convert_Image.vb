@@ -5,9 +5,28 @@ Imports ImageMagick
 
 Public Class FRM_Convert_Image
     Private Sub MeClose_Click(sender As Object, e As EventArgs) Handles MeClose.Click
-        Me.Close()
+
+        If bgWorker.IsBusy Then
+            Dim Confim As DialogResult = MessageBox.Show("System operation has not yet been completed." & vbNewLine & "Do you want to cancel and close this page?", "Do you want to close this page?", MessageBoxButtons.YesNo, MessageBoxIcon.Error)
+            If Confim = DialogResult.Yes Then
+                Try
+                    bgWorker.CancelAsync()
+                Catch ex As Exception
+
+                End Try
+                Me.Close()
+            End If
+        Else
+            Me.Close()
+        End If
+
     End Sub
     Private Sub FRM_Convert_Image_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' New BackgroundWorker
+        bgWorker = New BackgroundWorker
+        bgWorker.WorkerReportsProgress = True
+        bgWorker.WorkerSupportsCancellation = True
+
         Zoom_index()
     End Sub
     Public Sub Zoom_index()
@@ -39,7 +58,7 @@ Public Class FRM_Convert_Image
         ' Show the dialog and check if the user clicked OK
         If folderBrowserDialog1.ShowDialog() = DialogResult.OK Then
             Dim selectedFolder As String = folderBrowserDialog1.SelectedPath
-            SelectedFolderPathTextBox.Text = selectedFolder
+            txt_OutputPath.Text = selectedFolder
         End If
     End Sub
     Private Sub LoadImage_Click(sender As Object, e As EventArgs) Handles LoadImage.Click
@@ -49,6 +68,7 @@ Public Class FRM_Convert_Image
         openFileDialog.Multiselect = True ' Allow multiple file selection
         ImageListBox.Items.Clear()
         ' Filter the types of files to show in the dialog
+
         openFileDialog.Filter = "Image Files|*.svg;*.jpg;*.png;*.gif"
 
         If openFileDialog.ShowDialog() = DialogResult.OK Then
@@ -59,7 +79,7 @@ Public Class FRM_Convert_Image
                 Dim directoryPath As String = Path.GetDirectoryName(filePath)
                 If irow = 0 Then
                     irow = irow + 1
-                    LoadFIleFolder.Text = directoryPath
+                    txt_SourcePath.Text = directoryPath
                 End If
                 ImageListBox.Items.Add(filePath)
 
@@ -73,6 +93,20 @@ Public Class FRM_Convert_Image
     Dim zoom_size As Integer
     Dim SaveToFolder As String
     Private Sub btnStart_Click(sender As Object, e As EventArgs) Handles btnStart.Click
+        Me.wk_text.Text = String.Empty
+        If txt_SourcePath.Text = "" Then
+            MessageBox.Show("Please select the source of the image file.", "Empty Source Path", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+        If txt_OutputPath.Text = "" Then
+            MessageBox.Show("Please select the output path of the image file.", "Empty Output Path", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+        If ImageListBox.Items.Count <= 0 Then
+            MessageBox.Show("You have not selected the image you want to  convert.", "Empty Output Path", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+
         If Com_Image_Type.Text = ".png" Then
             Magick_Format = MagickFormat.Png
         ElseIf Com_Image_Type.Text = ".jpg" Then
@@ -84,12 +118,12 @@ Public Class FRM_Convert_Image
 
         Com_Image_Type_new = Com_Image_Type.Text
         zoom_size = Com_Zoom.Text
-        SaveToFolder = SelectedFolderPathTextBox.Text
+        SaveToFolder = txt_OutputPath.Text
         ' New BackgroundWorker
         bgWorker = New BackgroundWorker
         bgWorker.WorkerReportsProgress = True
         bgWorker.WorkerSupportsCancellation = True
-
+        Items_Count = ImageListBox.Items.Count
         ' Start the asynchronous operation.
         bgWorker.RunWorkerAsync()
         Me.btnStart.Enabled = False
@@ -103,17 +137,17 @@ Public Class FRM_Convert_Image
         Me.btnStart.Enabled = True
     End Sub
     Private WithEvents bgWorker As BackgroundWorker
+    Dim Items_Count As Integer = 0
     Private Sub bgWorker_DoWork(sender As Object, e As DoWorkEventArgs) Handles bgWorker.DoWork
         Dim worker As BackgroundWorker = CType(sender, BackgroundWorker)
-        Dim Items_Count As Integer = ImageListBox.Items.Count
+
         Dim i As Integer = 0
         For Each item As Object In ImageListBox.Items
             i = i + 1
             ' Do something with each item
             Dim filePath As String = item.ToString()
-            ' ... Perform any actions you need with the listItem
-            worker.ReportProgress(i * 100 / Items_Count)
-            ' Do something with the file path, e.g., display it in a ListBox
+            ' ... Perform any actions you need with the listItem 
+            worker.ReportProgress(i)
 
             Dim fileInfo As New FileInfo(filePath)
             Dim fileNameOnly As String = Path.GetFileName(filePath)
@@ -127,23 +161,29 @@ Public Class FRM_Convert_Image
 
                 If Skip_existing_files.Checked = True Then
                     If FilesInFolder.CheckFile(new_path) = True Then
-                        ConverterImage.ConvertSvgTo_Png(filePath, new_path, get_site.Width * Convert.ToInt64(zoom_size), get_site.Height * Convert.ToInt64(zoom_size), Magick_Format)
                         If CheckBoxRemoveColor.Checked = True Then
                             Dim newBackgroundColor As Color = CheckBoxRemoveColor.ForeColor ' Replace with your desired background color
                             Dim htmlCode As String = ConverterImage.ColorToHtmlCode(newBackgroundColor)
                             Console.WriteLine($"htmlCode : {htmlCode} ")
                             Dim backgroundColor As New MagickColor(htmlCode) ' Replace #FFFFFF with your background color
-                            ConverterImage.RemoveBackground_Png(new_path, new_path, backgroundColor)
+                            ConverterImage.ConvertImage_RemoveBackground(filePath, new_path, get_site.Width * Convert.ToInt64(zoom_size), get_site.Height * Convert.ToInt64(zoom_size), Magick_Format, backgroundColor)
+                        Else
+                            ConverterImage.ConvertSvgTo_Png(filePath, new_path, get_site.Width * Convert.ToInt64(zoom_size), get_site.Height * Convert.ToInt64(zoom_size), Magick_Format)
+
                         End If
                     End If
                 Else
-                    ConverterImage.ConvertSvgTo_Png(filePath, new_path, get_site.Width * Convert.ToInt64(zoom_size), get_site.Height * Convert.ToInt64(zoom_size), Magick_Format)
-                    If CheckBoxRemoveColor.Checked = True Then
-                        Dim newBackgroundColor As Color = CheckBoxRemoveColor.ForeColor ' Replace with your desired background color
-                        Dim htmlCode As String = ConverterImage.ColorToHtmlCode(newBackgroundColor)
-                        Console.WriteLine($"htmlCode : {htmlCode} ")
-                        Dim backgroundColor As New MagickColor(htmlCode) ' Replace #FFFFFF with your background color
-                        ConverterImage.RemoveBackground_Png(new_path, new_path, backgroundColor)
+                    If FilesInFolder.CheckFile(new_path) = True Then
+                        If CheckBoxRemoveColor.Checked = True Then
+                            Dim newBackgroundColor As Color = CheckBoxRemoveColor.ForeColor ' Replace with your desired background color
+                            Dim htmlCode As String = ConverterImage.ColorToHtmlCode(newBackgroundColor)
+                            Console.WriteLine($"htmlCode : {htmlCode} ")
+                            Dim backgroundColor As New MagickColor(htmlCode) ' Replace #FFFFFF with your background color
+                            ConverterImage.ConvertImage_RemoveBackground(filePath, new_path, get_site.Width * Convert.ToInt64(zoom_size), get_site.Height * Convert.ToInt64(zoom_size), Magick_Format, backgroundColor)
+                        Else
+                            ConverterImage.ConvertSvgTo_Png(filePath, new_path, get_site.Width * Convert.ToInt64(zoom_size), get_site.Height * Convert.ToInt64(zoom_size), Magick_Format)
+
+                        End If
                     End If
                 End If
 
@@ -158,29 +198,37 @@ Public Class FRM_Convert_Image
 
             If (worker.CancellationPending = True) Then
                 e.Cancel = True
-                Exit For
-
+                Exit Sub
             End If
         Next
 
     End Sub
 
     Private Sub bgWorker_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles bgWorker.ProgressChanged
-        Me.label1.Text = (e.ProgressPercentage.ToString() + "%")
-
+        Dim worker_PerCen As Integer = 0
+        worker_PerCen = e.ProgressPercentage.ToString() * 100 / Items_Count
+        If worker_PerCen <= 100 Then
+            worker_PerCen = worker_PerCen
+        Else
+            worker_PerCen = worker_PerCen
+        End If
+        Dim diff As Integer = Integer.Parse(Items_Count) - Integer.Parse(e.ProgressPercentage)
+        label2.Text = (diff.ToString + " / " + Items_Count.ToString)
+        Me.label1.Text = (worker_PerCen.ToString + "%")
+        ProgressBar1.Value = worker_PerCen
     End Sub
 
     Private Sub bgWorker_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles bgWorker.RunWorkerCompleted
         If e.Cancelled = True Then
-            Me.label1.Text = "Canceled!"
+            'Me.label1.Text = "Canceled!"
         ElseIf e.Error IsNot Nothing Then
-            Me.label1.Text = "Error: " & e.Error.Message
+            MessageBox.Show(e.Error.Message, "Working Error.")
+            'Me.label1.Text = "Error: " &
         Else
             MessageBox.Show("Working Finished.")
-            Me.btnStart.Enabled = True
         End If
-
-
+        Me.btnStart.Enabled = True
 
     End Sub
+
 End Class

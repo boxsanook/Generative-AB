@@ -62,12 +62,25 @@ Public Class FRM_Register
         ExpiryDate.Text = RegistryB.str_ExpiryDate '= xTime.tImeConvert(NextMonth.ToString("yyyy-MM-dd HH:mm:ss"))
         RegisterKey.Text = $"{ProductCode.Text}|{ txt_Cliente_ID.Text}|{txt_sKey.Text}|{ txt_uKey.Text }|{ ExpiryDate.Text}|"
         RegisterKey.Text = BB_Framework_Code.BCryptography.Encrypt(RegisterKey.Text)
+
+        Dim inputString As String = RegistryB.str_token
+        Dim extractedNumber As Integer
+
+        ' Try to parse the number from the string
+        If Integer.TryParse(Regex.Match(inputString, "\d+").Value, extractedNumber) Then
+            token.Text = extractedNumber
+            ' 'extractedNumber' now contains the extracted integer value
+            Console.WriteLine("Extracted Number: " & extractedNumber)
+        Else
+            Console.WriteLine("No valid number found in the string.")
+            token.Text = RegistryB.str_token
+        End If
     End Sub
     Private Sub btnRegister_Click(sender As Object, e As EventArgs) Handles btnRegister.Click
 
         Try
             Dim Product_Key1 As String = $"{ProductCode.Text}|{ txt_Cliente_ID.Text}|{txt_sKey.Text}|"
-            Dim Product_Key2 As String = $"{ txt_uKey.Text }|{ExpiryDate.Text}|"
+            Dim Product_Key2 As String = $"{ txt_uKey.Text }|{ExpiryDate.Text}|{token.Text}|"
             Product_Key1 = BB_Framework_Code.BCryptography.Encrypt(Product_Key1)
             Product_Key2 = BB_Framework_Code.BCryptography.Encrypt(Product_Key2)
 
@@ -83,7 +96,7 @@ Public Class FRM_Register
             .Product_Key1 = "",
             .Product_Key2 = ""
             }
-            Dim tdes As New BB_Framework_Code.BCryptography()
+
             response = JsonConvert.DeserializeAnonymousType(jsonb, response)
             Console.WriteLine("register_app: " & jsonb.ToString)
             If response.status.ToUpper() = "OK" Then
@@ -92,7 +105,10 @@ Public Class FRM_Register
                 RegistryB.SaveValueToRegistry("sKey", txt_sKey.Text)
                 RegistryB.SaveValueToRegistry("uKey", txt_uKey.Text)
                 RegistryB.SaveValueToRegistry("Expiry_Date", BB_Framework_Code.BCryptography.Encrypt(ExpiryDate.Text))
+                RegistryB.SaveValueToRegistry("token", BB_Framework_Code.BCryptography.Encrypt(token.Text))
                 MessageBox.Show(response.message)
+
+
                 Application.Restart()
             Else
                 MessageBox.Show(response.message)

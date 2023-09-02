@@ -47,6 +47,9 @@ Partial Class FRM_Register
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.Panel7 = New System.Windows.Forms.Panel()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.token = New System.Windows.Forms.TextBox()
         Me.BarraTitulo.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
@@ -55,6 +58,7 @@ Partial Class FRM_Register
         Me.Panel4.SuspendLayout()
         Me.Panel5.SuspendLayout()
         Me.Panel6.SuspendLayout()
+        Me.Panel7.SuspendLayout()
         Me.SuspendLayout()
         '
         'BarraTitulo
@@ -111,10 +115,8 @@ Partial Class FRM_Register
         '
         'ProductCode
         '
-        Me.ProductCode.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ProductCode.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ProductCode.Location = New System.Drawing.Point(152, 76)
+        Me.ProductCode.Location = New System.Drawing.Point(152, 55)
         Me.ProductCode.Margin = New System.Windows.Forms.Padding(4)
         Me.ProductCode.Name = "ProductCode"
         Me.ProductCode.ReadOnly = True
@@ -136,10 +138,8 @@ Partial Class FRM_Register
         '
         'txt_Cliente_ID
         '
-        Me.txt_Cliente_ID.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txt_Cliente_ID.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_Cliente_ID.Location = New System.Drawing.Point(152, 110)
+        Me.txt_Cliente_ID.Location = New System.Drawing.Point(152, 89)
         Me.txt_Cliente_ID.Margin = New System.Windows.Forms.Padding(4)
         Me.txt_Cliente_ID.Name = "txt_Cliente_ID"
         Me.txt_Cliente_ID.ReadOnly = True
@@ -161,22 +161,19 @@ Partial Class FRM_Register
         '
         'ExpiryDate
         '
-        Me.ExpiryDate.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ExpiryDate.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ExpiryDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ExpiryDate.Location = New System.Drawing.Point(152, 212)
+        Me.ExpiryDate.Location = New System.Drawing.Point(131, 0)
         Me.ExpiryDate.Margin = New System.Windows.Forms.Padding(4)
         Me.ExpiryDate.Name = "ExpiryDate"
         Me.ExpiryDate.ReadOnly = True
-        Me.ExpiryDate.Size = New System.Drawing.Size(477, 26)
+        Me.ExpiryDate.Size = New System.Drawing.Size(201, 26)
         Me.ExpiryDate.TabIndex = 87
         '
         'txt_uKey
         '
-        Me.txt_uKey.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txt_uKey.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_uKey.Location = New System.Drawing.Point(152, 178)
+        Me.txt_uKey.Location = New System.Drawing.Point(152, 157)
         Me.txt_uKey.Margin = New System.Windows.Forms.Padding(4)
         Me.txt_uKey.Name = "txt_uKey"
         Me.txt_uKey.ReadOnly = True
@@ -185,10 +182,8 @@ Partial Class FRM_Register
         '
         'txt_sKey
         '
-        Me.txt_sKey.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txt_sKey.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_sKey.Location = New System.Drawing.Point(152, 144)
+        Me.txt_sKey.Location = New System.Drawing.Point(152, 123)
         Me.txt_sKey.Margin = New System.Windows.Forms.Padding(4)
         Me.txt_sKey.Name = "txt_sKey"
         Me.txt_sKey.ReadOnly = True
@@ -198,15 +193,15 @@ Partial Class FRM_Register
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Label5.Dock = System.Windows.Forms.DockStyle.Left
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.White
-        Me.Label5.Location = New System.Drawing.Point(25, 0)
+        Me.Label5.Location = New System.Drawing.Point(0, 0)
         Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(119, 20)
+        Me.Label5.Size = New System.Drawing.Size(131, 20)
         Me.Label5.TabIndex = 88
-        Me.Label5.Text = "Expiry Date :"
+        Me.Label5.Text = "Expiry Date :  "
         '
         'Label3
         '
@@ -236,10 +231,8 @@ Partial Class FRM_Register
         '
         'RegisterKey
         '
-        Me.RegisterKey.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RegisterKey.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RegisterKey.Location = New System.Drawing.Point(152, 246)
+        Me.RegisterKey.Location = New System.Drawing.Point(154, 225)
         Me.RegisterKey.Margin = New System.Windows.Forms.Padding(4)
         Me.RegisterKey.Multiline = True
         Me.RegisterKey.Name = "RegisterKey"
@@ -261,13 +254,12 @@ Partial Class FRM_Register
         '
         'Update_Register
         '
-        Me.Update_Register.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.Update_Register.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.Update_Register.FlatAppearance.BorderSize = 0
         Me.Update_Register.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Update_Register.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Update_Register.ForeColor = System.Drawing.Color.White
-        Me.Update_Register.Location = New System.Drawing.Point(152, 407)
+        Me.Update_Register.Location = New System.Drawing.Point(152, 385)
         Me.Update_Register.Margin = New System.Windows.Forms.Padding(4)
         Me.Update_Register.Name = "Update_Register"
         Me.Update_Register.Size = New System.Drawing.Size(165, 43)
@@ -278,13 +270,12 @@ Partial Class FRM_Register
         '
         'btnRegister
         '
-        Me.btnRegister.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.btnRegister.BackColor = System.Drawing.Color.Green
         Me.btnRegister.FlatAppearance.BorderSize = 0
         Me.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnRegister.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnRegister.ForeColor = System.Drawing.Color.White
-        Me.btnRegister.Location = New System.Drawing.Point(496, 407)
+        Me.btnRegister.Location = New System.Drawing.Point(496, 385)
         Me.btnRegister.Margin = New System.Windows.Forms.Padding(4)
         Me.btnRegister.Name = "btnRegister"
         Me.btnRegister.Size = New System.Drawing.Size(133, 43)
@@ -295,7 +286,7 @@ Partial Class FRM_Register
         'Panel1
         '
         Me.Panel1.Controls.Add(Me.Label6)
-        Me.Panel1.Location = New System.Drawing.Point(1, 78)
+        Me.Panel1.Location = New System.Drawing.Point(1, 57)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(144, 25)
@@ -304,7 +295,7 @@ Partial Class FRM_Register
         'Panel2
         '
         Me.Panel2.Controls.Add(Me.Label7)
-        Me.Panel2.Location = New System.Drawing.Point(1, 111)
+        Me.Panel2.Location = New System.Drawing.Point(1, 90)
         Me.Panel2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(144, 25)
@@ -313,7 +304,7 @@ Partial Class FRM_Register
         'Panel3
         '
         Me.Panel3.Controls.Add(Me.Label4)
-        Me.Panel3.Location = New System.Drawing.Point(1, 145)
+        Me.Panel3.Location = New System.Drawing.Point(1, 124)
         Me.Panel3.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(144, 25)
@@ -322,7 +313,7 @@ Partial Class FRM_Register
         'Panel4
         '
         Me.Panel4.Controls.Add(Me.Label3)
-        Me.Panel4.Location = New System.Drawing.Point(0, 178)
+        Me.Panel4.Location = New System.Drawing.Point(0, 157)
         Me.Panel4.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(144, 25)
@@ -330,28 +321,65 @@ Partial Class FRM_Register
         '
         'Panel5
         '
+        Me.Panel5.Controls.Add(Me.ExpiryDate)
         Me.Panel5.Controls.Add(Me.Label5)
-        Me.Panel5.Location = New System.Drawing.Point(1, 213)
+        Me.Panel5.Location = New System.Drawing.Point(44, 190)
         Me.Panel5.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(144, 25)
+        Me.Panel5.Size = New System.Drawing.Size(332, 25)
         Me.Panel5.TabIndex = 95
         '
         'Panel6
         '
         Me.Panel6.Controls.Add(Me.label2)
-        Me.Panel6.Location = New System.Drawing.Point(1, 246)
+        Me.Panel6.Location = New System.Drawing.Point(1, 225)
         Me.Panel6.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Size = New System.Drawing.Size(144, 25)
         Me.Panel6.TabIndex = 96
+        '
+        'Panel7
+        '
+        Me.Panel7.Controls.Add(Me.token)
+        Me.Panel7.Controls.Add(Me.Label1)
+        Me.Panel7.Location = New System.Drawing.Point(406, 190)
+        Me.Panel7.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Panel7.Name = "Panel7"
+        Me.Panel7.Size = New System.Drawing.Size(223, 25)
+        Me.Panel7.TabIndex = 97
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.White
+        Me.Label1.Location = New System.Drawing.Point(0, 0)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(71, 20)
+        Me.Label1.TabIndex = 88
+        Me.Label1.Text = "Token :"
+        '
+        'token
+        '
+        Me.token.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.token.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.token.Location = New System.Drawing.Point(71, 0)
+        Me.token.Margin = New System.Windows.Forms.Padding(4)
+        Me.token.Name = "token"
+        Me.token.ReadOnly = True
+        Me.token.Size = New System.Drawing.Size(152, 26)
+        Me.token.TabIndex = 89
+        Me.token.Text = "10"
         '
         'FRM_Register
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(45, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(669, 473)
+        Me.ClientSize = New System.Drawing.Size(669, 441)
+        Me.Controls.Add(Me.Panel7)
         Me.Controls.Add(Me.Panel6)
         Me.Controls.Add(Me.Panel5)
         Me.Controls.Add(Me.Panel4)
@@ -361,7 +389,6 @@ Partial Class FRM_Register
         Me.Controls.Add(Me.btnRegister)
         Me.Controls.Add(Me.Update_Register)
         Me.Controls.Add(Me.RegisterKey)
-        Me.Controls.Add(Me.ExpiryDate)
         Me.Controls.Add(Me.txt_uKey)
         Me.Controls.Add(Me.txt_sKey)
         Me.Controls.Add(Me.txt_Cliente_ID)
@@ -388,6 +415,8 @@ Partial Class FRM_Register
         Me.Panel5.PerformLayout()
         Me.Panel6.ResumeLayout(False)
         Me.Panel6.PerformLayout()
+        Me.Panel7.ResumeLayout(False)
+        Me.Panel7.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -417,4 +446,7 @@ Partial Class FRM_Register
     Friend WithEvents Panel4 As Panel
     Friend WithEvents Panel5 As Panel
     Friend WithEvents Panel6 As Panel
+    Friend WithEvents Panel7 As Panel
+    Public WithEvents token As TextBox
+    Private WithEvents Label1 As Label
 End Class

@@ -8,6 +8,17 @@
         Return newDateTime
 
     End Function
+    Public Function UnixTimeStampToDateTime(ByVal unixTimeStamp As Double) As DateTime
+        Try
+            Dim dtDateTime As New System.DateTime
+            dtDateTime = New DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc).ToString("yyyy-MM-dd HH:mm:ss")
+            dtDateTime = dtDateTime.AddSeconds(unixTimeStamp).ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss")
+            Return dtDateTime
+        Catch ex As Exception
+            'BB_Framework_Code.MessageB.ShowX(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error, 10)
+        End Try
+
+    End Function
     Public Function tImeConvert(dateString As String) As Long
         ' Define the string representation of the datetime
         'dateString = "2023-08-26 12:00:00" ' Replace with your datetime string

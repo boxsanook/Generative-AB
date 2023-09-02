@@ -26,21 +26,24 @@ Partial Class FRM_Main
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRM_Main))
         Me.panelLogo = New System.Windows.Forms.Panel()
         Me.pictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.button5 = New System.Windows.Forms.Button()
         Me.button4 = New System.Windows.Forms.Button()
         Me.button3 = New System.Windows.Forms.Button()
         Me.button2 = New System.Windows.Forms.Button()
         Me.PanelSideMenu = New System.Windows.Forms.Panel()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.PanelHelp = New System.Windows.Forms.Panel()
+        Me.btnAbout = New System.Windows.Forms.Button()
+        Me.btnHelp = New System.Windows.Forms.Button()
+        Me.Panel_Config = New System.Windows.Forms.Panel()
+        Me.btnSubRegisterApp = New System.Windows.Forms.Button()
+        Me.btnOptions = New System.Windows.Forms.Button()
+        Me.btnSettings = New System.Windows.Forms.Button()
         Me.btnExit = New System.Windows.Forms.Button()
-        Me.btnRegister_App = New System.Windows.Forms.Button()
         Me.PanelToolsSubmenu = New System.Windows.Forms.Panel()
-        Me.button10 = New System.Windows.Forms.Button()
         Me.button12 = New System.Windows.Forms.Button()
         Me.button13 = New System.Windows.Forms.Button()
         Me.btnTools = New System.Windows.Forms.Button()
         Me.PanelMediaSubmenu = New System.Windows.Forms.Panel()
-        Me.btnMedia = New System.Windows.Forms.Button()
+        Me.btnMenuAi = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.PanelChildForm = New System.Windows.Forms.Panel()
         Me.Panel_bar = New System.Windows.Forms.Panel()
@@ -53,9 +56,13 @@ Partial Class FRM_Main
         Me.PictureBox9 = New System.Windows.Forms.PictureBox()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Main_Time_today = New System.Windows.Forms.Timer(Me.components)
+        Me.MaxSize = New System.Windows.Forms.Timer(Me.components)
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.panelLogo.SuspendLayout()
         CType(Me.pictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelSideMenu.SuspendLayout()
+        Me.PanelHelp.SuspendLayout()
+        Me.Panel_Config.SuspendLayout()
         Me.PanelToolsSubmenu.SuspendLayout()
         Me.PanelMediaSubmenu.SuspendLayout()
         Me.PanelChildForm.SuspendLayout()
@@ -82,23 +89,6 @@ Partial Class FRM_Main
         Me.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pictureBox1.TabIndex = 0
         Me.pictureBox1.TabStop = False
-        '
-        'button5
-        '
-        Me.button5.Dock = System.Windows.Forms.DockStyle.Top
-        Me.button5.FlatAppearance.BorderSize = 0
-        Me.button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(46, Byte), Integer))
-        Me.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(46, Byte), Integer))
-        Me.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.button5.ForeColor = System.Drawing.Color.Silver
-        Me.button5.Location = New System.Drawing.Point(0, 120)
-        Me.button5.Name = "button5"
-        Me.button5.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.button5.Size = New System.Drawing.Size(248, 40)
-        Me.button5.TabIndex = 3
-        Me.button5.Text = "Open recent media"
-        Me.button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.button5.UseVisualStyleBackColor = True
         '
         'button4
         '
@@ -147,7 +137,7 @@ Partial Class FRM_Main
         Me.button2.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
         Me.button2.Size = New System.Drawing.Size(248, 40)
         Me.button2.TabIndex = 0
-        Me.button2.Text = "Media Generative AB "
+        Me.button2.Text = "AI Generative AB "
         Me.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.button2.UseVisualStyleBackColor = True
         '
@@ -155,13 +145,15 @@ Partial Class FRM_Main
         '
         Me.PanelSideMenu.AutoScroll = True
         Me.PanelSideMenu.BackColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(7, Byte), Integer), CType(CType(17, Byte), Integer))
-        Me.PanelSideMenu.Controls.Add(Me.Button1)
+        Me.PanelSideMenu.Controls.Add(Me.PanelHelp)
+        Me.PanelSideMenu.Controls.Add(Me.btnHelp)
+        Me.PanelSideMenu.Controls.Add(Me.Panel_Config)
+        Me.PanelSideMenu.Controls.Add(Me.btnSettings)
         Me.PanelSideMenu.Controls.Add(Me.btnExit)
-        Me.PanelSideMenu.Controls.Add(Me.btnRegister_App)
         Me.PanelSideMenu.Controls.Add(Me.PanelToolsSubmenu)
         Me.PanelSideMenu.Controls.Add(Me.btnTools)
         Me.PanelSideMenu.Controls.Add(Me.PanelMediaSubmenu)
-        Me.PanelSideMenu.Controls.Add(Me.btnMedia)
+        Me.PanelSideMenu.Controls.Add(Me.btnMenuAi)
         Me.PanelSideMenu.Controls.Add(Me.panelLogo)
         Me.PanelSideMenu.Controls.Add(Me.Panel1)
         Me.PanelSideMenu.Dock = System.Windows.Forms.DockStyle.Left
@@ -170,25 +162,118 @@ Partial Class FRM_Main
         Me.PanelSideMenu.Size = New System.Drawing.Size(250, 713)
         Me.PanelSideMenu.TabIndex = 0
         '
-        'Button1
+        'PanelHelp
         '
-        Me.Button1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Button1.FlatAppearance.BorderSize = 0
-        Me.Button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(23, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(32, Byte), Integer))
-        Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(24, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(34, Byte), Integer))
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.ForeColor = System.Drawing.Color.Silver
-        Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
-        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.Location = New System.Drawing.Point(0, 522)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
-        Me.Button1.Size = New System.Drawing.Size(248, 45)
-        Me.Button1.TabIndex = 10
-        Me.Button1.Text = "  Help"
-        Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.PanelHelp.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.PanelHelp.Controls.Add(Me.btnAbout)
+        Me.PanelHelp.Dock = System.Windows.Forms.DockStyle.Top
+        Me.PanelHelp.Location = New System.Drawing.Point(0, 614)
+        Me.PanelHelp.Name = "PanelHelp"
+        Me.PanelHelp.Size = New System.Drawing.Size(248, 51)
+        Me.PanelHelp.TabIndex = 13
+        '
+        'btnAbout
+        '
+        Me.btnAbout.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnAbout.FlatAppearance.BorderSize = 0
+        Me.btnAbout.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(46, Byte), Integer))
+        Me.btnAbout.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(46, Byte), Integer))
+        Me.btnAbout.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnAbout.ForeColor = System.Drawing.Color.Silver
+        Me.btnAbout.Location = New System.Drawing.Point(0, 0)
+        Me.btnAbout.Name = "btnAbout"
+        Me.btnAbout.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
+        Me.btnAbout.Size = New System.Drawing.Size(248, 40)
+        Me.btnAbout.TabIndex = 2
+        Me.btnAbout.Text = "About"
+        Me.btnAbout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnAbout.UseVisualStyleBackColor = True
+        '
+        'btnHelp
+        '
+        Me.btnHelp.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnHelp.FlatAppearance.BorderSize = 0
+        Me.btnHelp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(23, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(32, Byte), Integer))
+        Me.btnHelp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(24, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnHelp.ForeColor = System.Drawing.Color.Silver
+        Me.btnHelp.Image = CType(resources.GetObject("btnHelp.Image"), System.Drawing.Image)
+        Me.btnHelp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnHelp.Location = New System.Drawing.Point(0, 569)
+        Me.btnHelp.Name = "btnHelp"
+        Me.btnHelp.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
+        Me.btnHelp.Size = New System.Drawing.Size(248, 45)
+        Me.btnHelp.TabIndex = 10
+        Me.btnHelp.Text = "  Help"
+        Me.btnHelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnHelp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnHelp.UseVisualStyleBackColor = True
+        '
+        'Panel_Config
+        '
+        Me.Panel_Config.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.Panel_Config.Controls.Add(Me.Button1)
+        Me.Panel_Config.Controls.Add(Me.btnSubRegisterApp)
+        Me.Panel_Config.Controls.Add(Me.btnOptions)
+        Me.Panel_Config.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel_Config.Location = New System.Drawing.Point(0, 440)
+        Me.Panel_Config.Name = "Panel_Config"
+        Me.Panel_Config.Size = New System.Drawing.Size(248, 129)
+        Me.Panel_Config.TabIndex = 12
+        '
+        'btnSubRegisterApp
+        '
+        Me.btnSubRegisterApp.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnSubRegisterApp.FlatAppearance.BorderSize = 0
+        Me.btnSubRegisterApp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(46, Byte), Integer))
+        Me.btnSubRegisterApp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(46, Byte), Integer))
+        Me.btnSubRegisterApp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSubRegisterApp.ForeColor = System.Drawing.Color.Silver
+        Me.btnSubRegisterApp.Location = New System.Drawing.Point(0, 40)
+        Me.btnSubRegisterApp.Name = "btnSubRegisterApp"
+        Me.btnSubRegisterApp.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
+        Me.btnSubRegisterApp.Size = New System.Drawing.Size(248, 40)
+        Me.btnSubRegisterApp.TabIndex = 1
+        Me.btnSubRegisterApp.Text = "Register App"
+        Me.btnSubRegisterApp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnSubRegisterApp.UseVisualStyleBackColor = True
+        '
+        'btnOptions
+        '
+        Me.btnOptions.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnOptions.FlatAppearance.BorderSize = 0
+        Me.btnOptions.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(46, Byte), Integer))
+        Me.btnOptions.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(46, Byte), Integer))
+        Me.btnOptions.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnOptions.ForeColor = System.Drawing.Color.Silver
+        Me.btnOptions.Location = New System.Drawing.Point(0, 0)
+        Me.btnOptions.Name = "btnOptions"
+        Me.btnOptions.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
+        Me.btnOptions.Size = New System.Drawing.Size(248, 40)
+        Me.btnOptions.TabIndex = 0
+        Me.btnOptions.Text = "Options"
+        Me.btnOptions.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnOptions.UseVisualStyleBackColor = True
+        '
+        'btnSettings
+        '
+        Me.btnSettings.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnSettings.FlatAppearance.BorderSize = 0
+        Me.btnSettings.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(23, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(32, Byte), Integer))
+        Me.btnSettings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(24, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSettings.ForeColor = System.Drawing.Color.Silver
+        Me.btnSettings.Image = CType(resources.GetObject("btnSettings.Image"), System.Drawing.Image)
+        Me.btnSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnSettings.Location = New System.Drawing.Point(0, 395)
+        Me.btnSettings.Name = "btnSettings"
+        Me.btnSettings.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
+        Me.btnSettings.Size = New System.Drawing.Size(248, 45)
+        Me.btnSettings.TabIndex = 11
+        Me.btnSettings.Text = "  Settings"
+        Me.btnSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnSettings.UseVisualStyleBackColor = True
         '
         'btnExit
         '
@@ -210,54 +295,16 @@ Partial Class FRM_Main
         Me.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnExit.UseVisualStyleBackColor = True
         '
-        'btnRegister_App
-        '
-        Me.btnRegister_App.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnRegister_App.FlatAppearance.BorderSize = 0
-        Me.btnRegister_App.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(23, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(32, Byte), Integer))
-        Me.btnRegister_App.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(24, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(34, Byte), Integer))
-        Me.btnRegister_App.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnRegister_App.ForeColor = System.Drawing.Color.Silver
-        Me.btnRegister_App.Image = CType(resources.GetObject("btnRegister_App.Image"), System.Drawing.Image)
-        Me.btnRegister_App.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnRegister_App.Location = New System.Drawing.Point(0, 477)
-        Me.btnRegister_App.Name = "btnRegister_App"
-        Me.btnRegister_App.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
-        Me.btnRegister_App.Size = New System.Drawing.Size(248, 45)
-        Me.btnRegister_App.TabIndex = 8
-        Me.btnRegister_App.Text = "  Register App"
-        Me.btnRegister_App.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnRegister_App.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnRegister_App.UseVisualStyleBackColor = True
-        '
         'PanelToolsSubmenu
         '
         Me.PanelToolsSubmenu.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(39, Byte), Integer))
-        Me.PanelToolsSubmenu.Controls.Add(Me.button10)
         Me.PanelToolsSubmenu.Controls.Add(Me.button12)
         Me.PanelToolsSubmenu.Controls.Add(Me.button13)
         Me.PanelToolsSubmenu.Dock = System.Windows.Forms.DockStyle.Top
-        Me.PanelToolsSubmenu.Location = New System.Drawing.Point(0, 347)
+        Me.PanelToolsSubmenu.Location = New System.Drawing.Point(0, 308)
         Me.PanelToolsSubmenu.Name = "PanelToolsSubmenu"
-        Me.PanelToolsSubmenu.Size = New System.Drawing.Size(248, 130)
+        Me.PanelToolsSubmenu.Size = New System.Drawing.Size(248, 87)
         Me.PanelToolsSubmenu.TabIndex = 7
-        '
-        'button10
-        '
-        Me.button10.Dock = System.Windows.Forms.DockStyle.Top
-        Me.button10.FlatAppearance.BorderSize = 0
-        Me.button10.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(46, Byte), Integer))
-        Me.button10.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(46, Byte), Integer))
-        Me.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.button10.ForeColor = System.Drawing.Color.Silver
-        Me.button10.Location = New System.Drawing.Point(0, 80)
-        Me.button10.Name = "button10"
-        Me.button10.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.button10.Size = New System.Drawing.Size(248, 40)
-        Me.button10.TabIndex = 2
-        Me.button10.Text = "Preferences"
-        Me.button10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.button10.UseVisualStyleBackColor = True
         '
         'button12
         '
@@ -272,7 +319,7 @@ Partial Class FRM_Main
         Me.button12.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
         Me.button12.Size = New System.Drawing.Size(248, 40)
         Me.button12.TabIndex = 1
-        Me.button12.Text = "Miricanvas CSV"
+        Me.button12.Text = "Crop Image"
         Me.button12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.button12.UseVisualStyleBackColor = True
         '
@@ -289,7 +336,7 @@ Partial Class FRM_Main
         Me.button13.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
         Me.button13.Size = New System.Drawing.Size(248, 40)
         Me.button13.TabIndex = 0
-        Me.button13.Text = "Media converter"
+        Me.button13.Text = "Converter Image"
         Me.button13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.button13.UseVisualStyleBackColor = True
         '
@@ -303,7 +350,7 @@ Partial Class FRM_Main
         Me.btnTools.ForeColor = System.Drawing.Color.Silver
         Me.btnTools.Image = CType(resources.GetObject("btnTools.Image"), System.Drawing.Image)
         Me.btnTools.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnTools.Location = New System.Drawing.Point(0, 302)
+        Me.btnTools.Location = New System.Drawing.Point(0, 263)
         Me.btnTools.Name = "btnTools"
         Me.btnTools.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
         Me.btnTools.Size = New System.Drawing.Size(248, 45)
@@ -316,35 +363,34 @@ Partial Class FRM_Main
         'PanelMediaSubmenu
         '
         Me.PanelMediaSubmenu.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(39, Byte), Integer))
-        Me.PanelMediaSubmenu.Controls.Add(Me.button5)
         Me.PanelMediaSubmenu.Controls.Add(Me.button4)
         Me.PanelMediaSubmenu.Controls.Add(Me.button3)
         Me.PanelMediaSubmenu.Controls.Add(Me.button2)
         Me.PanelMediaSubmenu.Dock = System.Windows.Forms.DockStyle.Top
         Me.PanelMediaSubmenu.Location = New System.Drawing.Point(0, 137)
         Me.PanelMediaSubmenu.Name = "PanelMediaSubmenu"
-        Me.PanelMediaSubmenu.Size = New System.Drawing.Size(248, 165)
+        Me.PanelMediaSubmenu.Size = New System.Drawing.Size(248, 126)
         Me.PanelMediaSubmenu.TabIndex = 2
         '
-        'btnMedia
+        'btnMenuAi
         '
-        Me.btnMedia.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnMedia.FlatAppearance.BorderSize = 0
-        Me.btnMedia.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(23, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(32, Byte), Integer))
-        Me.btnMedia.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(24, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(34, Byte), Integer))
-        Me.btnMedia.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnMedia.ForeColor = System.Drawing.Color.Silver
-        Me.btnMedia.Image = CType(resources.GetObject("btnMedia.Image"), System.Drawing.Image)
-        Me.btnMedia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnMedia.Location = New System.Drawing.Point(0, 92)
-        Me.btnMedia.Name = "btnMedia"
-        Me.btnMedia.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
-        Me.btnMedia.Size = New System.Drawing.Size(248, 45)
-        Me.btnMedia.TabIndex = 1
-        Me.btnMedia.Text = "  Generative AI"
-        Me.btnMedia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnMedia.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnMedia.UseVisualStyleBackColor = True
+        Me.btnMenuAi.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnMenuAi.FlatAppearance.BorderSize = 0
+        Me.btnMenuAi.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(23, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(32, Byte), Integer))
+        Me.btnMenuAi.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(24, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.btnMenuAi.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnMenuAi.ForeColor = System.Drawing.Color.Silver
+        Me.btnMenuAi.Image = CType(resources.GetObject("btnMenuAi.Image"), System.Drawing.Image)
+        Me.btnMenuAi.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnMenuAi.Location = New System.Drawing.Point(0, 92)
+        Me.btnMenuAi.Name = "btnMenuAi"
+        Me.btnMenuAi.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
+        Me.btnMenuAi.Size = New System.Drawing.Size(248, 45)
+        Me.btnMenuAi.TabIndex = 1
+        Me.btnMenuAi.Text = "  Generative AI"
+        Me.btnMenuAi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnMenuAi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnMenuAi.UseVisualStyleBackColor = True
         '
         'Panel1
         '
@@ -483,6 +529,26 @@ Partial Class FRM_Main
         'Main_Time_today
         '
         '
+        'MaxSize
+        '
+        '
+        'Button1
+        '
+        Me.Button1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Button1.FlatAppearance.BorderSize = 0
+        Me.Button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(46, Byte), Integer))
+        Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(46, Byte), Integer))
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.ForeColor = System.Drawing.Color.Silver
+        Me.Button1.Location = New System.Drawing.Point(0, 80)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
+        Me.Button1.Size = New System.Drawing.Size(248, 40)
+        Me.Button1.TabIndex = 2
+        Me.Button1.Text = "SQL Setting"
+        Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'FRM_Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 20.0!)
@@ -496,10 +562,12 @@ Partial Class FRM_Main
         Me.MinimumSize = New System.Drawing.Size(950, 600)
         Me.Name = "FRM_Main"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "AB Generative Image"
+        Me.Text = "AB Generative Image Tools"
         Me.panelLogo.ResumeLayout(False)
         CType(Me.pictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelSideMenu.ResumeLayout(False)
+        Me.PanelHelp.ResumeLayout(False)
+        Me.Panel_Config.ResumeLayout(False)
         Me.PanelToolsSubmenu.ResumeLayout(False)
         Me.PanelMediaSubmenu.ResumeLayout(False)
         Me.PanelChildForm.ResumeLayout(False)
@@ -513,24 +581,21 @@ Partial Class FRM_Main
 
     Private WithEvents panelLogo As Panel
     Private WithEvents pictureBox1 As PictureBox
-    Private WithEvents button5 As Button
     Private WithEvents button4 As Button
     Private WithEvents button3 As Button
     Private WithEvents button2 As Button
     Private WithEvents PanelSideMenu As Panel
     Private WithEvents btnExit As Button
-    Private WithEvents btnRegister_App As Button
     Private WithEvents PanelToolsSubmenu As Panel
-    Private WithEvents button10 As Button
     Private WithEvents button12 As Button
     Private WithEvents button13 As Button
     Private WithEvents btnTools As Button
     Private WithEvents PanelMediaSubmenu As Panel
-    Private WithEvents btnMedia As Button
+    Private WithEvents btnMenuAi As Button
     Friend WithEvents PanelChildForm As Panel
     Friend WithEvents PictureBox9 As PictureBox
     Friend WithEvents Panel1 As Panel
-    Private WithEvents Button1 As Button
+    Private WithEvents btnHelp As Button
     Private WithEvents Panel_bar As Panel
     Friend WithEvents Button6 As Button
     Private WithEvents label4 As Label
@@ -540,4 +605,12 @@ Partial Class FRM_Main
     Private WithEvents ToDayTime As Label
     Friend WithEvents Main_Time_today As Timer
     Friend WithEvents Button7 As Button
+    Private WithEvents Panel_Config As Panel
+    Private WithEvents btnSubRegisterApp As Button
+    Private WithEvents btnOptions As Button
+    Private WithEvents btnSettings As Button
+    Friend WithEvents MaxSize As Timer
+    Private WithEvents PanelHelp As Panel
+    Private WithEvents btnAbout As Button
+    Private WithEvents Button1 As Button
 End Class
