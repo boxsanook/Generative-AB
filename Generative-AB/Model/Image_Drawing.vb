@@ -1,20 +1,31 @@
-﻿Public Class Image_Drawing
+﻿Imports System.IO
+
+Public Class Image_Drawing
+
+    Public Shared Function image_2_base64(ByVal file_path As String) As String
+
+        Using image_file As FileStream = File.OpenRead(file_path)
+            Dim image_data(image_file.Length - 1) As Byte
+            image_file.Read(image_data, 0, image_data.Length)
+            Dim base64_data As String = Convert.ToBase64String(image_data)
+            image_file.Close()
+            Dim base64_string As String = $"data:image/png;base64,{base64_data.ToString()}"
+            Return base64_string
+        End Using
+    End Function
+
     Public Shared Sub DisplayUniqueColors(imagePath As String)
         Dim image As New Bitmap(imagePath)
         Dim uniqueColors As New HashSet(Of Color)
-
         For y As Integer = 0 To image.Height - 1
             For x As Integer = 0 To image.Width - 1
                 Dim pixelColor As Color = image.GetPixel(x, y)
                 uniqueColors.Add(pixelColor)
             Next
         Next
-
-
         For Each color In uniqueColors
             'ListBox1.Items.Add(color)
         Next
-
         image.Dispose()
     End Sub
 
@@ -102,7 +113,7 @@
                 g.DrawImage(croppedImage, New Rectangle(0, 0, enlargedImageWidth, enlargedImageHeight))
             End Using
             sourceImage.Dispose()
-            enlargedImage.Save(outputPath, Image_Format) 
+            enlargedImage.Save(outputPath, Image_Format)
             enlargedImage.Dispose()
             croppedImage.Dispose()
         Else

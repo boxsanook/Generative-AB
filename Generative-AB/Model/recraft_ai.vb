@@ -425,13 +425,11 @@ Public Class recraft_ai
 
         Try
             Dim response As HttpWebResponse = DirectCast(request.GetResponse(), HttpWebResponse)
-
             If response.StatusCode = HttpStatusCode.OK Then
                 Using streamReader As New BinaryReader(response.GetResponseStream())
                     Using fileWriter As New FileStream(output_path, FileMode.Create)
                         Dim buffer(4096) As Byte
                         Dim bytesRead As Integer
-
                         Do
                             bytesRead = streamReader.Read(buffer, 0, buffer.Length)
                             If bytesRead > 0 Then

@@ -58,7 +58,7 @@ Partial Class AboutBoxMe
         Me.TableLayoutPanel.Controls.Add(Me.OKButton, 1, 5)
         Me.TableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel.Location = New System.Drawing.Point(12, 11)
-        Me.TableLayoutPanel.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TableLayoutPanel.Margin = New System.Windows.Forms.Padding(4)
         Me.TableLayoutPanel.Name = "TableLayoutPanel"
         Me.TableLayoutPanel.RowCount = 6
         Me.TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
@@ -75,7 +75,7 @@ Partial Class AboutBoxMe
         Me.LogoPictureBox.Dock = System.Windows.Forms.DockStyle.Fill
         Me.LogoPictureBox.Image = CType(resources.GetObject("LogoPictureBox.Image"), System.Drawing.Image)
         Me.LogoPictureBox.Location = New System.Drawing.Point(4, 4)
-        Me.LogoPictureBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.LogoPictureBox.Margin = New System.Windows.Forms.Padding(4)
         Me.LogoPictureBox.Name = "LogoPictureBox"
         Me.TableLayoutPanel.SetRowSpan(Me.LogoPictureBox, 6)
         Me.LogoPictureBox.Size = New System.Drawing.Size(308, 347)
@@ -153,10 +153,11 @@ Partial Class AboutBoxMe
         '
         Me.OKButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.OKButton.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.OKButton.FlatAppearance.BorderColor = System.Drawing.Color.Teal
         Me.OKButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.OKButton.ForeColor = System.Drawing.Color.White
         Me.OKButton.Location = New System.Drawing.Point(616, 321)
-        Me.OKButton.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.OKButton.Margin = New System.Windows.Forms.Padding(4)
         Me.OKButton.Name = "OKButton"
         Me.OKButton.Size = New System.Drawing.Size(100, 30)
         Me.OKButton.TabIndex = 0
@@ -171,7 +172,7 @@ Partial Class AboutBoxMe
         Me.ClientSize = New System.Drawing.Size(744, 377)
         Me.Controls.Add(Me.TableLayoutPanel)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "AboutBoxMe"

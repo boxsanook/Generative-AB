@@ -25,18 +25,25 @@ Public Class RegistryB
     End Sub
 
     Public Shared Function GetValueFromRegistry(valueName As String, Optional SendRoot As String = Nothing) As String
-        If SendRoot = Nothing Then
-            SendRoot = userRoot
-        End If
         Dim defaultValue As String = Nothing
-        Using registryKey As RegistryKey = Registry.CurrentUser.OpenSubKey(SendRoot)
-            If registryKey IsNot Nothing Then
-                Dim value As Object = registryKey.GetValue(valueName, defaultValue)
-                Return value.ToString()
-            Else
-                Return defaultValue
+        Try
+            If SendRoot = Nothing Then
+                SendRoot = userRoot
             End If
-        End Using
+
+            Using registryKey As RegistryKey = Registry.CurrentUser.OpenSubKey(SendRoot)
+                If registryKey IsNot Nothing Then
+                    Dim value As Object = registryKey.GetValue(valueName, defaultValue)
+                    Return value.ToString()
+                Else
+                    Return defaultValue
+                End If
+            End Using
+        Catch ex As Exception
+            Return defaultValue
+        End Try
+
+
     End Function
 
     Public Shared Sub Regit_run(get_by As String)

@@ -15,9 +15,8 @@ Module MySQLTable
         keywordsColumns.Add("origin_tag", "VARCHAR(255)")
         keywordsColumns.Add("type", "VARCHAR(255)")
         dbHelper.CreateTable("master_keywords", keywordsColumns)
-        If dbHelper.PROCEDURE_info("InsertMasterKeywordProcedure") Then
-            CreateInsertMasterKeywordProcedure()
-        End If
+        CreateInsertMasterKeywordProcedure()
+
     End Sub
 
     Public Sub CreateInsertMasterKeywordProcedure()
@@ -84,9 +83,9 @@ Module MySQLTable
         imageTypeColumns.Add("jsonPayload", "TEXT") ' You can use TEXT for JSON data 
         ' Create the image_type table using the CreateTable method
         dbHelper.CreateTable("ai_image_type", imageTypeColumns)
-        If dbHelper.PROCEDURE_info("InsertAIImageTypeProcedure") Then
-            CreateInsertMasterKeywordProcedure()
-        End If
+
+        CreateInsertMasterKeywordProcedure()
+
     End Sub
     Public Sub CreateInsertAIImageTypeProcedure()
         Using conn As New MySqlConnection(dbHelper.ConnectionString)

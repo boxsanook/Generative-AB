@@ -24,6 +24,7 @@ Partial Class FRM_Options
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRM_Options))
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.txt_OutputPath = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -33,10 +34,9 @@ Partial Class FRM_Options
         Me.MeText = New System.Windows.Forms.Label()
         Me.MeClose = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-        Me.txt_lineNotify = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.txt_lineNotify = New System.Windows.Forms.TextBox()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.GroupBox2.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.BarraTitulo.SuspendLayout()
@@ -57,6 +57,18 @@ Partial Class FRM_Options
         Me.GroupBox2.Size = New System.Drawing.Size(920, 183)
         Me.GroupBox2.TabIndex = 23
         Me.GroupBox2.TabStop = False
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(235, Byte), Integer), CType(CType(42, Byte), Integer), CType(CType(83, Byte), Integer))
+        Me.Label2.Location = New System.Drawing.Point(22, 36)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(209, 25)
+        Me.Label2.TabIndex = 47
+        Me.Label2.Text = "Automatically turn on : "
         '
         'Panel2
         '
@@ -178,27 +190,6 @@ Partial Class FRM_Options
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "      Notification To Line Notify"
         '
-        'CheckBox1
-        '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(11, 0)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(18, 17)
-        Me.CheckBox1.TabIndex = 0
-        Me.CheckBox1.UseVisualStyleBackColor = True
-        '
-        'txt_lineNotify
-        '
-        Me.txt_lineNotify.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txt_lineNotify.Enabled = False
-        Me.txt_lineNotify.Location = New System.Drawing.Point(53, 53)
-        Me.txt_lineNotify.Multiline = True
-        Me.txt_lineNotify.Name = "txt_lineNotify"
-        Me.txt_lineNotify.Size = New System.Drawing.Size(847, 56)
-        Me.txt_lineNotify.TabIndex = 1
-        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -212,17 +203,26 @@ Partial Class FRM_Options
         Me.Label1.TabIndex = 31
         Me.Label1.Text = " Line Notify API :"
         '
-        'Label2
+        'txt_lineNotify
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(235, Byte), Integer), CType(CType(42, Byte), Integer), CType(CType(83, Byte), Integer))
-        Me.Label2.Location = New System.Drawing.Point(22, 36)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(209, 25)
-        Me.Label2.TabIndex = 47
-        Me.Label2.Text = "Automatically turn on : "
+        Me.txt_lineNotify.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txt_lineNotify.Enabled = False
+        Me.txt_lineNotify.Location = New System.Drawing.Point(53, 53)
+        Me.txt_lineNotify.Multiline = True
+        Me.txt_lineNotify.Name = "txt_lineNotify"
+        Me.txt_lineNotify.Size = New System.Drawing.Size(847, 56)
+        Me.txt_lineNotify.TabIndex = 1
+        '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(11, 0)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(18, 17)
+        Me.CheckBox1.TabIndex = 0
+        Me.CheckBox1.UseVisualStyleBackColor = True
         '
         'FRM_Options
         '

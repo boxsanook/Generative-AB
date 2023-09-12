@@ -24,32 +24,37 @@ Partial Class FRM_Generative_AI_AIR
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRM_Generative_AI_AIR))
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.BarraTitulo = New System.Windows.Forms.Panel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.MeText = New System.Windows.Forms.Label()
         Me.MeClose = New System.Windows.Forms.Button()
         Me.PanelPlayer = New System.Windows.Forms.Panel()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnStart = New System.Windows.Forms.Button()
+        Me.btnStop = New System.Windows.Forms.Button()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.label2 = New System.Windows.Forms.Label()
         Me.label1 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.ListBox1 = New System.Windows.Forms.ListBox()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txt_sell_on = New System.Windows.Forms.ComboBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.txt_complexities = New System.Windows.Forms.ComboBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.ExportTemplate = New System.Windows.Forms.Button()
+        Me.btn_LoadExcel = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TXT_Excel = New System.Windows.Forms.TextBox()
         Me.BT_Celar_All = New System.Windows.Forms.Button()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.lbl_AccessToken = New System.Windows.Forms.Label()
+        Me.txtToken = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.ListBox1 = New System.Windows.Forms.ListBox()
+        Me.ListImage_type = New System.Windows.Forms.ListBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.DataExcell = New System.Windows.Forms.DataGridView()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.Button5 = New System.Windows.Forms.Button()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.BarraTitulo.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelPlayer.SuspendLayout()
@@ -113,57 +118,58 @@ Partial Class FRM_Generative_AI_AIR
         'PanelPlayer
         '
         Me.PanelPlayer.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(20, Byte), Integer), CType(CType(10, Byte), Integer))
-        Me.PanelPlayer.Controls.Add(Me.Button2)
-        Me.PanelPlayer.Controls.Add(Me.Button1)
+        Me.PanelPlayer.Controls.Add(Me.btnStart)
+        Me.PanelPlayer.Controls.Add(Me.btnStop)
         Me.PanelPlayer.Controls.Add(Me.ProgressBar1)
         Me.PanelPlayer.Controls.Add(Me.label2)
         Me.PanelPlayer.Controls.Add(Me.label1)
         Me.PanelPlayer.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.PanelPlayer.Location = New System.Drawing.Point(0, 611)
+        Me.PanelPlayer.Location = New System.Drawing.Point(0, 584)
         Me.PanelPlayer.Name = "PanelPlayer"
-        Me.PanelPlayer.Size = New System.Drawing.Size(1301, 66)
+        Me.PanelPlayer.Size = New System.Drawing.Size(1301, 93)
         Me.PanelPlayer.TabIndex = 24
         '
-        'Button2
+        'btnStart
         '
-        Me.Button2.BackgroundImage = CType(resources.GetObject("Button2.BackgroundImage"), System.Drawing.Image)
-        Me.Button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.Location = New System.Drawing.Point(194, 8)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(43, 40)
-        Me.Button2.TabIndex = 14
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btnStart.BackgroundImage = CType(resources.GetObject("btnStart.BackgroundImage"), System.Drawing.Image)
+        Me.btnStart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnStart.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White
+        Me.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnStart.Location = New System.Drawing.Point(576, 45)
+        Me.btnStart.Name = "btnStart"
+        Me.btnStart.Size = New System.Drawing.Size(43, 40)
+        Me.btnStart.TabIndex = 14
+        Me.btnStart.UseVisualStyleBackColor = True
         '
-        'Button1
+        'btnStop
         '
-        Me.Button1.BackgroundImage = CType(resources.GetObject("Button1.BackgroundImage"), System.Drawing.Image)
-        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Location = New System.Drawing.Point(243, 8)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(43, 40)
-        Me.Button1.TabIndex = 13
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnStop.BackgroundImage = CType(resources.GetObject("btnStop.BackgroundImage"), System.Drawing.Image)
+        Me.btnStop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnStop.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White
+        Me.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnStop.Location = New System.Drawing.Point(625, 45)
+        Me.btnStop.Name = "btnStop"
+        Me.btnStop.Size = New System.Drawing.Size(43, 40)
+        Me.btnStop.TabIndex = 13
+        Me.btnStop.UseVisualStyleBackColor = True
         '
         'ProgressBar1
         '
         Me.ProgressBar1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ProgressBar1.Location = New System.Drawing.Point(357, 20)
+        Me.ProgressBar1.Location = New System.Drawing.Point(310, 13)
         Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(889, 17)
+        Me.ProgressBar1.Size = New System.Drawing.Size(832, 28)
         Me.ProgressBar1.TabIndex = 12
         '
         'label2
         '
         Me.label2.AutoSize = True
+        Me.label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.label2.ForeColor = System.Drawing.Color.LightGray
-        Me.label2.Location = New System.Drawing.Point(307, 20)
+        Me.label2.Location = New System.Drawing.Point(249, 15)
         Me.label2.Name = "label2"
-        Me.label2.Size = New System.Drawing.Size(44, 17)
+        Me.label2.Size = New System.Drawing.Size(55, 24)
         Me.label2.TabIndex = 10
         Me.label2.Text = "00:00"
         '
@@ -171,10 +177,11 @@ Partial Class FRM_Generative_AI_AIR
         '
         Me.label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.label1.AutoSize = True
+        Me.label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.label1.ForeColor = System.Drawing.Color.LightGray
-        Me.label1.Location = New System.Drawing.Point(1252, 20)
+        Me.label1.Location = New System.Drawing.Point(1148, 14)
         Me.label1.Name = "label1"
-        Me.label1.Size = New System.Drawing.Size(44, 17)
+        Me.label1.Size = New System.Drawing.Size(55, 24)
         Me.label1.TabIndex = 9
         Me.label1.Text = "00:00"
         '
@@ -182,17 +189,22 @@ Partial Class FRM_Generative_AI_AIR
         '
         Me.GroupBox2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.GroupBox2.Controls.Add(Me.TextBox2)
-        Me.GroupBox2.Controls.Add(Me.Button5)
-        Me.GroupBox2.Controls.Add(Me.Button4)
-        Me.GroupBox2.Controls.Add(Me.Button3)
+        Me.GroupBox2.Controls.Add(Me.Label7)
+        Me.GroupBox2.Controls.Add(Me.ListBox1)
+        Me.GroupBox2.Controls.Add(Me.TextBox1)
+        Me.GroupBox2.Controls.Add(Me.txt_sell_on)
+        Me.GroupBox2.Controls.Add(Me.Label5)
+        Me.GroupBox2.Controls.Add(Me.txt_complexities)
+        Me.GroupBox2.Controls.Add(Me.Label4)
+        Me.GroupBox2.Controls.Add(Me.ExportTemplate)
+        Me.GroupBox2.Controls.Add(Me.btn_LoadExcel)
         Me.GroupBox2.Controls.Add(Me.Label3)
         Me.GroupBox2.Controls.Add(Me.TXT_Excel)
         Me.GroupBox2.Controls.Add(Me.BT_Celar_All)
-        Me.GroupBox2.Controls.Add(Me.Label5)
-        Me.GroupBox2.Controls.Add(Me.TextBox1)
+        Me.GroupBox2.Controls.Add(Me.lbl_AccessToken)
+        Me.GroupBox2.Controls.Add(Me.txtToken)
         Me.GroupBox2.Controls.Add(Me.Label6)
-        Me.GroupBox2.Controls.Add(Me.ListBox1)
+        Me.GroupBox2.Controls.Add(Me.ListImage_type)
         Me.GroupBox2.ForeColor = System.Drawing.Color.White
         Me.GroupBox2.Location = New System.Drawing.Point(24, 54)
         Me.GroupBox2.Name = "GroupBox2"
@@ -200,41 +212,127 @@ Partial Class FRM_Generative_AI_AIR
         Me.GroupBox2.TabIndex = 26
         Me.GroupBox2.TabStop = False
         '
-        'Button4
+        'Label7
         '
-        Me.Button4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button4.BackColor = System.Drawing.Color.Green
-        Me.Button4.FlatAppearance.BorderSize = 2
-        Me.Button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button4.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.Button4.ForeColor = System.Drawing.Color.White
-        Me.Button4.Location = New System.Drawing.Point(1128, 128)
-        Me.Button4.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(130, 40)
-        Me.Button4.TabIndex = 51
-        Me.Button4.Text = "Get Template"
-        Me.Button4.UseVisualStyleBackColor = False
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(235, Byte), Integer), CType(CType(42, Byte), Integer), CType(CType(83, Byte), Integer))
+        Me.Label7.Location = New System.Drawing.Point(7, 160)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(108, 20)
+        Me.Label7.TabIndex = 58
+        Me.Label7.Text = "Remix Style :"
         '
-        'Button3
+        'ListBox1
         '
-        Me.Button3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button3.BackColor = System.Drawing.Color.Green
-        Me.Button3.FlatAppearance.BorderSize = 2
-        Me.Button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.Button3.ForeColor = System.Drawing.Color.White
-        Me.Button3.Location = New System.Drawing.Point(1068, 128)
-        Me.Button3.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(54, 40)
-        Me.Button3.TabIndex = 50
-        Me.Button3.Text = "..."
-        Me.Button3.UseVisualStyleBackColor = False
+        Me.ListBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.ListBox1.FormattingEnabled = True
+        Me.ListBox1.ItemHeight = 16
+        Me.ListBox1.Location = New System.Drawing.Point(6, 188)
+        Me.ListBox1.Name = "ListBox1"
+        Me.ListBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended
+        Me.ListBox1.Size = New System.Drawing.Size(396, 68)
+        Me.ListBox1.TabIndex = 57
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox1.Location = New System.Drawing.Point(459, 219)
+        Me.TextBox1.Margin = New System.Windows.Forms.Padding(4)
+        Me.TextBox1.Multiline = True
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.ReadOnly = True
+        Me.TextBox1.Size = New System.Drawing.Size(493, 48)
+        Me.TextBox1.TabIndex = 56
+        '
+        'txt_sell_on
+        '
+        Me.txt_sell_on.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txt_sell_on.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.txt_sell_on.Enabled = False
+        Me.txt_sell_on.FormattingEnabled = True
+        Me.txt_sell_on.Items.AddRange(New Object() {"miricanvas", "dreamstime"})
+        Me.txt_sell_on.Location = New System.Drawing.Point(773, 188)
+        Me.txt_sell_on.Name = "txt_sell_on"
+        Me.txt_sell_on.Size = New System.Drawing.Size(179, 24)
+        Me.txt_sell_on.TabIndex = 55
+        '
+        'Label5
+        '
+        Me.Label5.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(235, Byte), Integer), CType(CType(42, Byte), Integer), CType(CType(83, Byte), Integer))
+        Me.Label5.Location = New System.Drawing.Point(696, 188)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(70, 20)
+        Me.Label5.TabIndex = 54
+        Me.Label5.Text = "Sell on :"
+        '
+        'txt_complexities
+        '
+        Me.txt_complexities.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txt_complexities.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.txt_complexities.FormattingEnabled = True
+        Me.txt_complexities.Items.AddRange(New Object() {"-1", "0", "1", "2", "3", "4"})
+        Me.txt_complexities.Location = New System.Drawing.Point(585, 188)
+        Me.txt_complexities.Name = "txt_complexities"
+        Me.txt_complexities.Size = New System.Drawing.Size(82, 24)
+        Me.txt_complexities.TabIndex = 53
+        '
+        'Label4
+        '
+        Me.Label4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(235, Byte), Integer), CType(CType(42, Byte), Integer), CType(CType(83, Byte), Integer))
+        Me.Label4.Location = New System.Drawing.Point(455, 188)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(123, 20)
+        Me.Label4.TabIndex = 52
+        Me.Label4.Text = "Level of detail :"
+        '
+        'ExportTemplate
+        '
+        Me.ExportTemplate.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ExportTemplate.BackColor = System.Drawing.Color.Green
+        Me.ExportTemplate.FlatAppearance.BorderSize = 2
+        Me.ExportTemplate.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.ExportTemplate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.ExportTemplate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ExportTemplate.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.ExportTemplate.ForeColor = System.Drawing.Color.White
+        Me.ExportTemplate.Location = New System.Drawing.Point(1128, 128)
+        Me.ExportTemplate.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.ExportTemplate.Name = "ExportTemplate"
+        Me.ExportTemplate.Size = New System.Drawing.Size(130, 40)
+        Me.ExportTemplate.TabIndex = 51
+        Me.ExportTemplate.Text = "Get Template"
+        Me.ExportTemplate.UseVisualStyleBackColor = False
+        '
+        'btn_LoadExcel
+        '
+        Me.btn_LoadExcel.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_LoadExcel.BackColor = System.Drawing.Color.Green
+        Me.btn_LoadExcel.FlatAppearance.BorderSize = 2
+        Me.btn_LoadExcel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.btn_LoadExcel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.btn_LoadExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_LoadExcel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.btn_LoadExcel.ForeColor = System.Drawing.Color.White
+        Me.btn_LoadExcel.Location = New System.Drawing.Point(1068, 128)
+        Me.btn_LoadExcel.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.btn_LoadExcel.Name = "btn_LoadExcel"
+        Me.btn_LoadExcel.Size = New System.Drawing.Size(54, 40)
+        Me.btn_LoadExcel.TabIndex = 50
+        Me.btn_LoadExcel.Text = "..."
+        Me.btn_LoadExcel.UseVisualStyleBackColor = False
         '
         'Label3
         '
@@ -280,31 +378,31 @@ Partial Class FRM_Generative_AI_AIR
         Me.BT_Celar_All.Text = "Get Token"
         Me.BT_Celar_All.UseVisualStyleBackColor = False
         '
-        'Label5
+        'lbl_AccessToken
         '
-        Me.Label5.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(235, Byte), Integer), CType(CType(42, Byte), Integer), CType(CType(83, Byte), Integer))
-        Me.Label5.Location = New System.Drawing.Point(455, 29)
-        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(125, 20)
-        Me.Label5.TabIndex = 46
-        Me.Label5.Text = "Access Token :"
+        Me.lbl_AccessToken.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lbl_AccessToken.AutoSize = True
+        Me.lbl_AccessToken.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_AccessToken.ForeColor = System.Drawing.Color.FromArgb(CType(CType(235, Byte), Integer), CType(CType(42, Byte), Integer), CType(CType(83, Byte), Integer))
+        Me.lbl_AccessToken.Location = New System.Drawing.Point(455, 29)
+        Me.lbl_AccessToken.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lbl_AccessToken.Name = "lbl_AccessToken"
+        Me.lbl_AccessToken.Size = New System.Drawing.Size(125, 20)
+        Me.lbl_AccessToken.TabIndex = 46
+        Me.lbl_AccessToken.Text = "Access Token :"
         '
-        'TextBox1
+        'txtToken
         '
-        Me.TextBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+        Me.txtToken.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(459, 53)
-        Me.TextBox1.Margin = New System.Windows.Forms.Padding(4)
-        Me.TextBox1.Multiline = True
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.ReadOnly = True
-        Me.TextBox1.Size = New System.Drawing.Size(624, 40)
-        Me.TextBox1.TabIndex = 45
+        Me.txtToken.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtToken.Location = New System.Drawing.Point(459, 53)
+        Me.txtToken.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtToken.Multiline = True
+        Me.txtToken.Name = "txtToken"
+        Me.txtToken.ReadOnly = True
+        Me.txtToken.Size = New System.Drawing.Size(624, 40)
+        Me.txtToken.TabIndex = 45
         '
         'Label6
         '
@@ -318,16 +416,17 @@ Partial Class FRM_Generative_AI_AIR
         Me.Label6.TabIndex = 37
         Me.Label6.Text = "Image Style :"
         '
-        'ListBox1
+        'ListImage_type
         '
-        Me.ListBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+        Me.ListImage_type.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.ListBox1.FormattingEnabled = True
-        Me.ListBox1.ItemHeight = 16
-        Me.ListBox1.Location = New System.Drawing.Point(6, 53)
-        Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(396, 196)
-        Me.ListBox1.TabIndex = 0
+        Me.ListImage_type.FormattingEnabled = True
+        Me.ListImage_type.ItemHeight = 16
+        Me.ListImage_type.Location = New System.Drawing.Point(6, 53)
+        Me.ListImage_type.Name = "ListImage_type"
+        Me.ListImage_type.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended
+        Me.ListImage_type.Size = New System.Drawing.Size(396, 100)
+        Me.ListImage_type.TabIndex = 0
         '
         'GroupBox3
         '
@@ -339,7 +438,7 @@ Partial Class FRM_Generative_AI_AIR
         Me.GroupBox3.ForeColor = System.Drawing.Color.White
         Me.GroupBox3.Location = New System.Drawing.Point(24, 334)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(1265, 271)
+        Me.GroupBox3.Size = New System.Drawing.Size(1265, 231)
         Me.GroupBox3.TabIndex = 27
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Prompt :"
@@ -357,31 +456,12 @@ Partial Class FRM_Generative_AI_AIR
         Me.DataExcell.Name = "DataExcell"
         Me.DataExcell.ReadOnly = True
         Me.DataExcell.RowHeadersVisible = False
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.DataExcell.RowsDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.DataExcell.RowsDefaultCellStyle = DataGridViewCellStyle1
         Me.DataExcell.RowTemplate.Height = 24
-        Me.DataExcell.Size = New System.Drawing.Size(1259, 245)
+        Me.DataExcell.Size = New System.Drawing.Size(1259, 205)
         Me.DataExcell.TabIndex = 8
-        '
-        'Button5
-        '
-        Me.Button5.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.Button5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Button5.Location = New System.Drawing.Point(1141, 203)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(117, 46)
-        Me.Button5.TabIndex = 52
-        Me.Button5.Text = "Button5"
-        Me.Button5.UseVisualStyleBackColor = True
-        '
-        'TextBox2
-        '
-        Me.TextBox2.Location = New System.Drawing.Point(459, 182)
-        Me.TextBox2.Multiline = True
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(663, 67)
-        Me.TextBox2.TabIndex = 53
         '
         'FRM_Generative_AI_AIR
         '
@@ -414,24 +494,29 @@ Partial Class FRM_Generative_AI_AIR
     Public WithEvents MeText As Label
     Private WithEvents MeClose As Button
     Private WithEvents PanelPlayer As Panel
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button1 As Button
+    Friend WithEvents btnStart As Button
+    Friend WithEvents btnStop As Button
     Friend WithEvents ProgressBar1 As ProgressBar
     Private WithEvents label2 As Label
     Private WithEvents label1 As Label
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents GroupBox3 As GroupBox
     Private WithEvents Label6 As Label
-    Friend WithEvents ListBox1 As ListBox
-    Private WithEvents Label5 As Label
-    Private WithEvents TextBox1 As TextBox
+    Friend WithEvents ListImage_type As ListBox
+    Private WithEvents lbl_AccessToken As Label
+    Private WithEvents txtToken As TextBox
     Friend WithEvents BT_Celar_All As Button
     Friend WithEvents Timer1 As Timer
-    Friend WithEvents Button4 As Button
-    Friend WithEvents Button3 As Button
+    Friend WithEvents ExportTemplate As Button
+    Friend WithEvents btn_LoadExcel As Button
     Private WithEvents Label3 As Label
     Private WithEvents TXT_Excel As TextBox
     Friend WithEvents DataExcell As DataGridView
-    Friend WithEvents Button5 As Button
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents txt_complexities As ComboBox
+    Private WithEvents Label4 As Label
+    Friend WithEvents txt_sell_on As ComboBox
+    Private WithEvents Label5 As Label
+    Private WithEvents TextBox1 As TextBox
+    Private WithEvents Label7 As Label
+    Friend WithEvents ListBox1 As ListBox
 End Class

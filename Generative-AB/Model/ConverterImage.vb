@@ -1,7 +1,62 @@
-﻿Imports System.Xml
+﻿Imports System.Drawing.Imaging
+Imports System.IO
+Imports System.Xml
 Imports ImageMagick
 Public Class ConverterImage
+    Public Shared Function ConvertImageToBase64(ByVal imagePath As String) As String
+        Using image As New MagickImage(imagePath)
+            image.Resize(150, 150)
+            ' Convert the image to a MemoryStream
+            Using stream As New MemoryStream()
+                image.Write(stream)
+                ' Convert the MemoryStream to a byte array
+                Dim imageBytes As Byte() = stream.ToArray()
+                ' Convert the byte array to a Base64-encoded string
+                Dim base64String As String = Convert.ToBase64String(imageBytes)
+                Return base64String
+            End Using
+        End Using
+    End Function
 
+    Public Shared Function ConvertSvgTobase64(svgFilePath As String) As String
+        Dim base64String As String = Nothing
+        ' Create a new MagickImage object from an SVG file
+        Using svgImage As New MagickImage(svgFilePath)
+            svgImage.Resize(100, 100)
+            ' Set the format to PNG (or any other desired format)
+            svgImage.Format = MagickFormat.Png
+            ' Convert the SVG image to PNG
+            Using pngImage As New MagickImage(svgImage)
+                ' Encode the PNG image as a base64 string
+                base64String = pngImage.ToBase64()
+            End Using
+        End Using
+        Return base64String
+    End Function
+
+    Public Shared Function ResizeImage(image As Image, width As Integer, height As Integer) As Image
+        ' Create a new bitmap with the desired dimensions
+        Dim resizedImage As New Bitmap(width, height)
+        ' Create a Graphics object to work with the new bitmap
+        Using g As Graphics = Graphics.FromImage(resizedImage)
+            ' Set the interpolation mode for smoother resizing
+            g.InterpolationMode = Drawing2D.InterpolationMode.HighQualityBicubic
+            ' Draw the original image onto the new bitmap with the specified dimensions
+            g.DrawImage(image, 0, 0, width, height)
+        End Using
+        Return resizedImage
+    End Function
+
+    Public Shared Function ConvertImageToBase64(image As Image) As String
+        Using ms As New MemoryStream()
+            ' Save the image to a memory stream
+            image.Save(ms, Imaging.ImageFormat.Jpeg) ' Change the format as needed
+            ' Convert the image to a byte array
+            Dim imageBytes As Byte() = ms.ToArray()
+            ' Convert the byte array to a base64 string
+            Return Convert.ToBase64String(imageBytes)
+        End Using
+    End Function
 
     Private Sub FindCroppingAreaX(sourcePath As String, outputPath As String, minAlpha As Integer, maxAlpha As Integer, margin As Integer)
         Dim sourceImage As New Bitmap(sourcePath)
@@ -44,7 +99,6 @@ Public Class ConverterImage
             End Using
 
             croppedImage.Save(outputPath, Imaging.ImageFormat.Png)
-
             croppedImage.Dispose()
         Else
             MessageBox.Show("No suitable non-transparent regions found.")
@@ -52,6 +106,32 @@ Public Class ConverterImage
 
         sourceImage.Dispose()
     End Sub
+    Private Sub ButtonSetBitDepth_TEST()
+        ' Load the image
+        Dim imagePath As String = "your_image_path_here.jpg" ' Replace with your image path
+        Dim image As New Bitmap(imagePath)
+        ' Set the desired bit depth (color depth)
+        Dim newPixelFormat As PixelFormat = PixelFormat.Max ' Change to your desired bit depth 
+        ' Convert the image to the new bit depth
+        Dim convertedImage As Bitmap = ChangeImageBitDepth(image, newPixelFormat)
+        ' Save the converted image
+        Dim outputPath As String = "output_image.jpg" ' Replace with your output path
+        convertedImage.Save(outputPath, ImageFormat.Jpeg)
+        ' Clean up
+        image.Dispose()
+        convertedImage.Dispose()
+    End Sub
+    Private Function ChangeImageBitDepth(sourceImage As Bitmap, newPixelFormat As PixelFormat) As Bitmap
+        ' Create a new bitmap with the desired pixel format
+        Dim newImage As New Bitmap(sourceImage.Width, sourceImage.Height, newPixelFormat)
+
+        ' Copy the source image to the new image, effectively converting it to the new bit depth
+        Using g As Graphics = Graphics.FromImage(newImage)
+            g.DrawImage(sourceImage, New Rectangle(0, 0, sourceImage.Width, sourceImage.Height))
+        End Using
+
+        Return newImage
+    End Function
 
     Public Shared Function GetSvgDimensions_Size(svgFilePath As String) As Size
         Dim Size As Size = New Size(768, 768)
@@ -85,15 +165,17 @@ Public Class ConverterImage
             image.Write(jpgFilePath)
         End Using
     End Sub
+
+
     Public Shared Sub ConvertSvgToPng(svgFilePath As String, outputFolderPath As String)
         Using image As New MagickImage(svgFilePath)
-
             ' Convert to PNG
             Dim pngFilePath As String = outputFolderPath
             image.Format = MagickFormat.Png
             image.Write(pngFilePath)
         End Using
     End Sub
+
 
     Public Shared Sub ConvertSvgToJpgAndPng2(svgFilePath As String, outputFolderPath As String, width As Integer, height As Integer)
         Using image As New MagickImage(svgFilePath)

@@ -4,6 +4,8 @@ Imports System.Net.Security
 Imports System.Security.Cryptography.X509Certificates
 Imports System.Text
 Imports System.Text.RegularExpressions
+Imports Newtonsoft.Json
+Imports Newtonsoft.Json.Linq
 
 Public Class API_register
     Public urlx As String
@@ -26,6 +28,24 @@ Public Class API_register
     Public Shared Sub ProtocolType()
         ServicePointManager.SecurityProtocol = CType(3072, SecurityProtocolType)
     End Sub
+
+    Public Shared Function SendImageToServer(table As DataTable, Optional UrlAPI As String = Nothing) As String
+        Try
+            If UrlAPI = Nothing Then
+                UrlAPI = WEB_Register & "/upload_image/upload_image.php"
+            End If
+
+            Dim body = DataTableToJSONWithStringBuilder(table)
+            Dim httpWebRequest = CType(WebRequest.Create(UrlAPI), HttpWebRequest)
+            httpWebRequest.ContentType = "application/json"
+            httpWebRequest.Method = "POST"
+            Dim Contentx = API_register.NewPostDataAPI(body, httpWebRequest)
+            Return Contentx
+        Catch ex As Exception
+            'MessageBox.Show(ex.Message, "Error register app", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return "{""status"":""error"",""message"":""" & ex.Message & """,""code"":""404""}"
+        End Try
+    End Function
 
     Public Shared Function DataTableToJSONWithStringBuilder(ByVal table As DataTable) As String
         Dim JSONString = New StringBuilder()
@@ -53,7 +73,7 @@ Public Class API_register
 
     Public Shared Function NewPostDataAPI(ByVal payload As String, httpWebRequest1 As HttpWebRequest) As String
         Try
-
+            Dim jsonText As String = String.Empty
             Dim body As String = payload
             Dim httpWebRequest As HttpWebRequest
             httpWebRequest = httpWebRequest1
@@ -64,11 +84,26 @@ Public Class API_register
             Using streamReader = New StreamReader(httpResponse.GetResponseStream())
                 Dim result = streamReader.ReadToEnd()
                 streamReader.Close()
-                Return result.Replace(vbCr, "").Replace(vbLf, "")
+                jsonText = result.Replace(vbCr, "").Replace(vbLf, "")
             End Using
+            Try
+                ' Check if the JSON string is empty or null.
+                If String.IsNullOrEmpty(jsonText) Then
+                    Return "{""status"":""error"",""message"":""JSON data is empty or null."",""code"":""404""}"
+
+                End If
+                ' Attempt to parse the JSON data.
+                Dim jObject As JObject = JObject.Parse(jsonText)
+                Return jsonText
+
+            Catch ex As JsonReaderException
+                Return "{""status"":""error"",""message"":""" & ex.Message & """,""code"":""404""}"
+            Catch ex As Exception
+                Return "{""status"":""error"",""message"":""" & ex.Message & """,""code"":""404""}"
+            End Try
 
         Catch ex As Exception
-            MessageBox.Show(ex.Message, "Server API Error")
+            'MessageBox.Show(ex.Message, "Server API Error")
             Return "{""status"":""error"",""message"":""" & ex.Message & """,""code"":""404""}"
         End Try
 
@@ -83,9 +118,21 @@ Public Class API_register
             httpWebRequest.ContentType = "application/json"
             httpWebRequest.Method = "POST"
             Dim Contentx = NewPostDataAPI(body, httpWebRequest)
-            Return Contentx
+            Try
+                ' Check if the JSON string is empty or null.
+                If String.IsNullOrEmpty(Contentx) Then
+                    Return "{""status"":""error"",""message"":""JSON data is empty or null."",""code"":""404""}"
+                End If
+                ' Attempt to parse the JSON data.
+                Dim jObject As JObject = JObject.Parse(Contentx)
+                Return Contentx
+            Catch ex As JsonReaderException
+                Return "{""status"":""error"",""message"":""" & ex.Message & """,""code"":""404""}"
+            Catch ex As Exception
+                Return "{""status"":""error"",""message"":""" & ex.Message & """,""code"":""404""}"
+            End Try
         Catch ex As Exception
-            MessageBox.Show(ex.Message, "Error register app", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            'MessageBox.Show(ex.Message, "Error register app", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return "{""status"":""error"",""message"":""" & ex.Message & """,""code"":""404""}"
         End Try
     End Function

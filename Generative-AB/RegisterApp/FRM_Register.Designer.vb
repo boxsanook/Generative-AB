@@ -48,8 +48,9 @@ Partial Class FRM_Register
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.Panel7 = New System.Windows.Forms.Panel()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.token = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.BarraTitulo.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
@@ -348,6 +349,18 @@ Partial Class FRM_Register
         Me.Panel7.Size = New System.Drawing.Size(223, 25)
         Me.Panel7.TabIndex = 97
         '
+        'token
+        '
+        Me.token.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.token.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.token.Location = New System.Drawing.Point(71, 0)
+        Me.token.Margin = New System.Windows.Forms.Padding(4)
+        Me.token.Name = "token"
+        Me.token.ReadOnly = True
+        Me.token.Size = New System.Drawing.Size(152, 26)
+        Me.token.TabIndex = 89
+        Me.token.Text = "10"
+        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -361,17 +374,14 @@ Partial Class FRM_Register
         Me.Label1.TabIndex = 88
         Me.Label1.Text = "Token :"
         '
-        'token
+        'Button1
         '
-        Me.token.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.token.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.token.Location = New System.Drawing.Point(71, 0)
-        Me.token.Margin = New System.Windows.Forms.Padding(4)
-        Me.token.Name = "token"
-        Me.token.ReadOnly = True
-        Me.token.Size = New System.Drawing.Size(152, 26)
-        Me.token.TabIndex = 89
-        Me.token.Text = "10"
+        Me.Button1.Location = New System.Drawing.Point(369, 375)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 54)
+        Me.Button1.TabIndex = 98
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'FRM_Register
         '
@@ -379,6 +389,7 @@ Partial Class FRM_Register
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(45, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(669, 441)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Panel7)
         Me.Controls.Add(Me.Panel6)
         Me.Controls.Add(Me.Panel5)
@@ -449,4 +460,5 @@ Partial Class FRM_Register
     Friend WithEvents Panel7 As Panel
     Public WithEvents token As TextBox
     Private WithEvents Label1 As Label
+    Friend WithEvents Button1 As Button
 End Class

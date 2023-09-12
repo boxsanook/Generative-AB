@@ -50,7 +50,7 @@ Partial Class FRM_Convert_Image
         Me.Skip_existing_files = New System.Windows.Forms.CheckBox()
         Me.LoadImage = New System.Windows.Forms.Button()
         Me.CheckBoxRemoveColor = New System.Windows.Forms.CheckBox()
-        Me.SaveTo = New System.Windows.Forms.Button()
+        Me.btnSaveTo = New System.Windows.Forms.Button()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.ImageListBox = New System.Windows.Forms.ListBox()
         Me.PanelPlayer.SuspendLayout()
@@ -74,16 +74,16 @@ Partial Class FRM_Convert_Image
         Me.PanelPlayer.Controls.Add(Me.label2)
         Me.PanelPlayer.Controls.Add(Me.label1)
         Me.PanelPlayer.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.PanelPlayer.Location = New System.Drawing.Point(0, 459)
+        Me.PanelPlayer.Location = New System.Drawing.Point(0, 488)
         Me.PanelPlayer.Name = "PanelPlayer"
-        Me.PanelPlayer.Size = New System.Drawing.Size(950, 99)
+        Me.PanelPlayer.Size = New System.Drawing.Size(950, 70)
         Me.PanelPlayer.TabIndex = 2
         '
         'wk_text
         '
         Me.wk_text.AutoSize = True
         Me.wk_text.ForeColor = System.Drawing.Color.White
-        Me.wk_text.Location = New System.Drawing.Point(179, 38)
+        Me.wk_text.Location = New System.Drawing.Point(174, 20)
         Me.wk_text.Name = "wk_text"
         Me.wk_text.Size = New System.Drawing.Size(0, 17)
         Me.wk_text.TabIndex = 15
@@ -94,7 +94,7 @@ Partial Class FRM_Convert_Image
         Me.btnStart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnStart.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White
         Me.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnStart.Location = New System.Drawing.Point(61, 38)
+        Me.btnStart.Location = New System.Drawing.Point(56, 20)
         Me.btnStart.Name = "btnStart"
         Me.btnStart.Size = New System.Drawing.Size(43, 40)
         Me.btnStart.TabIndex = 14
@@ -106,7 +106,7 @@ Partial Class FRM_Convert_Image
         Me.btnStop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnStop.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White
         Me.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnStop.Location = New System.Drawing.Point(110, 38)
+        Me.btnStop.Location = New System.Drawing.Point(105, 20)
         Me.btnStop.Name = "btnStop"
         Me.btnStop.Size = New System.Drawing.Size(43, 40)
         Me.btnStop.TabIndex = 13
@@ -116,16 +116,16 @@ Partial Class FRM_Convert_Image
         '
         Me.ProgressBar1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ProgressBar1.Location = New System.Drawing.Point(74, 15)
+        Me.ProgressBar1.Location = New System.Drawing.Point(177, 30)
         Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(821, 17)
+        Me.ProgressBar1.Size = New System.Drawing.Size(688, 17)
         Me.ProgressBar1.TabIndex = 12
         '
         'label2
         '
         Me.label2.AutoSize = True
         Me.label2.ForeColor = System.Drawing.Color.LightGray
-        Me.label2.Location = New System.Drawing.Point(15, 15)
+        Me.label2.Location = New System.Drawing.Point(180, 10)
         Me.label2.Name = "label2"
         Me.label2.Size = New System.Drawing.Size(44, 17)
         Me.label2.TabIndex = 10
@@ -136,7 +136,7 @@ Partial Class FRM_Convert_Image
         Me.label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.label1.AutoSize = True
         Me.label1.ForeColor = System.Drawing.Color.LightGray
-        Me.label1.Location = New System.Drawing.Point(901, 15)
+        Me.label1.Location = New System.Drawing.Point(871, 30)
         Me.label1.Name = "label1"
         Me.label1.Size = New System.Drawing.Size(44, 17)
         Me.label1.TabIndex = 9
@@ -205,7 +205,7 @@ Partial Class FRM_Convert_Image
         Me.GroupBox2.Controls.Add(Me.Skip_existing_files)
         Me.GroupBox2.Controls.Add(Me.LoadImage)
         Me.GroupBox2.Controls.Add(Me.CheckBoxRemoveColor)
-        Me.GroupBox2.Controls.Add(Me.SaveTo)
+        Me.GroupBox2.Controls.Add(Me.btnSaveTo)
         Me.GroupBox2.ForeColor = System.Drawing.Color.White
         Me.GroupBox2.Location = New System.Drawing.Point(18, 54)
         Me.GroupBox2.Name = "GroupBox2"
@@ -391,21 +391,21 @@ Partial Class FRM_Convert_Image
         Me.CheckBoxRemoveColor.Text = "Remove Color"
         Me.CheckBoxRemoveColor.UseVisualStyleBackColor = True
         '
-        'SaveTo
+        'btnSaveTo
         '
-        Me.SaveTo.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.SaveTo.BackColor = System.Drawing.Color.Teal
-        Me.SaveTo.FlatAppearance.BorderSize = 0
-        Me.SaveTo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.SaveTo.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.SaveTo.ForeColor = System.Drawing.Color.LightGray
-        Me.SaveTo.Location = New System.Drawing.Point(789, 58)
-        Me.SaveTo.Margin = New System.Windows.Forms.Padding(4)
-        Me.SaveTo.Name = "SaveTo"
-        Me.SaveTo.Size = New System.Drawing.Size(124, 35)
-        Me.SaveTo.TabIndex = 29
-        Me.SaveTo.Text = "Brow Folder"
-        Me.SaveTo.UseVisualStyleBackColor = False
+        Me.btnSaveTo.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSaveTo.BackColor = System.Drawing.Color.Teal
+        Me.btnSaveTo.FlatAppearance.BorderSize = 0
+        Me.btnSaveTo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSaveTo.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSaveTo.ForeColor = System.Drawing.Color.LightGray
+        Me.btnSaveTo.Location = New System.Drawing.Point(789, 58)
+        Me.btnSaveTo.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnSaveTo.Name = "btnSaveTo"
+        Me.btnSaveTo.Size = New System.Drawing.Size(124, 35)
+        Me.btnSaveTo.TabIndex = 29
+        Me.btnSaveTo.Text = "Brow Folder"
+        Me.btnSaveTo.UseVisualStyleBackColor = False
         '
         'GroupBox3
         '
@@ -416,7 +416,7 @@ Partial Class FRM_Convert_Image
         Me.GroupBox3.ForeColor = System.Drawing.Color.White
         Me.GroupBox3.Location = New System.Drawing.Point(18, 256)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(920, 197)
+        Me.GroupBox3.Size = New System.Drawing.Size(920, 226)
         Me.GroupBox3.TabIndex = 20
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Source Import File :"
@@ -431,7 +431,7 @@ Partial Class FRM_Convert_Image
         Me.ImageListBox.Location = New System.Drawing.Point(3, 18)
         Me.ImageListBox.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.ImageListBox.Name = "ImageListBox"
-        Me.ImageListBox.Size = New System.Drawing.Size(914, 176)
+        Me.ImageListBox.Size = New System.Drawing.Size(914, 205)
         Me.ImageListBox.TabIndex = 29
         '
         'FRM_Convert_Image
@@ -484,7 +484,7 @@ Partial Class FRM_Convert_Image
     Private WithEvents Label5 As Label
     Friend WithEvents Com_Image_Type As ComboBox
     Private WithEvents Label4 As Label
-    Private WithEvents SaveTo As Button
+    Private WithEvents btnSaveTo As Button
     Private WithEvents txt_OutputPath As TextBox
     Private WithEvents Label3 As Label
     Friend WithEvents ImageListBox As ListBox

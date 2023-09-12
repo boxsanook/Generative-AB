@@ -38,6 +38,15 @@ Public Class TimeServer_API
         Console.WriteLine($"Converted Unix timestamp: {unixTimestamp}")
         Return unixTimestamp
     End Function
+    Public Shared Function getTimestamp() As String
+        Dim dateTimeValue As DateTime = DateTime.UtcNow
+        'Dim dateTimeValue As DateTime = DateTime.Now ' Replace with your DateTime value
+        Dim unixEpoch As DateTime = New DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)
+        Dim unixTimestamp As Long = CLng((dateTimeValue - unixEpoch).TotalSeconds)
+        Console.WriteLine($"Original DateTime: {dateTimeValue}")
+        Console.WriteLine($"Converted Unix timestamp: {unixTimestamp}")
+        Return unixTimestamp.ToString
+    End Function
 
     Private Shared Function SendHttpRequest(url As String) As String
         Using client As New WebClient()

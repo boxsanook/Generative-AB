@@ -126,4 +126,16 @@ Public Class FRM_Register
             MessageBox.Show("ไม่สามารถลงทะเบียนได้โปรดติดต่อ ผู้ให้บริการ" & vbNewLine & "Unable to register, please contact service provider.", "Unable to register !!", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
     End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim Product_Key1 As String = $"{RegistryB.ProductCode}|{ RegistryB.str_Cliente_ID }|{RegistryB.str_sKey }|"
+        Dim Product_Key2 As String = $"{RegistryB.str_uKey}|{RegistryB.str_ExpiryDate}|{RegistryB.str_token}|"
+        Product_Key1 = BB_Framework_Code.BCryptography.Encrypt(Product_Key1)
+        Product_Key2 = BB_Framework_Code.BCryptography.Encrypt(Product_Key2)
+        Dim table As New DataTable
+        table.Columns.Add(New DataColumn("Product_Key1", GetType(String)))
+        table.Columns.Add(New DataColumn("Product_Key2", GetType(String)))
+        table.Rows.Add(Product_Key1, Product_Key2)
+        RegisterKey.Text = API_register.DataTableToJSONWithStringBuilder(table)
+    End Sub
 End Class

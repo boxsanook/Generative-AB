@@ -29,7 +29,14 @@ Public Class FRM_Main_SettingSQL
     End Sub
 
     Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
-        Application.Exit()
+        If ModuleSQLconfig.Set_mysqldumpPath = "mysqldumpPath" Then
+            Application.Exit()
+        Else
+            Me.Close()
+        End If
+
+
+
     End Sub
     Private currentForm As Form = Nothing
     Private Sub AbrirFormEnPanel(childForm As Form)
@@ -49,12 +56,12 @@ Public Class FRM_Main_SettingSQL
     End Sub
 
     Private Sub FRM_Main_SettingSQL_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If ModuleSQLconfig.SQLSetting = "SQLite" Then
+        If ModuleSQLconfig.SQLSetting = SQLOperator.SQLite Then
             AbrirFormEnPanel(New FRM_SettingSQLite)
-            ModuleSQLconfig.SQLSetting = "SQLite"
-        ElseIf ModuleSQLconfig.SQLSetting = "MySQL" Then
+            ModuleSQLconfig.SQLSetting = SQLOperator.SQLite
+        ElseIf ModuleSQLconfig.SQLSetting = SQLOperator.MySQL Then
             AbrirFormEnPanel(New FRM_SettingMySQL)
-            ModuleSQLconfig.SQLSetting = "MySQL"
+            ModuleSQLconfig.SQLSetting = SQLOperator.MySQL
         End If
 
 
@@ -62,12 +69,22 @@ Public Class FRM_Main_SettingSQL
 
     Private Sub MySQLToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MySQLToolStripMenuItem.Click
         AbrirFormEnPanel(New FRM_SettingMySQL)
-        ModuleSQLconfig.SQLSetting = "MySQL"
+        ModuleSQLconfig.SQLSetting = SQLOperator.MySQL
     End Sub
 
     Private Sub MSSqlServerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MSSqlServerToolStripMenuItem.Click
         AbrirFormEnPanel(New FRM_SettingSQLite)
-        ModuleSQLconfig.SQLSetting = "SQLite"
+        ModuleSQLconfig.SQLSetting = SQLOperator.SQLite
     End Sub
 
+    Private Sub tssb_select_sql_ButtonClick(sender As Object, e As EventArgs) Handles tssb_select_sql.ButtonClick
+        If ModuleSQLconfig.SQLSetting = SQLOperator.SQLite Then
+            AbrirFormEnPanel(New FRM_SettingMySQL)
+            ModuleSQLconfig.SQLSetting = SQLOperator.MySQL
+        ElseIf ModuleSQLconfig.SQLSetting = SQLOperator.MySQL Then
+            AbrirFormEnPanel(New FRM_SettingSQLite)
+            ModuleSQLconfig.SQLSetting = SQLOperator.SQLite
+        End If
+
+    End Sub
 End Class

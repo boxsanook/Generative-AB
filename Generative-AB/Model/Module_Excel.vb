@@ -2,6 +2,8 @@
 Imports Microsoft.Office.Interop
 Imports System.Data
 Imports DataTable = System.Data.DataTable
+Imports System.IO
+Imports System.Text
 
 Module Module_Excel
     Public Function MasterExcel() As DataTable
@@ -16,8 +18,45 @@ Module Module_Excel
         Return MasterX
     End Function
 
+    Public Sub ExportToCSV(ByVal dataGrid As DataGridView, filePath As String)
+        ' Create a StreamWriter to write data to the CSV file.
+        Using writer As New StreamWriter(filePath)
+            ' Write the header row with column names.
+            For Each column As DataGridViewColumn In dataGrid.Columns
+                writer.Write(column.HeaderText)
+                writer.Write(",")
+            Next
+            writer.WriteLine()
+            ' Write data from DataGridView to the CSV file.
+            For Each row As DataGridViewRow In dataGrid.Rows
+                For Each cell As DataGridViewCell In row.Cells
+                    Dim inputString As String = cell.Value.ToString()
+                    ' Create a StringBuilder to build the CSV line
+                    Dim csvLine As New StringBuilder()
 
-    Public Sub ExportToExcel(ByVal dataGrid As DataGridView, filePath As String)
+                    ' Enclose the input string in double quotes
+                    csvLine.Append("""").Append(inputString).Append("""")
+                    ' Replace any commas in cell values with a space to avoid CSV format issues.
+                    Dim cellValue As String = csvLine.ToString()
+                    writer.Write(cellValue)
+                    writer.Write(",")
+                Next
+                writer.WriteLine()
+            Next
+        End Using
+        'MessageBox.Show("Working Finished.")
+        Dim result As DialogResult = MessageBox.Show("Exported to CSV successfully." & vbNewLine & "คุณต้องการเปิดไฟล์หรือไม่?", "Finished  ", MessageBoxButtons.YesNo)
+
+        If result = DialogResult.Yes Then
+            ' User clicked Yes, perform the desired action  
+            Process.Start(filePath)
+        ElseIf result = DialogResult.No Then
+            ' User clicked No, handle the cancelation or alternative action
+            ' ...
+        End If
+
+    End Sub
+    Public Sub ExportToExcel(ByVal dataGrid As DataGridView, filePath As String, Optional SheetName As String = "Enter data here")
         ' Create a new Excel application
         Dim excelApp As New Excel.Application()
         ' Create a new workbook
@@ -26,6 +65,8 @@ Module Module_Excel
         Dim excelWorksheet As Excel.Worksheet = excelWorkbook.ActiveSheet
         ' Set the worksheet format to text
         excelWorksheet.Cells.NumberFormat = "@"
+        ' Set the sheet name
+        excelWorksheet.Name = SheetName
         ' Set the column headers in the worksheet
         For i As Integer = 0 To dataGrid.Columns.Count - 1
             excelWorksheet.Cells(1, i + 1) = dataGrid.Columns(i).HeaderText

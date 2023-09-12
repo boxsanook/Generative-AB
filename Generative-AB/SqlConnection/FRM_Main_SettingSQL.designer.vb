@@ -85,9 +85,9 @@ Partial Class FRM_Main_SettingSQL
         Me.Label1.ForeColor = System.Drawing.Color.White
         Me.Label1.Location = New System.Drawing.Point(79, 9)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(229, 29)
+        Me.Label1.Size = New System.Drawing.Size(265, 29)
         Me.Label1.TabIndex = 8
-        Me.Label1.Text = "Bot Pampers 2021 V1.1"
+        Me.Label1.Text = "Generative AB Setting SQL"
         '
         'StatusStrip1
         '
@@ -115,14 +115,14 @@ Partial Class FRM_Main_SettingSQL
         '
         Me.MSSqlServerToolStripMenuItem.Image = CType(resources.GetObject("MSSqlServerToolStripMenuItem.Image"), System.Drawing.Image)
         Me.MSSqlServerToolStripMenuItem.Name = "MSSqlServerToolStripMenuItem"
-        Me.MSSqlServerToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.MSSqlServerToolStripMenuItem.Size = New System.Drawing.Size(130, 26)
         Me.MSSqlServerToolStripMenuItem.Text = "SQLite"
         '
         'MySQLToolStripMenuItem
         '
         Me.MySQLToolStripMenuItem.Image = CType(resources.GetObject("MySQLToolStripMenuItem.Image"), System.Drawing.Image)
         Me.MySQLToolStripMenuItem.Name = "MySQLToolStripMenuItem"
-        Me.MySQLToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.MySQLToolStripMenuItem.Size = New System.Drawing.Size(130, 26)
         Me.MySQLToolStripMenuItem.Text = "MySQL"
         '
         'PanelContenedor

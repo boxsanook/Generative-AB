@@ -524,7 +524,7 @@
         V7xdPs7Njs/YuetJ/vfGrVfeecW1XzhfIiPEUJj8k/8fkpDDIL7pM1oAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="Button2.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnStart.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         xAAADsQBlSsOGwAAUPhJREFUeF7tnQmYHFW1gDtAIOmq6uoJCQFZBUVFRGQRFVxAQBEUxH3FJ4uA+lRE
@@ -876,7 +876,7 @@
         YII=
 </value>
   </data>
-  <data name="Button1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnStop.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         xAAADsQBlSsOGwAAZcVJREFUeF7tnQl4FdX5h+OO3DtzJyHBIFBUFBXc60JFxaLVqtWqda9aW5fi0mqt

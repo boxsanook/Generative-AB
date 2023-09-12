@@ -52,7 +52,7 @@ Public Class FRM_Convert_Image
 
     End Sub
 
-    Private Sub SaveTo_Click(sender As Object, e As EventArgs) Handles SaveTo.Click
+    Private Sub SaveTo_Click(sender As Object, e As EventArgs) Handles btnSaveTo.Click
         ' Create a new instance of FolderBrowserDialog
         Dim folderBrowserDialog1 As New FolderBrowserDialog()
         ' Show the dialog and check if the user clicked OK
@@ -127,6 +127,7 @@ Public Class FRM_Convert_Image
         ' Start the asynchronous operation.
         bgWorker.RunWorkerAsync()
         Me.btnStart.Enabled = False
+        Me.GroupBox2.Enabled = False
     End Sub
 
     Private Sub btnStop_Click(sender As Object, e As EventArgs) Handles btnStop.Click
@@ -134,7 +135,10 @@ Public Class FRM_Convert_Image
             ' Cancel the asynchronous operation.
             bgWorker.CancelAsync()
         End If
+
+
         Me.btnStart.Enabled = True
+        Me.GroupBox2.Enabled = True
     End Sub
     Private WithEvents bgWorker As BackgroundWorker
     Dim Items_Count As Integer = 0
@@ -221,14 +225,16 @@ Public Class FRM_Convert_Image
     Private Sub bgWorker_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles bgWorker.RunWorkerCompleted
         If e.Cancelled = True Then
             'Me.label1.Text = "Canceled!"
+            MessageBox.Show("Working Canceled.")
         ElseIf e.Error IsNot Nothing Then
             MessageBox.Show(e.Error.Message, "Working Error.")
             'Me.label1.Text = "Error: " &
         Else
             MessageBox.Show("Working Finished.")
         End If
-        Me.btnStart.Enabled = True
 
+        Me.btnStart.Enabled = True
+        Me.GroupBox2.Enabled = True
     End Sub
 
 End Class

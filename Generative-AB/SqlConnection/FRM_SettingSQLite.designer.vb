@@ -30,6 +30,7 @@ Partial Class FRM_SettingSQLite
         Me.Button1 = New System.Windows.Forms.Button()
         Me.txtImagePath = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.txtConfigName = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.mysqldumpPath = New System.Windows.Forms.TextBox()
@@ -40,7 +41,6 @@ Partial Class FRM_SettingSQLite
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Notify_by_bot = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.Button2 = New System.Windows.Forms.Button()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -92,7 +92,7 @@ Partial Class FRM_SettingSQLite
         Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox2.Size = New System.Drawing.Size(658, 207)
+        Me.GroupBox2.Size = New System.Drawing.Size(658, 296)
         Me.GroupBox2.TabIndex = 27
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "CLIENTE Config"
@@ -138,6 +138,25 @@ Partial Class FRM_SettingSQLite
         Me.Label9.Size = New System.Drawing.Size(135, 20)
         Me.Label9.TabIndex = 431
         Me.Label9.Text = "Save Image Path"
+        '
+        'Button2
+        '
+        Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button2.BackColor = System.Drawing.Color.FromArgb(CType(CType(24, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.Button2.FlatAppearance.BorderColor = System.Drawing.Color.Red
+        Me.Button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(23, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button2.Font = New System.Drawing.Font("Modern No. 20", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Button2.Location = New System.Drawing.Point(570, 95)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(5)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(56, 33)
+        Me.Button2.TabIndex = 428
+        Me.Button2.Text = "....."
+        Me.Button2.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.Button2.UseVisualStyleBackColor = False
+        Me.Button2.Visible = False
         '
         'txtConfigName
         '
@@ -197,6 +216,7 @@ Partial Class FRM_SettingSQLite
         Me.txtDatabase.Location = New System.Drawing.Point(175, 63)
         Me.txtDatabase.Margin = New System.Windows.Forms.Padding(4)
         Me.txtDatabase.Name = "txtDatabase"
+        Me.txtDatabase.ReadOnly = True
         Me.txtDatabase.Size = New System.Drawing.Size(451, 26)
         Me.txtDatabase.TabIndex = 423
         Me.txtDatabase.Text = "GenerativeAB.db"
@@ -223,7 +243,7 @@ Partial Class FRM_SettingSQLite
         Me.bntSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.bntSave.Font = New System.Drawing.Font("Modern No. 20", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.bntSave.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.bntSave.Location = New System.Drawing.Point(250, 305)
+        Me.bntSave.Location = New System.Drawing.Point(283, 359)
         Me.bntSave.Margin = New System.Windows.Forms.Padding(5)
         Me.bntSave.Name = "bntSave"
         Me.bntSave.Size = New System.Drawing.Size(176, 41)
@@ -244,31 +264,12 @@ Partial Class FRM_SettingSQLite
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
-        'Button2
-        '
-        Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button2.BackColor = System.Drawing.Color.FromArgb(CType(CType(24, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(34, Byte), Integer))
-        Me.Button2.FlatAppearance.BorderColor = System.Drawing.Color.Red
-        Me.Button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(23, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(55, Byte), Integer))
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.Font = New System.Drawing.Font("Modern No. 20", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Button2.Location = New System.Drawing.Point(570, 95)
-        Me.Button2.Margin = New System.Windows.Forms.Padding(5)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(56, 33)
-        Me.Button2.TabIndex = 428
-        Me.Button2.Text = "....."
-        Me.Button2.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.Button2.UseVisualStyleBackColor = False
-        Me.Button2.Visible = False
-        '
         'FRM_SettingSQLite
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(45, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(684, 360)
+        Me.ClientSize = New System.Drawing.Size(684, 413)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.bntClose)
         Me.Controls.Add(Me.bntSave)

@@ -81,9 +81,11 @@
     End Sub
 
     Private Sub button3_Click(sender As Object, e As EventArgs) Handles button3.Click
+        openChildForm(New FRM_Get_Community_Prompt())
         ResetButtonAppearance(PanelSideMenu)
         Dim clickedButton As Button = DirectCast(sender, Button)
         active_button(clickedButton)
+
     End Sub
 
     Private Sub button4_Click(sender As Object, e As EventArgs) Handles button4.Click
@@ -106,7 +108,12 @@
         Dim clickedButton As Button = DirectCast(sender, Button)
         active_button(clickedButton)
     End Sub
-
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        openChildForm(New FRM_Get_Keyword())
+        ResetButtonAppearance(PanelSideMenu)
+        Dim clickedButton As Button = DirectCast(sender, Button)
+        active_button(clickedButton)
+    End Sub
     Private Sub button10_Click(sender As Object, e As EventArgs)
         'openChildForm(New TEST())
         'ResetButtonAppearance(PanelSideMenu)
@@ -209,4 +216,6 @@
         active_button(clickedButton)
         ShowAbout.ShowDialog()
     End Sub
+
+
 End Class

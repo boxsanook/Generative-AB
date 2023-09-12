@@ -1,4 +1,7 @@
-﻿Public NotInheritable Class AboutBoxMe
+﻿Imports System.Deployment.Application
+Imports System.Reflection
+
+Public NotInheritable Class AboutBoxMe
 
     Private Sub AboutBoxMe_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         ' Set the title of the form.
@@ -16,7 +19,28 @@
         Me.LabelVersion.Text = String.Format("Version {0}", My.Application.Info.Version.ToString)
         Me.LabelCopyright.Text = My.Application.Info.Copyright
         Me.LabelCompanyName.Text = My.Application.Info.CompanyName
-        Me.TextBoxDescription.Text = My.Application.Info.Description
+        Me.TextBoxDescription.Text = "Description :
+
+(At runtime, the labels' text will be replaced with the application's assembly information.
+Customize the application's assembly information in the Application pane of Project Designer.)"
+
+
+        If ApplicationDeployment.IsNetworkDeployed Then
+            Dim publishedVersion As Version = ApplicationDeployment.CurrentDeployment.CurrentVersion
+            Dim versionString As String = publishedVersion.ToString()
+            Console.WriteLine("Published Version: " & versionString)
+            Me.LabelVersion.Text = String.Format("Published Version: {0}", versionString)
+            ' You can use the 'versionString' variable in your application as needed.
+        Else
+            Dim version As Version = Assembly.GetEntryAssembly().GetName().Version
+            Dim publishedVersion As String = version.ToString()
+            Me.LabelVersion.Text = publishedVersion
+            Console.WriteLine("Published Version: " & publishedVersion)
+            Me.LabelVersion.Text = String.Format("Published Version: {0}", publishedVersion)
+            Console.WriteLine("This application is not ClickOnce deployed.")
+        End If
+
+
     End Sub
 
     Private Sub OKButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OKButton.Click

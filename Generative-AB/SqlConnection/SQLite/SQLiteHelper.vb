@@ -12,33 +12,110 @@ Public Class SQLiteHelper
         Me.ConnectionString = $"Data Source={databasePath};Version=3;"
         Me.Connection = New SQLiteConnection(ConnectionString)
     End Sub
-
+    Public Function ConnectToSQLite() As SQLiteConnection
+        Try 
+            Dim connection As New SQLiteConnection(connectionString)
+            connection.Open()
+            Return connection
+        Catch ex As Exception
+            ' Handle any exceptions here
+            Console.WriteLine("Error: " & ex.Message)
+            Return Nothing ' Return null if connection fails
+        End Try
+    End Function
     Public Sub CreateTable(tableName As String, columns As Dictionary(Of String, String))
         Using conn As New SQLiteConnection(ConnectionString)
             conn.Open()
             Dim cmd As SQLiteCommand = conn.CreateCommand()
             Dim sb As New System.Text.StringBuilder()
-
             sb.Append($"CREATE TABLE IF NOT EXISTS {tableName} (")
             For Each column In columns
                 sb.Append($"{column.Key} {column.Value}, ")
             Next
             sb.Length -= 2 ' Remove the trailing comma and space
             sb.Append(");")
-
             cmd.CommandText = sb.ToString()
             cmd.ExecuteNonQuery()
+            conn.Close()
+        End Using
+        CheckColumnsAndAdd(tableName, columns)
+    End Sub
+
+    Public Sub CheckColumnsAndAdd(tableName As String, columnsToCheck As Dictionary(Of String, String))
+        ' Check if the columns exist
+        Using conn As New SQLiteConnection(ConnectionString)
+            conn.Open()
+            ' Execute PRAGMA table_info to retrieve column names
+            Dim query As String = $"PRAGMA table_info({tableName});"
+            Using cmd As New SQLiteCommand(query, conn)
+                Using reader As SQLiteDataReader = cmd.ExecuteReader()
+                    Dim existingColumns As New List(Of String)()
+                    While reader.Read()
+                        Dim columnName As String = reader("name").ToString()
+                        existingColumns.Add(columnName)
+                    End While
+                    ' Add any missing columns
+                    For Each columnToCheck In columnsToCheck
+                        Dim columnName As String = columnToCheck.Key
+                        Dim columnDataType As String = columnToCheck.Value
+
+                        If Not existingColumns.Contains(columnName) Then
+                            ' Execute ALTER TABLE to add missing column
+                            Dim alterQuery As String = $"ALTER TABLE {tableName} ADD COLUMN {columnName} {columnDataType};"
+                            Using alterCmd As New SQLiteCommand(alterQuery, conn)
+                                alterCmd.ExecuteNonQuery()
+                                Console.WriteLine($"Added missing column: {columnName} ({columnDataType})")
+                            End Using
+                        End If
+                    Next
+                End Using
+            End Using
+            conn.Close()
         End Using
     End Sub
 
-    Public Function SelectData(tableName As String, Optional condition As String = "") As DataTable
+
+    Public Function SelectData(tableName As String, Optional condition As String = "", Optional query_SELECT As String = "") As DataTable
+        Dim dt As New DataTable()
+        Try
+            ' Open a new connection
+            Using connection As New SQLiteConnection(ConnectionString) ' Replace ConnectionString with your actual connection string
+                connection.Open()
+
+                If Not String.IsNullOrEmpty(query_SELECT) Then
+                    query_SELECT = $"{query_SELECT}"
+                Else
+                    query_SELECT = $" * "
+                End If
+                Dim query As String = $"SELECT {query_SELECT} FROM {tableName}"
+                If Not String.IsNullOrEmpty(condition) Then
+                    query &= $" WHERE {condition}"
+                End If
+
+                Using cmd As New SQLiteCommand(query, connection)
+                    Dim adapter As New SQLiteDataAdapter(cmd)
+                    adapter.Fill(dt)
+                End Using
+                connection.Close()
+                Return dt
+            End Using
+        Catch ex As Exception
+            ' Handle any exceptions here
+            Console.WriteLine("Error: " & ex.Message)
+            Return dt ' Return null or an empty DataTable in case of an error
+        End Try
+    End Function
+
+    Public Function GetRowCount(tableName As String, Optional condition As String = "") As Integer
         Using conn As New SQLiteConnection(ConnectionString)
             conn.Open()
-            Dim cmd As New SQLiteCommand($"SELECT * FROM {tableName} {condition}", conn)
-            Dim adapter As New SQLiteDataAdapter(cmd)
-            Dim dt As New DataTable()
-            adapter.Fill(dt)
-            Return dt
+            Dim rowCount As Integer = 0
+            Dim query As String = $"SELECT COUNT(*) FROM {tableName} WHERE {condition};"
+            Using cmd As New SQLiteCommand(query, conn)
+                rowCount = Convert.ToInt32(cmd.ExecuteScalar())
+            End Using
+            conn.Close()
+            Return rowCount
         End Using
     End Function
 
@@ -49,12 +126,11 @@ Public Class SQLiteHelper
             Dim columns As String = String.Join(", ", values.Keys)
             Dim placeholders As String = String.Join(", ", values.Keys.Select(Function(x) "@" & x))
             cmd.CommandText = $"INSERT INTO {tableName} ({columns}) VALUES ({placeholders});"
-
             For Each kvp In values
                 cmd.Parameters.AddWithValue("@" & kvp.Key, kvp.Value)
             Next
-
             cmd.ExecuteNonQuery()
+            conn.Close()
         End Using
     End Sub
 
@@ -64,11 +140,9 @@ Public Class SQLiteHelper
             Dim cmd As SQLiteCommand = conn.CreateCommand()
             Dim setClause As String = String.Join(", ", values.Select(Function(x) $"{x.Key} = @{x.Key}"))
             cmd.CommandText = $"UPDATE {tableName} SET {setClause} WHERE {condition};"
-
             For Each kvp In values
                 cmd.Parameters.AddWithValue("@" & kvp.Key, kvp.Value)
             Next
-
             cmd.ExecuteNonQuery()
         End Using
     End Sub
