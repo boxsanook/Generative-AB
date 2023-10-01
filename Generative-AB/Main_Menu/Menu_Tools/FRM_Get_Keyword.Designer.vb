@@ -27,9 +27,13 @@ Partial Class FRM_Get_Keyword
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.ImageListBox = New System.Windows.Forms.ListBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.ComUniqueId = New System.Windows.Forms.ComboBox()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.txt_SourcePath = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.LoadImage = New System.Windows.Forms.Button()
         Me.BarraTitulo = New System.Windows.Forms.Panel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
@@ -38,8 +42,7 @@ Partial Class FRM_Get_Keyword
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.DataExcell = New System.Windows.Forms.DataGridView()
         Me.PanelPlayer = New System.Windows.Forms.Panel()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.ExportToExcel = New System.Windows.Forms.Button()
         Me.wk_text = New System.Windows.Forms.Label()
         Me.btnStart = New System.Windows.Forms.Button()
@@ -49,6 +52,7 @@ Partial Class FRM_Get_Keyword
         Me.label1 = New System.Windows.Forms.Label()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
+        Me.Panel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.BarraTitulo.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -63,9 +67,11 @@ Partial Class FRM_Get_Keyword
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox3.Controls.Add(Me.ImageListBox)
         Me.GroupBox3.ForeColor = System.Drawing.Color.White
-        Me.GroupBox3.Location = New System.Drawing.Point(18, 136)
+        Me.GroupBox3.Location = New System.Drawing.Point(19, 162)
+        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(935, 184)
+        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.GroupBox3.Size = New System.Drawing.Size(935, 158)
         Me.GroupBox3.TabIndex = 23
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Source Import File :"
@@ -77,24 +83,65 @@ Partial Class FRM_Get_Keyword
         Me.ImageListBox.ForeColor = System.Drawing.Color.White
         Me.ImageListBox.FormattingEnabled = True
         Me.ImageListBox.ItemHeight = 16
-        Me.ImageListBox.Location = New System.Drawing.Point(3, 18)
+        Me.ImageListBox.Location = New System.Drawing.Point(3, 17)
         Me.ImageListBox.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.ImageListBox.Name = "ImageListBox"
-        Me.ImageListBox.Size = New System.Drawing.Size(929, 163)
+        Me.ImageListBox.Size = New System.Drawing.Size(929, 139)
         Me.ImageListBox.TabIndex = 29
         '
         'GroupBox2
         '
         Me.GroupBox2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox2.Controls.Add(Me.Panel2)
         Me.GroupBox2.Controls.Add(Me.Panel1)
+        Me.GroupBox2.Controls.Add(Me.Button1)
         Me.GroupBox2.Controls.Add(Me.LoadImage)
         Me.GroupBox2.ForeColor = System.Drawing.Color.White
-        Me.GroupBox2.Location = New System.Drawing.Point(18, 53)
+        Me.GroupBox2.Location = New System.Drawing.Point(19, 53)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(935, 77)
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.GroupBox2.Size = New System.Drawing.Size(935, 103)
         Me.GroupBox2.TabIndex = 22
         Me.GroupBox2.TabStop = False
+        '
+        'Panel2
+        '
+        Me.Panel2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel2.Controls.Add(Me.ComUniqueId)
+        Me.Panel2.Controls.Add(Me.Label3)
+        Me.Panel2.Location = New System.Drawing.Point(36, 57)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(409, 30)
+        Me.Panel2.TabIndex = 56
+        '
+        'ComUniqueId
+        '
+        Me.ComUniqueId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
+        Me.ComUniqueId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.ComUniqueId.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ComUniqueId.FormattingEnabled = True
+        Me.ComUniqueId.Location = New System.Drawing.Point(109, 0)
+        Me.ComUniqueId.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.ComUniqueId.Name = "ComUniqueId"
+        Me.ComUniqueId.Size = New System.Drawing.Size(300, 24)
+        Me.ComUniqueId.TabIndex = 55
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(235, Byte), Integer), CType(CType(42, Byte), Integer), CType(CType(83, Byte), Integer))
+        Me.Label3.Location = New System.Drawing.Point(0, 0)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(109, 25)
+        Me.Label3.TabIndex = 42
+        Me.Label3.Text = "Unique ID :"
         '
         'Panel1
         '
@@ -103,8 +150,9 @@ Partial Class FRM_Get_Keyword
         Me.Panel1.Controls.Add(Me.txt_SourcePath)
         Me.Panel1.Controls.Add(Me.Label6)
         Me.Panel1.Location = New System.Drawing.Point(16, 21)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(766, 29)
+        Me.Panel1.Size = New System.Drawing.Size(765, 30)
         Me.Panel1.TabIndex = 44
         '
         'txt_SourcePath
@@ -114,7 +162,7 @@ Partial Class FRM_Get_Keyword
         Me.txt_SourcePath.Location = New System.Drawing.Point(131, 0)
         Me.txt_SourcePath.Margin = New System.Windows.Forms.Padding(4)
         Me.txt_SourcePath.Name = "txt_SourcePath"
-        Me.txt_SourcePath.Size = New System.Drawing.Size(635, 30)
+        Me.txt_SourcePath.Size = New System.Drawing.Size(634, 30)
         Me.txt_SourcePath.TabIndex = 40
         '
         'Label6
@@ -130,6 +178,18 @@ Partial Class FRM_Get_Keyword
         Me.Label6.TabIndex = 42
         Me.Label6.Text = "Source Path :"
         '
+        'Button1
+        '
+        Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button1.BackColor = System.Drawing.Color.Green
+        Me.Button1.Location = New System.Drawing.Point(451, 55)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 30)
+        Me.Button1.TabIndex = 53
+        Me.Button1.Text = "Search"
+        Me.Button1.UseVisualStyleBackColor = False
+        '
         'LoadImage
         '
         Me.LoadImage.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -141,7 +201,7 @@ Partial Class FRM_Get_Keyword
         Me.LoadImage.Location = New System.Drawing.Point(804, 20)
         Me.LoadImage.Margin = New System.Windows.Forms.Padding(4)
         Me.LoadImage.Name = "LoadImage"
-        Me.LoadImage.Size = New System.Drawing.Size(124, 35)
+        Me.LoadImage.Size = New System.Drawing.Size(124, 34)
         Me.LoadImage.TabIndex = 41
         Me.LoadImage.Text = "Load Image"
         Me.LoadImage.UseVisualStyleBackColor = False
@@ -205,8 +265,10 @@ Partial Class FRM_Get_Keyword
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.Controls.Add(Me.DataExcell)
         Me.GroupBox1.ForeColor = System.Drawing.Color.White
-        Me.GroupBox1.Location = New System.Drawing.Point(18, 326)
+        Me.GroupBox1.Location = New System.Drawing.Point(19, 326)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.GroupBox1.Size = New System.Drawing.Size(935, 153)
         Me.GroupBox1.TabIndex = 24
         Me.GroupBox1.TabStop = False
@@ -220,7 +282,7 @@ Partial Class FRM_Get_Keyword
         Me.DataExcell.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataExcell.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataExcell.GridColor = System.Drawing.Color.Gray
-        Me.DataExcell.Location = New System.Drawing.Point(3, 18)
+        Me.DataExcell.Location = New System.Drawing.Point(3, 17)
         Me.DataExcell.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.DataExcell.Name = "DataExcell"
         Me.DataExcell.ReadOnly = True
@@ -229,14 +291,13 @@ Partial Class FRM_Get_Keyword
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.DataExcell.RowsDefaultCellStyle = DataGridViewCellStyle1
         Me.DataExcell.RowTemplate.Height = 24
-        Me.DataExcell.Size = New System.Drawing.Size(929, 132)
+        Me.DataExcell.Size = New System.Drawing.Size(929, 134)
         Me.DataExcell.TabIndex = 9
         '
         'PanelPlayer
         '
         Me.PanelPlayer.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(20, Byte), Integer), CType(CType(10, Byte), Integer))
-        Me.PanelPlayer.Controls.Add(Me.TextBox1)
-        Me.PanelPlayer.Controls.Add(Me.Button1)
+        Me.PanelPlayer.Controls.Add(Me.Button2)
         Me.PanelPlayer.Controls.Add(Me.ExportToExcel)
         Me.PanelPlayer.Controls.Add(Me.wk_text)
         Me.PanelPlayer.Controls.Add(Me.btnStart)
@@ -245,26 +306,23 @@ Partial Class FRM_Get_Keyword
         Me.PanelPlayer.Controls.Add(Me.label2)
         Me.PanelPlayer.Controls.Add(Me.label1)
         Me.PanelPlayer.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.PanelPlayer.Location = New System.Drawing.Point(0, 499)
+        Me.PanelPlayer.Location = New System.Drawing.Point(0, 500)
+        Me.PanelPlayer.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.PanelPlayer.Name = "PanelPlayer"
         Me.PanelPlayer.Size = New System.Drawing.Size(965, 90)
         Me.PanelPlayer.TabIndex = 25
         '
-        'TextBox1
+        'Button2
         '
-        Me.TextBox1.Location = New System.Drawing.Point(417, 52)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(146, 22)
-        Me.TextBox1.TabIndex = 54
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(569, 57)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 53
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button2.BackColor = System.Drawing.Color.Green
+        Me.Button2.Location = New System.Drawing.Point(587, 48)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 30)
+        Me.Button2.TabIndex = 54
+        Me.Button2.Text = "Search"
+        Me.Button2.UseVisualStyleBackColor = False
         '
         'ExportToExcel
         '
@@ -276,7 +334,7 @@ Partial Class FRM_Get_Keyword
         Me.ExportToExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ExportToExcel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.ExportToExcel.ForeColor = System.Drawing.Color.White
-        Me.ExportToExcel.Location = New System.Drawing.Point(742, 41)
+        Me.ExportToExcel.Location = New System.Drawing.Point(741, 41)
         Me.ExportToExcel.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.ExportToExcel.Name = "ExportToExcel"
         Me.ExportToExcel.Size = New System.Drawing.Size(168, 33)
@@ -301,8 +359,9 @@ Partial Class FRM_Get_Keyword
         Me.btnStart.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White
         Me.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnStart.Location = New System.Drawing.Point(92, 38)
+        Me.btnStart.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnStart.Name = "btnStart"
-        Me.btnStart.Size = New System.Drawing.Size(43, 40)
+        Me.btnStart.Size = New System.Drawing.Size(43, 39)
         Me.btnStart.TabIndex = 14
         Me.btnStart.UseVisualStyleBackColor = True
         '
@@ -313,8 +372,9 @@ Partial Class FRM_Get_Keyword
         Me.btnStop.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White
         Me.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnStop.Location = New System.Drawing.Point(141, 38)
+        Me.btnStop.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnStop.Name = "btnStop"
-        Me.btnStop.Size = New System.Drawing.Size(43, 40)
+        Me.btnStop.Size = New System.Drawing.Size(43, 39)
         Me.btnStop.TabIndex = 13
         Me.btnStop.UseVisualStyleBackColor = True
         '
@@ -323,8 +383,9 @@ Partial Class FRM_Get_Keyword
         Me.ProgressBar1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ProgressBar1.Location = New System.Drawing.Point(96, 15)
+        Me.ProgressBar1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(814, 17)
+        Me.ProgressBar1.Size = New System.Drawing.Size(813, 17)
         Me.ProgressBar1.TabIndex = 12
         '
         'label2
@@ -353,16 +414,19 @@ Partial Class FRM_Get_Keyword
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(45, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(965, 589)
+        Me.ClientSize = New System.Drawing.Size(965, 590)
         Me.Controls.Add(Me.PanelPlayer)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.BarraTitulo)
+        Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Name = "FRM_Get_Keyword"
         Me.Text = "FRM_Get_Keyword"
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.BarraTitulo.ResumeLayout(False)
@@ -398,5 +462,8 @@ Partial Class FRM_Get_Keyword
     Friend WithEvents DataExcell As DataGridView
     Friend WithEvents ExportToExcel As Button
     Friend WithEvents Button1 As Button
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents ComUniqueId As ComboBox
+    Friend WithEvents Panel2 As Panel
+    Private WithEvents Label3 As Label
+    Friend WithEvents Button2 As Button
 End Class

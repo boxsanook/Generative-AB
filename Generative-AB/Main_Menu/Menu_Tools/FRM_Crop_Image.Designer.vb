@@ -431,6 +431,7 @@ Partial Class FRM_Crop_Image
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.BarraTitulo)
         Me.Controls.Add(Me.PanelPlayer)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "FRM_Crop_Image"
         Me.Text = "Crop Image Application"
         Me.GroupBox3.ResumeLayout(False)

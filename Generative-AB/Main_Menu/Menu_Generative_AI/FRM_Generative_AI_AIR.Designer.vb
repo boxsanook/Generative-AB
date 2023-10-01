@@ -36,6 +36,8 @@ Partial Class FRM_Generative_AI_AIR
         Me.label2 = New System.Windows.Forms.Label()
         Me.label1 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.Check_Color = New System.Windows.Forms.CheckBox()
+        Me.C_backgroundColor = New System.Windows.Forms.CheckBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
@@ -55,6 +57,7 @@ Partial Class FRM_Generative_AI_AIR
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.DataExcell = New System.Windows.Forms.DataGridView()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.Prompt_text = New System.Windows.Forms.TextBox()
         Me.BarraTitulo.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelPlayer.SuspendLayout()
@@ -189,6 +192,9 @@ Partial Class FRM_Generative_AI_AIR
         '
         Me.GroupBox2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox2.Controls.Add(Me.Prompt_text)
+        Me.GroupBox2.Controls.Add(Me.Check_Color)
+        Me.GroupBox2.Controls.Add(Me.C_backgroundColor)
         Me.GroupBox2.Controls.Add(Me.Label7)
         Me.GroupBox2.Controls.Add(Me.ListBox1)
         Me.GroupBox2.Controls.Add(Me.TextBox1)
@@ -208,9 +214,29 @@ Partial Class FRM_Generative_AI_AIR
         Me.GroupBox2.ForeColor = System.Drawing.Color.White
         Me.GroupBox2.Location = New System.Drawing.Point(24, 54)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(1265, 274)
+        Me.GroupBox2.Size = New System.Drawing.Size(1265, 278)
         Me.GroupBox2.TabIndex = 26
         Me.GroupBox2.TabStop = False
+        '
+        'Check_Color
+        '
+        Me.Check_Color.AutoSize = True
+        Me.Check_Color.Location = New System.Drawing.Point(459, 247)
+        Me.Check_Color.Name = "Check_Color"
+        Me.Check_Color.Size = New System.Drawing.Size(63, 21)
+        Me.Check_Color.TabIndex = 60
+        Me.Check_Color.Text = "Color"
+        Me.Check_Color.UseVisualStyleBackColor = True
+        '
+        'C_backgroundColor
+        '
+        Me.C_backgroundColor.AutoSize = True
+        Me.C_backgroundColor.Location = New System.Drawing.Point(459, 220)
+        Me.C_backgroundColor.Name = "C_backgroundColor"
+        Me.C_backgroundColor.Size = New System.Drawing.Size(142, 21)
+        Me.C_backgroundColor.TabIndex = 59
+        Me.C_backgroundColor.Text = "background Color"
+        Me.C_backgroundColor.UseVisualStyleBackColor = True
         '
         'Label7
         '
@@ -241,12 +267,12 @@ Partial Class FRM_Generative_AI_AIR
         Me.TextBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(459, 219)
+        Me.TextBox1.Location = New System.Drawing.Point(851, 181)
         Me.TextBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ReadOnly = True
-        Me.TextBox1.Size = New System.Drawing.Size(493, 48)
+        Me.TextBox1.Size = New System.Drawing.Size(407, 41)
         Me.TextBox1.TabIndex = 56
         '
         'txt_sell_on
@@ -256,9 +282,9 @@ Partial Class FRM_Generative_AI_AIR
         Me.txt_sell_on.Enabled = False
         Me.txt_sell_on.FormattingEnabled = True
         Me.txt_sell_on.Items.AddRange(New Object() {"miricanvas", "dreamstime"})
-        Me.txt_sell_on.Location = New System.Drawing.Point(773, 188)
+        Me.txt_sell_on.Location = New System.Drawing.Point(728, 188)
         Me.txt_sell_on.Name = "txt_sell_on"
-        Me.txt_sell_on.Size = New System.Drawing.Size(179, 24)
+        Me.txt_sell_on.Size = New System.Drawing.Size(116, 24)
         Me.txt_sell_on.TabIndex = 55
         '
         'Label5
@@ -267,7 +293,7 @@ Partial Class FRM_Generative_AI_AIR
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(235, Byte), Integer), CType(CType(42, Byte), Integer), CType(CType(83, Byte), Integer))
-        Me.Label5.Location = New System.Drawing.Point(696, 188)
+        Me.Label5.Location = New System.Drawing.Point(651, 188)
         Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(70, 20)
@@ -282,7 +308,7 @@ Partial Class FRM_Generative_AI_AIR
         Me.txt_complexities.Items.AddRange(New Object() {"-1", "0", "1", "2", "3", "4"})
         Me.txt_complexities.Location = New System.Drawing.Point(585, 188)
         Me.txt_complexities.Name = "txt_complexities"
-        Me.txt_complexities.Size = New System.Drawing.Size(82, 24)
+        Me.txt_complexities.Size = New System.Drawing.Size(59, 24)
         Me.txt_complexities.TabIndex = 53
         '
         'Label4
@@ -357,7 +383,7 @@ Partial Class FRM_Generative_AI_AIR
         Me.TXT_Excel.Multiline = True
         Me.TXT_Excel.Name = "TXT_Excel"
         Me.TXT_Excel.ReadOnly = True
-        Me.TXT_Excel.Size = New System.Drawing.Size(602, 40)
+        Me.TXT_Excel.Size = New System.Drawing.Size(602, 44)
         Me.TXT_Excel.TabIndex = 48
         '
         'BT_Celar_All
@@ -401,7 +427,7 @@ Partial Class FRM_Generative_AI_AIR
         Me.txtToken.Multiline = True
         Me.txtToken.Name = "txtToken"
         Me.txtToken.ReadOnly = True
-        Me.txtToken.Size = New System.Drawing.Size(624, 40)
+        Me.txtToken.Size = New System.Drawing.Size(624, 44)
         Me.txtToken.TabIndex = 45
         '
         'Label6
@@ -436,9 +462,9 @@ Partial Class FRM_Generative_AI_AIR
         Me.GroupBox3.Controls.Add(Me.DataExcell)
         Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.GroupBox3.ForeColor = System.Drawing.Color.White
-        Me.GroupBox3.Location = New System.Drawing.Point(24, 334)
+        Me.GroupBox3.Location = New System.Drawing.Point(24, 349)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(1265, 231)
+        Me.GroupBox3.Size = New System.Drawing.Size(1265, 216)
         Me.GroupBox3.TabIndex = 27
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Prompt :"
@@ -460,8 +486,21 @@ Partial Class FRM_Generative_AI_AIR
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.DataExcell.RowsDefaultCellStyle = DataGridViewCellStyle1
         Me.DataExcell.RowTemplate.Height = 24
-        Me.DataExcell.Size = New System.Drawing.Size(1259, 205)
+        Me.DataExcell.Size = New System.Drawing.Size(1259, 190)
         Me.DataExcell.TabIndex = 8
+        '
+        'Prompt_text
+        '
+        Me.Prompt_text.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Prompt_text.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Prompt_text.Location = New System.Drawing.Point(851, 227)
+        Me.Prompt_text.Margin = New System.Windows.Forms.Padding(4)
+        Me.Prompt_text.Multiline = True
+        Me.Prompt_text.Name = "Prompt_text"
+        Me.Prompt_text.ReadOnly = True
+        Me.Prompt_text.Size = New System.Drawing.Size(407, 41)
+        Me.Prompt_text.TabIndex = 61
         '
         'FRM_Generative_AI_AIR
         '
@@ -519,4 +558,7 @@ Partial Class FRM_Generative_AI_AIR
     Private WithEvents TextBox1 As TextBox
     Private WithEvents Label7 As Label
     Friend WithEvents ListBox1 As ListBox
+    Friend WithEvents C_backgroundColor As CheckBox
+    Friend WithEvents Check_Color As CheckBox
+    Private WithEvents Prompt_text As TextBox
 End Class

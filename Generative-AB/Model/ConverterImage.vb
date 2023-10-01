@@ -4,18 +4,25 @@ Imports System.Xml
 Imports ImageMagick
 Public Class ConverterImage
     Public Shared Function ConvertImageToBase64(ByVal imagePath As String) As String
-        Using image As New MagickImage(imagePath)
-            image.Resize(150, 150)
-            ' Convert the image to a MemoryStream
-            Using stream As New MemoryStream()
-                image.Write(stream)
-                ' Convert the MemoryStream to a byte array
-                Dim imageBytes As Byte() = stream.ToArray()
-                ' Convert the byte array to a Base64-encoded string
-                Dim base64String As String = Convert.ToBase64String(imageBytes)
-                Return base64String
+        Dim base64String As String = Nothing
+        Try
+            Using image As New MagickImage(imagePath)
+                image.Resize(150, 150)
+                ' Convert the image to a MemoryStream
+                Using stream As New MemoryStream()
+                    image.Write(stream)
+                    ' Convert the MemoryStream to a byte array
+                    Dim imageBytes As Byte() = stream.ToArray()
+                    ' Convert the byte array to a Base64-encoded string
+                    base64String = Convert.ToBase64String(imageBytes)
+
+                End Using
             End Using
-        End Using
+        Catch ex As Exception
+
+        End Try
+
+        Return base64String
     End Function
 
     Public Shared Function ConvertSvgTobase64(svgFilePath As String) As String
@@ -124,12 +131,10 @@ Public Class ConverterImage
     Private Function ChangeImageBitDepth(sourceImage As Bitmap, newPixelFormat As PixelFormat) As Bitmap
         ' Create a new bitmap with the desired pixel format
         Dim newImage As New Bitmap(sourceImage.Width, sourceImage.Height, newPixelFormat)
-
         ' Copy the source image to the new image, effectively converting it to the new bit depth
         Using g As Graphics = Graphics.FromImage(newImage)
             g.DrawImage(sourceImage, New Rectangle(0, 0, sourceImage.Width, sourceImage.Height))
         End Using
-
         Return newImage
     End Function
 
@@ -156,16 +161,32 @@ Public Class ConverterImage
     ''Use the MagickImage Class from the Magick.NET Namespace To load And manipulate the SVG file.
     ''Set the output format To JPG Or PNG Using the Format Property Of the MagickImage.
     ''Save the image To the desired location With the appropriate file extension.
-    Public Shared Sub ConvertSvgToJpg(svgFilePath As String, outputFolderPath As String)
+    Public Shared Sub ConvertSvgToImage(svgFilePath As String, outputFilePath As String, Resize As Integer, image_Format As MagickFormat)
+        ' Load the SVG image using Magick.NET
         Using image As New MagickImage(svgFilePath)
-            ' Convert to JPG
-            Dim jpgFilePath As String = outputFolderPath
-            image.Format = MagickFormat.Jpg
-            image.Quality = 100 ' Adjust the quality level as needed (0 to 100)
-            image.Write(jpgFilePath)
+            ' Resize the SVG image to the specified dimensions
+            Dim newWidth As Integer = image.Width * Resize
+            Dim newHeight As Integer = image.Height * Resize
+            image.Resize(newWidth, newHeight)
+            image.Format = image_Format
+            ' Save the resized image to the output file
+            image.Write(outputFilePath)
         End Using
+        Console.WriteLine($"SVG resized to {outputFilePath}")
     End Sub
+    Public Shared Sub ResizeSvg(svgFilePath As String, Resize As Integer)
+        ' Load the SVG image using Magick.NET
+        Using image As New MagickImage(svgFilePath)
+            ' Resize the SVG image to the specified dimensions
+            Dim newWidth As Integer = 1000 'image.Width * Resize
+            Dim newHeight As Integer = 1000 'image.Height * Resize
+            image.Resize(newWidth, newHeight)
+            ' Save the resized image to the output file
+            image.Write(svgFilePath)
+        End Using
 
+        Console.WriteLine($"SVG resized to {svgFilePath}")
+    End Sub
 
     Public Shared Sub ConvertSvgToPng(svgFilePath As String, outputFolderPath As String)
         Using image As New MagickImage(svgFilePath)
@@ -194,7 +215,6 @@ Public Class ConverterImage
                 newHeight = height
                 newWidth = originalWidth * height / originalHeight
             End If
-
             ' Resize the image to the new dimensions
             image.Resize(newWidth, newHeight)
 
@@ -203,7 +223,6 @@ Public Class ConverterImage
             image.Format = MagickFormat.Jpg
             image.Quality = 100 ' Adjust the quality level as needed (0 to 100)
             image.Write(jpgFilePath)
-
             ' Convert to PNG
             Dim pngFilePath As String = System.IO.Path.Combine(outputFolderPath, "output.png")
             image.Format = MagickFormat.Png

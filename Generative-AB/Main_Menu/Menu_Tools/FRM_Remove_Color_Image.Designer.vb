@@ -304,6 +304,7 @@ Partial Class FRM_Remove_Color_Image
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(45, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(946, 565)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.BarraTitulo)

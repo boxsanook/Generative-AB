@@ -169,20 +169,14 @@ Public Class recraft_ai
 
         Dim operationId As String = String.Empty
         Try
-         
-
             Dim json_data As JObject = digital_illustration_80s(prompt, negative_prompt, random_seed_01, image_type, jrgb)
-
-
             Dim request As HttpWebRequest = DirectCast(WebRequest.Create(baseUrl & "/" & yourProject & "/queue_recraft"), HttpWebRequest)
             request.Method = "POST"
             request.Headers.Add("Authorization", "Bearer " & yourToken)
             request.ContentType = "application/json"
-
             Using streamWriter As StreamWriter = New StreamWriter(request.GetRequestStream())
                 streamWriter.Write(json_data.ToString())
             End Using
-
             Try
                 Dim response As HttpWebResponse = DirectCast(request.GetResponse(), HttpWebResponse)
 
@@ -221,7 +215,6 @@ Public Class recraft_ai
 
         Dim request As HttpWebRequest = DirectCast(WebRequest.Create(endpoint), HttpWebRequest)
         request.Method = "GET"
-
         ' Set headers
         request.Headers.Add("sec-ch-ua", """Not.A/Brand"";v=""8"", ""Chromium"";v=""114"", ""Google Chrome"";v=""114""")
         'request.Headers.Add("Referer", "https://app.recraft.ai/")

@@ -1,6 +1,40 @@
 ﻿Imports System.IO
+Imports System.Xml
+Imports ImageMagick
 
 Public Class Image_Drawing
+
+    Public Shared Sub ResizeSVG(svgXmlFilePath As String, xSize As Integer)
+        ' Load the SVG XML document 
+        Dim xmlDoc As New XmlDocument()
+        xmlDoc.Load(svgXmlFilePath)
+        ' Namespace manager to handle XML namespaces
+        Dim nsManager As New XmlNamespaceManager(xmlDoc.NameTable)
+        nsManager.AddNamespace("svg", "http://www.w3.org/2000/svg")
+        ' XPath expressions to select width and height attributes
+        Dim widthAttribute As XmlAttribute = xmlDoc.SelectSingleNode("/svg:svg/@width", nsManager)
+        Dim heightAttribute As XmlAttribute = xmlDoc.SelectSingleNode("/svg:svg/@height", nsManager)
+        ' Check if both width and height attributes exist
+        If widthAttribute IsNot Nothing AndAlso heightAttribute IsNot Nothing Then
+            Dim svgWidth As Integer
+            Dim svgHeight As Integer
+            ' Try parsing the attribute values to integers
+            If Integer.TryParse(widthAttribute.Value, svgWidth) AndAlso Integer.TryParse(heightAttribute.Value, svgHeight) Then
+                ' Now you have the width and height values, and you can manipulate them as needed
+                ' For example, you can resize the SVG here
+                widthAttribute.Value = svgWidth * xSize
+                heightAttribute.Value = svgHeight * xSize
+                ' Save the modified XML to a new file or overwrite the original file
+                Dim outputSvgXmlFilePath As String = svgXmlFilePath
+                xmlDoc.Save(outputSvgXmlFilePath)
+            Else
+                Console.WriteLine("Failed to parse width and height attributes.")
+            End If
+        Else
+            Console.WriteLine("SVG file does not have width and height attributes.")
+        End If
+    End Sub
+
 
     Public Shared Function image_2_base64(ByVal file_path As String) As String
 

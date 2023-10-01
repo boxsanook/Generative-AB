@@ -103,10 +103,12 @@
     End Sub
 
     Private Sub button12_Click(sender As Object, e As EventArgs) Handles button12.Click
-        openChildForm(New FRM_Crop_Image())
-        ResetButtonAppearance(PanelSideMenu)
+        'openChildForm(New FRM_Crop_Image())
+        'ResetButtonAppearance(PanelSideMenu)
         Dim clickedButton As Button = DirectCast(sender, Button)
         active_button(clickedButton)
+        Dim Crop As New FRM_Crop_Image
+        Crop.ShowDialog()
     End Sub
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         openChildForm(New FRM_Get_Keyword())
@@ -114,11 +116,11 @@
         Dim clickedButton As Button = DirectCast(sender, Button)
         active_button(clickedButton)
     End Sub
-    Private Sub button10_Click(sender As Object, e As EventArgs)
-        'openChildForm(New TEST())
-        'ResetButtonAppearance(PanelSideMenu)
-        'Dim clickedButton As Button = DirectCast(sender, Button)
-        'active_button(clickedButton)
+    Private Sub btn_ResizeSVG_Click(sender As Object, e As EventArgs) Handles btn_ResizeSVG.Click
+        openChildForm(New FRM_Resize_SVG())
+        ResetButtonAppearance(PanelSideMenu)
+        Dim clickedButton As Button = DirectCast(sender, Button)
+        active_button(clickedButton)
     End Sub
 #End Region
 

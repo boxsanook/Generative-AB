@@ -89,6 +89,8 @@ Public Class RegistryB
             table.Columns.Add(New DataColumn("Product_Key1", GetType(String)))
             table.Columns.Add(New DataColumn("Product_Key2", GetType(String)))
             table.Rows.Add(Product_Key1, Product_Key2)
+            API_register.Gett_api_app("accessToken/get_token.php")
+
             Dim jsonb = API_register.post_api_app("accessToken/showToken.php/accessToken", table)
 
             Dim response As New With {

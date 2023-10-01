@@ -151,6 +151,33 @@ Public Class API_register
         End Try
     End Function
 
+    Public Shared Sub Gett_api_app(url As String)
+        ' Create a WebRequest object
+        Dim UrlAPI As String = WEB_Register & url
+        Dim request As WebRequest = WebRequest.Create(UrlAPI)
+        ' Set the method to GET
+        request.Method = "GET"
+        Try
+            ' Get the WebResponse object
+            Dim response As WebResponse = request.GetResponse()
+            ' Get the response stream
+            Dim dataStream As Stream = response.GetResponseStream()
+            ' Create a StreamReader to read the response data
+            Dim reader As New StreamReader(dataStream)
+            ' Read the response data as a string
+            Dim responseText As String = reader.ReadToEnd()
+            ' Display the response
+            Console.WriteLine(responseText)
+            ' Close the streams
+            reader.Close()
+            dataStream.Close()
+            response.Close()
+        Catch ex As Exception
+            ' Handle any exceptions that occur during the request
+            Console.WriteLine("An error occurred: " & ex.Message)
+        End Try
+
+    End Sub
 
     'Public Function GenKey(ByVal key As String) As String
     '    Try

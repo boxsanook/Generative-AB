@@ -40,6 +40,7 @@ Partial Class FRM_Main
         Me.btnSettings = New System.Windows.Forms.Button()
         Me.btnExit = New System.Windows.Forms.Button()
         Me.PanelToolsSubmenu = New System.Windows.Forms.Panel()
+        Me.Button5 = New System.Windows.Forms.Button()
         Me.button12 = New System.Windows.Forms.Button()
         Me.button13 = New System.Windows.Forms.Button()
         Me.btnTools = New System.Windows.Forms.Button()
@@ -58,7 +59,7 @@ Partial Class FRM_Main
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Main_Time_today = New System.Windows.Forms.Timer(Me.components)
         Me.MaxSize = New System.Windows.Forms.Timer(Me.components)
-        Me.Button5 = New System.Windows.Forms.Button()
+        Me.btn_ResizeSVG = New System.Windows.Forms.Button()
         Me.panelLogo.SuspendLayout()
         CType(Me.pictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelSideMenu.SuspendLayout()
@@ -168,7 +169,7 @@ Partial Class FRM_Main
         Me.PanelHelp.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.PanelHelp.Controls.Add(Me.btnAbout)
         Me.PanelHelp.Dock = System.Windows.Forms.DockStyle.Top
-        Me.PanelHelp.Location = New System.Drawing.Point(0, 653)
+        Me.PanelHelp.Location = New System.Drawing.Point(0, 692)
         Me.PanelHelp.Name = "PanelHelp"
         Me.PanelHelp.Size = New System.Drawing.Size(227, 51)
         Me.PanelHelp.TabIndex = 13
@@ -200,7 +201,7 @@ Partial Class FRM_Main
         Me.btnHelp.ForeColor = System.Drawing.Color.Silver
         Me.btnHelp.Image = CType(resources.GetObject("btnHelp.Image"), System.Drawing.Image)
         Me.btnHelp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnHelp.Location = New System.Drawing.Point(0, 608)
+        Me.btnHelp.Location = New System.Drawing.Point(0, 647)
         Me.btnHelp.Name = "btnHelp"
         Me.btnHelp.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
         Me.btnHelp.Size = New System.Drawing.Size(227, 45)
@@ -217,7 +218,7 @@ Partial Class FRM_Main
         Me.Panel_Config.Controls.Add(Me.btnSubRegisterApp)
         Me.Panel_Config.Controls.Add(Me.btnOptions)
         Me.Panel_Config.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel_Config.Location = New System.Drawing.Point(0, 479)
+        Me.Panel_Config.Location = New System.Drawing.Point(0, 518)
         Me.Panel_Config.Name = "Panel_Config"
         Me.Panel_Config.Size = New System.Drawing.Size(227, 129)
         Me.Panel_Config.TabIndex = 12
@@ -283,7 +284,7 @@ Partial Class FRM_Main
         Me.btnSettings.ForeColor = System.Drawing.Color.Silver
         Me.btnSettings.Image = CType(resources.GetObject("btnSettings.Image"), System.Drawing.Image)
         Me.btnSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnSettings.Location = New System.Drawing.Point(0, 434)
+        Me.btnSettings.Location = New System.Drawing.Point(0, 473)
         Me.btnSettings.Name = "btnSettings"
         Me.btnSettings.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
         Me.btnSettings.Size = New System.Drawing.Size(227, 45)
@@ -303,7 +304,7 @@ Partial Class FRM_Main
         Me.btnExit.ForeColor = System.Drawing.Color.Silver
         Me.btnExit.Image = CType(resources.GetObject("btnExit.Image"), System.Drawing.Image)
         Me.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnExit.Location = New System.Drawing.Point(0, 704)
+        Me.btnExit.Location = New System.Drawing.Point(0, 743)
         Me.btnExit.Name = "btnExit"
         Me.btnExit.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
         Me.btnExit.Size = New System.Drawing.Size(227, 45)
@@ -316,14 +317,32 @@ Partial Class FRM_Main
         'PanelToolsSubmenu
         '
         Me.PanelToolsSubmenu.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(39, Byte), Integer))
+        Me.PanelToolsSubmenu.Controls.Add(Me.btn_ResizeSVG)
         Me.PanelToolsSubmenu.Controls.Add(Me.Button5)
         Me.PanelToolsSubmenu.Controls.Add(Me.button12)
         Me.PanelToolsSubmenu.Controls.Add(Me.button13)
         Me.PanelToolsSubmenu.Dock = System.Windows.Forms.DockStyle.Top
         Me.PanelToolsSubmenu.Location = New System.Drawing.Point(0, 308)
         Me.PanelToolsSubmenu.Name = "PanelToolsSubmenu"
-        Me.PanelToolsSubmenu.Size = New System.Drawing.Size(227, 126)
+        Me.PanelToolsSubmenu.Size = New System.Drawing.Size(227, 165)
         Me.PanelToolsSubmenu.TabIndex = 7
+        '
+        'Button5
+        '
+        Me.Button5.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Button5.FlatAppearance.BorderSize = 0
+        Me.Button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(46, Byte), Integer))
+        Me.Button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(46, Byte), Integer))
+        Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button5.ForeColor = System.Drawing.Color.Silver
+        Me.Button5.Location = New System.Drawing.Point(0, 80)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
+        Me.Button5.Size = New System.Drawing.Size(227, 40)
+        Me.Button5.TabIndex = 3
+        Me.Button5.Text = "Get Keyword"
+        Me.Button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button5.UseVisualStyleBackColor = True
         '
         'button12
         '
@@ -416,7 +435,7 @@ Partial Class FRM_Main
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Right
         Me.Panel1.Location = New System.Drawing.Point(227, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(2, 749)
+        Me.Panel1.Size = New System.Drawing.Size(2, 788)
         Me.Panel1.TabIndex = 1
         '
         'PanelChildForm
@@ -551,22 +570,22 @@ Partial Class FRM_Main
         'MaxSize
         '
         '
-        'Button5
+        'btn_ResizeSVG
         '
-        Me.Button5.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Button5.FlatAppearance.BorderSize = 0
-        Me.Button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(46, Byte), Integer))
-        Me.Button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(46, Byte), Integer))
-        Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button5.ForeColor = System.Drawing.Color.Silver
-        Me.Button5.Location = New System.Drawing.Point(0, 80)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.Button5.Size = New System.Drawing.Size(227, 40)
-        Me.Button5.TabIndex = 3
-        Me.Button5.Text = "Get Keyword"
-        Me.Button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button5.UseVisualStyleBackColor = True
+        Me.btn_ResizeSVG.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btn_ResizeSVG.FlatAppearance.BorderSize = 0
+        Me.btn_ResizeSVG.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(46, Byte), Integer))
+        Me.btn_ResizeSVG.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(46, Byte), Integer))
+        Me.btn_ResizeSVG.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_ResizeSVG.ForeColor = System.Drawing.Color.Silver
+        Me.btn_ResizeSVG.Location = New System.Drawing.Point(0, 120)
+        Me.btn_ResizeSVG.Name = "btn_ResizeSVG"
+        Me.btn_ResizeSVG.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
+        Me.btn_ResizeSVG.Size = New System.Drawing.Size(227, 40)
+        Me.btn_ResizeSVG.TabIndex = 4
+        Me.btn_ResizeSVG.Text = "Resize SVG"
+        Me.btn_ResizeSVG.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btn_ResizeSVG.UseVisualStyleBackColor = True
         '
         'FRM_Main
         '
@@ -633,4 +652,5 @@ Partial Class FRM_Main
     Private WithEvents btnAbout As Button
     Private WithEvents Button1 As Button
     Private WithEvents Button5 As Button
+    Private WithEvents btn_ResizeSVG As Button
 End Class

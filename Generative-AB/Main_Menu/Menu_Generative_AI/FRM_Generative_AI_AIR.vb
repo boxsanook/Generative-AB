@@ -146,7 +146,11 @@ Public Class FRM_Generative_AI_AIR
     Private WithEvents bgWorker As BackgroundWorker
     Dim complexities As String = 1
     Dim str_sell_on As String = ""
+    Dim backgroundColor As New List(Of Integer())
+    Dim colors As New List(Of Integer())
+    Dim imageIdx As String = TimeServer_API.getTimestamp
     Private Sub btnStart_Click(sender As Object, e As EventArgs) Handles btnStart.Click
+        imageIdx = TimeServer_API.getTimestamp.ToString
         If Long.Parse(RegistryB.str_accessTokenExpiresAt) < TimeServer_API.getTimestamp Then
             RegistryB.accessToken_app("regit")
             If Long.Parse(RegistryB.str_accessTokenExpiresAt) < TimeServer_API.getTimestamp Then
@@ -154,9 +158,21 @@ Public Class FRM_Generative_AI_AIR
                 Exit Sub
             End If
         End If
+
         If DataGiffExcell.Rows.Count <= 0 Then
             MessageBox.Show("Pls Upload Data")
             Exit Sub
+        End If
+
+        If C_backgroundColor.Checked = True Then
+            backgroundColor.Add(New Integer() {255, 255, 255})
+        End If
+
+        If Check_Color.Checked = True Then
+            colors.Add(New Integer() {255, 255, 255})
+            'colors.Add(New Integer() {255, 0, 0})  
+            'colors.Add(New Integer() {0, 255, 0})
+            'colors.Add(New Integer() {0, 0, 255})
         End If
 
         ' New BackgroundWorker
@@ -206,15 +222,30 @@ Public Class FRM_Generative_AI_AIR
         Me.btnStart.Enabled = True
     End Sub
     ' Function to update the TextBox with data
-    Private Sub UpdateTextBox(text As String)
+    Private Sub UpdateTextBox(textList As List(Of String))
         If TextBox1.InvokeRequired Then
             ' If called from a different thread, use Invoke to update UI
-            TextBox1.Invoke(New Action(Of String)(AddressOf UpdateTextBox), text)
+            TextBox1.Invoke(New Action(Of List(Of String))(AddressOf UpdateTextBox), textList)
+            If Prompt_text.InvokeRequired Then
+                Prompt_text.Invoke(New Action(Of List(Of String))(AddressOf UpdateTextBox), textList)
+            Else
+                ' Update the Prompt_text (assuming it's a TextBox) with the provided text
+                Prompt_text.Text = textList(1) ' Assuming textList contains at least one string
+            End If
         Else
             ' Update the TextBox with the provided text
-            TextBox1.Text = text
+            TextBox1.Text = textList(0) ' Assuming textList contains at least one string
+            If textList.Count > 1 Then
+                ' Update the Prompt_text with the second string if available
+                Prompt_text.Text = textList(1)
+            Else
+                ' Handle the case where there is no second string in the list
+                Prompt_text.Text = "N/A"
+            End If
         End If
     End Sub
+
+
 
     Private Sub bgWorker_DoWork(sender As Object, e As DoWorkEventArgs) Handles bgWorker.DoWork
         Dim worker As BackgroundWorker = CType(sender, BackgroundWorker)
@@ -222,20 +253,22 @@ Public Class FRM_Generative_AI_AIR
         Dim tableName As String = "master_image_description"
 
         If DataGiffExcell.Rows.Count > 0 Then
-                Dim row As Integer = 0
-                Dim all_row As Integer = DataGiffExcell.Rows.Count
-                For Each iRow As DataRow In DataGiffExcell.Rows
-                    row = row + 1
-                    Dim pc As Integer = (row * 100) / all_row
-                    If pc > 100 Then
-                        pc = 100
-                    End If
-                    worker.ReportProgress(pc)
+            Dim row As Integer = 0
+            Dim all_row As Integer = DataGiffExcell.Rows.Count
+            For Each iRow As DataRow In DataGiffExcell.Rows
+                row = row + 1
+                Dim pc As Integer = (row * 100) / all_row
+                If pc > 100 Then
+                    pc = 100
+                End If
+                worker.ReportProgress(pc)
 
                 If Long.Parse(RegistryB.str_accessTokenExpiresAt) < TimeServer_API.getTimestamp Then
+
+
                     Threading.Thread.Sleep(1000)
                     RegistryB.accessToken_app("regit")
-                    Threading.Thread.Sleep(10000)
+                    Threading.Thread.Sleep(60000)
                     RegistryB.accessToken_app("regit")
                     If Long.Parse(RegistryB.str_accessTokenExpiresAt) < TimeServer_API.getTimestamp Then
                         'MessageBox.Show("Working Finished.")
@@ -253,22 +286,22 @@ Public Class FRM_Generative_AI_AIR
                 End If
 
                 If (worker.CancellationPending = True) Then
-                        e.Cancel = True
-                        Exit Sub
-                    End If
-                    UpdateTextBox(iRow("prompt"))
-                    '{iRow("keyword")}
-                    Dim prompt As String = $"  { Replace(iRow("prompt"), "'", " ")},{iRow("sub_keyword")}" ' "gift,lady, balloon, shopping, sale, discount"
-                    Dim negativePrompt As String = "" ' "By Boxs me Tool"
+                    e.Cancel = True
+                    Exit Sub
+                End If
 
-                    Dim mixedPresets As New List(Of KeyValuePair(Of String, Double))
-                    'mixedPresets.Add(New KeyValuePair(Of String, Double)("digital_illustration_3d", 0.5))
-                    Dim colors As New List(Of Integer())
-                    'colors.Add(New Integer() {255, 0, 0})
-                    'colors.Add(New Integer() {0, 255, 0})
-                    'colors.Add(New Integer() {0, 0, 255})
-                    Dim backgroundColor As New List(Of Integer())   ' New List(Of Integer()) From {New Integer() {255, 255, 255}}
-                    backgroundColor.Add(New Integer() {255, 255, 255})
+
+                '{iRow("keyword")}
+                Dim prompt As String = $"{ Replace(iRow("prompt"), "'", " ")}" ' "gift,lady, balloon, shopping, sale, discount"
+                Dim negativePrompt As String = "" ' "By Boxs me Tool"
+
+                Dim mixedPresets As New List(Of KeyValuePair(Of String, Double))
+                mixedPresets.Add(New KeyValuePair(Of String, Double)("digital_illustration_glow", 1))
+                mixedPresets.Add(New KeyValuePair(Of String, Double)("digital_illustration_80s", 1))
+                mixedPresets.Add(New KeyValuePair(Of String, Double)("realistic_image", 1))
+
+
+
                 'Dim random_seed As String = recraft_ai.New_random()
 
                 Dim layerHeight As Integer = 768
@@ -279,7 +312,12 @@ Public Class FRM_Generative_AI_AIR
                 For iloop As Integer = 1 To iRow("prompt_loop") 'Loop data 
                     If selectedItemCount > 0 Then
                         For Each item As String In imageTypes_list
-                            UpdateTextBox("item :" & item)
+                            ' Assuming textList is a List(Of String) containing the data you want to update the TextBox controls with
+                            Dim textList As New List(Of String)
+                            textList.Add(item) ' Add the value for TextBox1
+                            textList.Add("Rows " & row & ":" & iRow("prompt").ToString()) ' Add the value for Prompt_text (Optional) 
+                            ' Call the UpdateTextBox function and pass the data
+                            UpdateTextBox(textList)
                             Console.WriteLine(item)
                             If Long.Parse(RegistryB.str_accessTokenExpiresAt) < TimeServer_API.getTimestamp Then
                                 e.Cancel = True
@@ -293,7 +331,6 @@ Public Class FRM_Generative_AI_AIR
                             Try
                                 randomSeed = recraft_ai.New_random()
                                 Dim jsonString As String = API_AI.CreateJsonObject(prompt.Replace("'", " "), negativePrompt, complexities, mixedPresets, colors, backgroundColor, item, layerHeight, layerWidth, randomSeed)
-
                                 Dim operationId As String = API_AI.Main_Recraft_new(STR_yourToken, STR_yourProject, jsonString)
                                 Threading.Thread.Sleep(300)
                                 If operationId IsNot String.Empty Then
@@ -319,10 +356,11 @@ Public Class FRM_Generative_AI_AIR
                                             Directory.CreateDirectory(output_folder)
                                         End If
 
-                                        Dim filename_svg As String = $"{randomSeed.ToString}_{count_for}.{file_image_type}"
+                                        Dim filename_svg As String = $"{imageIdx}_{randomSeed.ToString}_{count_for}.{file_image_type}"
                                         Dim output_path_svg As String = Path.Combine(output_folder, filename_svg)
                                         Dim jpg_status As HttpStatusCode
                                         jpg_status = API_AI.download_file(STR_yourToken, STR_yourProject, file_url, output_path_svg)
+
                                         If jpg_status = 200 Then
 
                                             If str_sell_on = "miricanvas" Then
@@ -344,7 +382,7 @@ Public Class FRM_Generative_AI_AIR
                                                 dbHelper.InsertData(tableName, imageTypeColumns)
 
                                             Else
-                                                UpdateTextBox("Sleep : img64 " & 1)
+
                                                 Threading.Thread.Sleep(1000)
                                                 Dim img64 As String
                                                 If file_image_type = "svg" Then
@@ -352,7 +390,7 @@ Public Class FRM_Generative_AI_AIR
                                                     'UpdateTextBox("Sleep :" & file_image_type)
                                                     img64 = ConverterImage.ConvertSvgTobase64(output_path_svg)
                                                 Else
-                                                    UpdateTextBox("Sleep :" & 1)
+
                                                     img64 = ConverterImage.ConvertImageToBase64(output_path_svg)
                                                     'img64 = Image_Drawing.image_2_base64(output_path_svg)
 
@@ -376,7 +414,7 @@ Public Class FRM_Generative_AI_AIR
                                                         .keywords = ""
                                                     }
                                                 response = JsonConvert.DeserializeAnonymousType(JsonWord, response)
-                                                UpdateTextBox("response :" & JsonWord.ToUpper())
+
                                                 If response.status.ToUpper() = "OK" Then
                                                     Dim sp_keywords As String = response.keywords
                                                     If sp_keywords.Split(","c).Count < 25 Then
@@ -423,7 +461,7 @@ Public Class FRM_Generative_AI_AIR
                                 End If
                                 Threading.Thread.Sleep(1100)
                             Catch ex As Exception
-                                UpdateTextBox("image :" & ex.Message)
+
                             End Try
 
 
@@ -431,7 +469,7 @@ Public Class FRM_Generative_AI_AIR
                     End If
                 Next
             Next
-            End If
+        End If
 
 
     End Sub

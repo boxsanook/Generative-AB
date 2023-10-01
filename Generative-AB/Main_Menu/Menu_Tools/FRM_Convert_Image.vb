@@ -217,7 +217,7 @@ Public Class FRM_Convert_Image
             worker_PerCen = worker_PerCen
         End If
         Dim diff As Integer = Integer.Parse(Items_Count) - Integer.Parse(e.ProgressPercentage)
-        label2.Text = (diff.ToString + " / " + Items_Count.ToString)
+        label2.Text = (e.ProgressPercentage.ToString() + " / " + Items_Count.ToString + " : " + diff.ToString)
         Me.label1.Text = (worker_PerCen.ToString + "%")
         ProgressBar1.Value = worker_PerCen
     End Sub
