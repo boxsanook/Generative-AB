@@ -48,8 +48,13 @@ Module Module_Excel
         Dim result As DialogResult = MessageBox.Show("Exported to CSV successfully." & vbNewLine & "คุณต้องการเปิดไฟล์หรือไม่?", "Finished  ", MessageBoxButtons.YesNo)
 
         If result = DialogResult.Yes Then
-            ' User clicked Yes, perform the desired action  
-            Process.Start(filePath)
+            Try
+                ' User clicked Yes, perform the desired action  
+                Process.Start(filePath)
+            Catch ex As Exception
+
+            End Try
+
         ElseIf result = DialogResult.No Then
             ' User clicked No, handle the cancelation or alternative action
             ' ...

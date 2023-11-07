@@ -160,7 +160,7 @@ Class SQLiteTable
         viewDefinition = " Select Filename as 'Filename',title as 'Image Name',description as 'Description'"
         viewDefinition &= " ,212 as 'Category 1','163' as 'Category 2','145' as 'Category 3'"
         viewDefinition &= " ,keywords as 'keywords', '0' as 'Free','1' as 'W-EL','1' as 'P-EL','0' as 'SR-EL','0' as 'SR-Price'"
-        viewDefinition &= " ,'0' as 'Editorial','' as 'MR doc Ids','' as 'Pr Docs' ,uniqueId"
+        viewDefinition &= " ,'0' as 'Editorial','' as 'MR doc Ids','' as 'Pr Docs' ,uniqueId ,len(keywords) LenX"
         viewDefinition &= " From master_image_keyword  "
         ' Define the SQL command to create the view
         Dim createViewSql As String = $"CREATE VIEW IF NOT EXISTS {tableName} AS {viewDefinition};"

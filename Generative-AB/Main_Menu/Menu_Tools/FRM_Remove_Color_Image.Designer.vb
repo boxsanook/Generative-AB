@@ -54,11 +54,10 @@ Partial Class FRM_Remove_Color_Image
         '
         Me.ListBox1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ListBox1.FormattingEnabled = True
-        Me.ListBox1.ItemHeight = 16
-        Me.ListBox1.Location = New System.Drawing.Point(3, 18)
-        Me.ListBox1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.ListBox1.Location = New System.Drawing.Point(2, 15)
+        Me.ListBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(910, 256)
+        Me.ListBox1.Size = New System.Drawing.Size(683, 208)
         Me.ListBox1.TabIndex = 29
         '
         'Com_Zoom
@@ -67,10 +66,10 @@ Partial Class FRM_Remove_Color_Image
         Me.Com_Zoom.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.Com_Zoom.FormattingEnabled = True
         Me.Com_Zoom.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"})
-        Me.Com_Zoom.Location = New System.Drawing.Point(677, 68)
-        Me.Com_Zoom.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Com_Zoom.Location = New System.Drawing.Point(508, 55)
+        Me.Com_Zoom.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Com_Zoom.Name = "Com_Zoom"
-        Me.Com_Zoom.Size = New System.Drawing.Size(89, 28)
+        Me.Com_Zoom.Size = New System.Drawing.Size(68, 25)
         Me.Com_Zoom.TabIndex = 38
         '
         'Label5
@@ -78,10 +77,9 @@ Partial Class FRM_Remove_Color_Image
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(235, Byte), Integer), CType(CType(42, Byte), Integer), CType(CType(83, Byte), Integer))
-        Me.Label5.Location = New System.Drawing.Point(485, 67)
-        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label5.Location = New System.Drawing.Point(364, 54)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(185, 29)
+        Me.Label5.Size = New System.Drawing.Size(142, 25)
         Me.Label5.TabIndex = 37
         Me.Label5.Text = "zoom in detail :"
         '
@@ -91,10 +89,10 @@ Partial Class FRM_Remove_Color_Image
         Me.Com_Image_Type.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.Com_Image_Type.FormattingEnabled = True
         Me.Com_Image_Type.Items.AddRange(New Object() {".png", ".jpg", ".jpeg"})
-        Me.Com_Image_Type.Location = New System.Drawing.Point(295, 68)
-        Me.Com_Image_Type.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Com_Image_Type.Location = New System.Drawing.Point(221, 55)
+        Me.Com_Image_Type.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Com_Image_Type.Name = "Com_Image_Type"
-        Me.Com_Image_Type.Size = New System.Drawing.Size(183, 28)
+        Me.Com_Image_Type.Size = New System.Drawing.Size(138, 25)
         Me.Com_Image_Type.TabIndex = 36
         '
         'BrowseButton
@@ -105,10 +103,9 @@ Partial Class FRM_Remove_Color_Image
         Me.BrowseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BrowseButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BrowseButton.ForeColor = System.Drawing.Color.LightGray
-        Me.BrowseButton.Location = New System.Drawing.Point(785, 16)
-        Me.BrowseButton.Margin = New System.Windows.Forms.Padding(4)
+        Me.BrowseButton.Location = New System.Drawing.Point(589, 13)
         Me.BrowseButton.Name = "BrowseButton"
-        Me.BrowseButton.Size = New System.Drawing.Size(124, 42)
+        Me.BrowseButton.Size = New System.Drawing.Size(93, 34)
         Me.BrowseButton.TabIndex = 29
         Me.BrowseButton.Text = "Brow Folder"
         Me.BrowseButton.UseVisualStyleBackColor = False
@@ -118,10 +115,9 @@ Partial Class FRM_Remove_Color_Image
         Me.SelectedFolderPathTextBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.SelectedFolderPathTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.SelectedFolderPathTextBox.Location = New System.Drawing.Point(172, 22)
-        Me.SelectedFolderPathTextBox.Margin = New System.Windows.Forms.Padding(4)
+        Me.SelectedFolderPathTextBox.Location = New System.Drawing.Point(129, 18)
         Me.SelectedFolderPathTextBox.Name = "SelectedFolderPathTextBox"
-        Me.SelectedFolderPathTextBox.Size = New System.Drawing.Size(590, 30)
+        Me.SelectedFolderPathTextBox.Size = New System.Drawing.Size(444, 26)
         Me.SelectedFolderPathTextBox.TabIndex = 28
         '
         'Label3
@@ -129,20 +125,18 @@ Partial Class FRM_Remove_Color_Image
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(235, Byte), Integer), CType(CType(42, Byte), Integer), CType(CType(83, Byte), Integer))
-        Me.Label3.Location = New System.Drawing.Point(29, 23)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label3.Location = New System.Drawing.Point(22, 19)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(135, 29)
+        Me.Label3.Size = New System.Drawing.Size(108, 25)
         Me.Label3.TabIndex = 30
         Me.Label3.Text = "Export To :"
         '
         'PictureBox1
         '
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(24, 7)
-        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4)
+        Me.PictureBox1.Location = New System.Drawing.Point(18, 6)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(35, 36)
+        Me.PictureBox1.Size = New System.Drawing.Size(26, 29)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox1.TabIndex = 20
         Me.PictureBox1.TabStop = False
@@ -152,10 +146,9 @@ Partial Class FRM_Remove_Color_Image
         Me.MeText.AutoSize = True
         Me.MeText.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MeText.ForeColor = System.Drawing.Color.White
-        Me.MeText.Location = New System.Drawing.Point(69, 14)
-        Me.MeText.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.MeText.Location = New System.Drawing.Point(52, 11)
         Me.MeText.Name = "MeText"
-        Me.MeText.Size = New System.Drawing.Size(241, 25)
+        Me.MeText.Size = New System.Drawing.Size(195, 20)
         Me.MeText.TabIndex = 15
         Me.MeText.Text = "Convert Image Application"
         '
@@ -166,9 +159,11 @@ Partial Class FRM_Remove_Color_Image
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox3.Controls.Add(Me.ListBox1)
         Me.GroupBox3.ForeColor = System.Drawing.Color.White
-        Me.GroupBox3.Location = New System.Drawing.Point(18, 183)
+        Me.GroupBox3.Location = New System.Drawing.Point(14, 149)
+        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(916, 277)
+        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox3.Size = New System.Drawing.Size(687, 225)
         Me.GroupBox3.TabIndex = 24
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Import File "
@@ -181,10 +176,9 @@ Partial Class FRM_Remove_Color_Image
         Me.MeClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.MeClose.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.MeClose.ForeColor = System.Drawing.Color.Red
-        Me.MeClose.Location = New System.Drawing.Point(897, 0)
-        Me.MeClose.Margin = New System.Windows.Forms.Padding(4)
+        Me.MeClose.Location = New System.Drawing.Point(673, 0)
         Me.MeClose.Name = "MeClose"
-        Me.MeClose.Size = New System.Drawing.Size(51, 47)
+        Me.MeClose.Size = New System.Drawing.Size(38, 38)
         Me.MeClose.TabIndex = 4
         Me.MeClose.Text = "X"
         Me.MeClose.UseVisualStyleBackColor = True
@@ -194,10 +188,9 @@ Partial Class FRM_Remove_Color_Image
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(235, Byte), Integer), CType(CType(42, Byte), Integer), CType(CType(83, Byte), Integer))
-        Me.Label4.Location = New System.Drawing.Point(5, 63)
-        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label4.Location = New System.Drawing.Point(4, 51)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(283, 29)
+        Me.Label4.Size = New System.Drawing.Size(222, 25)
         Me.Label4.TabIndex = 35
         Me.Label4.Text = "Convert to Image Type :"
         '
@@ -209,9 +202,8 @@ Partial Class FRM_Remove_Color_Image
         Me.BarraTitulo.Controls.Add(Me.MeClose)
         Me.BarraTitulo.Dock = System.Windows.Forms.DockStyle.Top
         Me.BarraTitulo.Location = New System.Drawing.Point(0, 0)
-        Me.BarraTitulo.Margin = New System.Windows.Forms.Padding(4)
         Me.BarraTitulo.Name = "BarraTitulo"
-        Me.BarraTitulo.Size = New System.Drawing.Size(946, 47)
+        Me.BarraTitulo.Size = New System.Drawing.Size(710, 38)
         Me.BarraTitulo.TabIndex = 22
         '
         'Button2
@@ -220,9 +212,10 @@ Partial Class FRM_Remove_Color_Image
         Me.Button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White
         Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.Location = New System.Drawing.Point(61, 38)
+        Me.Button2.Location = New System.Drawing.Point(46, 31)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(43, 40)
+        Me.Button2.Size = New System.Drawing.Size(32, 32)
         Me.Button2.TabIndex = 14
         Me.Button2.UseVisualStyleBackColor = True
         '
@@ -232,9 +225,10 @@ Partial Class FRM_Remove_Color_Image
         Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Location = New System.Drawing.Point(110, 38)
+        Me.Button1.Location = New System.Drawing.Point(82, 31)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(43, 40)
+        Me.Button1.Size = New System.Drawing.Size(32, 32)
         Me.Button1.TabIndex = 13
         Me.Button1.UseVisualStyleBackColor = True
         '
@@ -242,18 +236,20 @@ Partial Class FRM_Remove_Color_Image
         '
         Me.ProgressBar1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ProgressBar1.Location = New System.Drawing.Point(65, 15)
+        Me.ProgressBar1.Location = New System.Drawing.Point(49, 12)
+        Me.ProgressBar1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(826, 17)
+        Me.ProgressBar1.Size = New System.Drawing.Size(620, 14)
         Me.ProgressBar1.TabIndex = 12
         '
         'label2
         '
         Me.label2.AutoSize = True
         Me.label2.ForeColor = System.Drawing.Color.LightGray
-        Me.label2.Location = New System.Drawing.Point(15, 15)
+        Me.label2.Location = New System.Drawing.Point(11, 12)
+        Me.label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.label2.Name = "label2"
-        Me.label2.Size = New System.Drawing.Size(44, 17)
+        Me.label2.Size = New System.Drawing.Size(34, 13)
         Me.label2.TabIndex = 10
         Me.label2.Text = "00:00"
         '
@@ -262,9 +258,10 @@ Partial Class FRM_Remove_Color_Image
         Me.label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.label1.AutoSize = True
         Me.label1.ForeColor = System.Drawing.Color.LightGray
-        Me.label1.Location = New System.Drawing.Point(897, 15)
+        Me.label1.Location = New System.Drawing.Point(673, 12)
+        Me.label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.label1.Name = "label1"
-        Me.label1.Size = New System.Drawing.Size(44, 17)
+        Me.label1.Size = New System.Drawing.Size(34, 13)
         Me.label1.TabIndex = 9
         Me.label1.Text = "00:00"
         '
@@ -280,9 +277,11 @@ Partial Class FRM_Remove_Color_Image
         Me.GroupBox2.Controls.Add(Me.SelectedFolderPathTextBox)
         Me.GroupBox2.Controls.Add(Me.Label3)
         Me.GroupBox2.ForeColor = System.Drawing.Color.White
-        Me.GroupBox2.Location = New System.Drawing.Point(18, 54)
+        Me.GroupBox2.Location = New System.Drawing.Point(14, 44)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(916, 123)
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox2.Size = New System.Drawing.Size(687, 100)
         Me.GroupBox2.TabIndex = 23
         Me.GroupBox2.TabStop = False
         '
@@ -295,22 +294,24 @@ Partial Class FRM_Remove_Color_Image
         Me.PanelPlayer.Controls.Add(Me.label2)
         Me.PanelPlayer.Controls.Add(Me.label1)
         Me.PanelPlayer.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.PanelPlayer.Location = New System.Drawing.Point(0, 466)
+        Me.PanelPlayer.Location = New System.Drawing.Point(0, 379)
+        Me.PanelPlayer.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.PanelPlayer.Name = "PanelPlayer"
-        Me.PanelPlayer.Size = New System.Drawing.Size(946, 99)
+        Me.PanelPlayer.Size = New System.Drawing.Size(710, 80)
         Me.PanelPlayer.TabIndex = 21
         '
         'FRM_Remove_Color_Image
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(45, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(946, 565)
+        Me.ClientSize = New System.Drawing.Size(710, 459)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.BarraTitulo)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.PanelPlayer)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Name = "FRM_Remove_Color_Image"
         Me.Text = " Remove Color Image"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()

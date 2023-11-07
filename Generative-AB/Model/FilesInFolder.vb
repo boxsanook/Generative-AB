@@ -22,12 +22,15 @@ Public Class FilesInFolder
     Public Shared Function GetInt(inputString As String)
         Dim extractedNumber As Integer = 0
         ' Try to parse the number from the string
-        If Integer.TryParse(Regex.Match(inputString, "\d+").Value, extractedNumber) Then
-            ' 'extractedNumber' now contains the extracted integer value
-            Console.WriteLine("Extracted Number: " & extractedNumber)
-        Else
-            Console.WriteLine("No valid number found in the string.")
-            extractedNumber = inputString
+        Dim outputString As String = inputString.Trim
+        If outputString.Length <= 200 And outputString <> "" Then
+            If Integer.TryParse(Regex.Match(inputString, "\d+").Value, extractedNumber) Then
+                ' 'extractedNumber' now contains the extracted integer value
+                Console.WriteLine("Extracted Number: " & extractedNumber)
+            Else
+                Console.WriteLine("No valid number found in the string.")
+                extractedNumber = 0
+            End If
         End If
         Return extractedNumber
     End Function

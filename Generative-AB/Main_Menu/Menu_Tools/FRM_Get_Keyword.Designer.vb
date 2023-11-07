@@ -23,7 +23,7 @@ Partial Class FRM_Get_Keyword
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FRM_Get_Keyword))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.ImageListBox = New System.Windows.Forms.ListBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -160,7 +160,7 @@ Partial Class FRM_Get_Keyword
         Me.txt_SourcePath.Dock = System.Windows.Forms.DockStyle.Fill
         Me.txt_SourcePath.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_SourcePath.Location = New System.Drawing.Point(131, 0)
-        Me.txt_SourcePath.Margin = New System.Windows.Forms.Padding(4)
+        Me.txt_SourcePath.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txt_SourcePath.Name = "txt_SourcePath"
         Me.txt_SourcePath.Size = New System.Drawing.Size(634, 30)
         Me.txt_SourcePath.TabIndex = 40
@@ -199,7 +199,7 @@ Partial Class FRM_Get_Keyword
         Me.LoadImage.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LoadImage.ForeColor = System.Drawing.Color.LightGray
         Me.LoadImage.Location = New System.Drawing.Point(804, 20)
-        Me.LoadImage.Margin = New System.Windows.Forms.Padding(4)
+        Me.LoadImage.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.LoadImage.Name = "LoadImage"
         Me.LoadImage.Size = New System.Drawing.Size(124, 34)
         Me.LoadImage.TabIndex = 41
@@ -214,7 +214,7 @@ Partial Class FRM_Get_Keyword
         Me.BarraTitulo.Controls.Add(Me.MeClose)
         Me.BarraTitulo.Dock = System.Windows.Forms.DockStyle.Top
         Me.BarraTitulo.Location = New System.Drawing.Point(0, 0)
-        Me.BarraTitulo.Margin = New System.Windows.Forms.Padding(4)
+        Me.BarraTitulo.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.BarraTitulo.Name = "BarraTitulo"
         Me.BarraTitulo.Size = New System.Drawing.Size(965, 47)
         Me.BarraTitulo.TabIndex = 21
@@ -223,7 +223,7 @@ Partial Class FRM_Get_Keyword
         '
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
         Me.PictureBox1.Location = New System.Drawing.Point(24, 7)
-        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(35, 36)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -251,7 +251,7 @@ Partial Class FRM_Get_Keyword
         Me.MeClose.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.MeClose.ForeColor = System.Drawing.Color.Red
         Me.MeClose.Location = New System.Drawing.Point(916, 0)
-        Me.MeClose.Margin = New System.Windows.Forms.Padding(4)
+        Me.MeClose.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.MeClose.Name = "MeClose"
         Me.MeClose.Size = New System.Drawing.Size(51, 47)
         Me.MeClose.TabIndex = 4
@@ -287,9 +287,9 @@ Partial Class FRM_Get_Keyword
         Me.DataExcell.Name = "DataExcell"
         Me.DataExcell.ReadOnly = True
         Me.DataExcell.RowHeadersVisible = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.DataExcell.RowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.DataExcell.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.DataExcell.RowTemplate.Height = 24
         Me.DataExcell.Size = New System.Drawing.Size(929, 134)
         Me.DataExcell.TabIndex = 9
@@ -316,12 +316,13 @@ Partial Class FRM_Get_Keyword
         '
         Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button2.BackColor = System.Drawing.Color.Green
-        Me.Button2.Location = New System.Drawing.Point(587, 48)
+        Me.Button2.ForeColor = System.Drawing.Color.White
+        Me.Button2.Location = New System.Drawing.Point(594, 43)
         Me.Button2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 30)
+        Me.Button2.Size = New System.Drawing.Size(129, 30)
         Me.Button2.TabIndex = 54
-        Me.Button2.Text = "Search"
+        Me.Button2.Text = "Reset Tag"
         Me.Button2.UseVisualStyleBackColor = False
         '
         'ExportToExcel

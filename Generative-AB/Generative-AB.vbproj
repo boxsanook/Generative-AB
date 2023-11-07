@@ -32,7 +32,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.html</WebPage>
     <ApplicationRevision>28</ApplicationRevision>
-    <ApplicationVersion>2023.10.01.%2a</ApplicationVersion>
+    <ApplicationVersion>2023.10.22.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -95,6 +95,9 @@
     <Reference Include="BouncyCastle.Crypto, Version=1.9.0.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
       <HintPath>..\packages\Portable.BouncyCastle.1.9.0\lib\net40\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
+    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
+      <HintPath>..\packages\BouncyCastle.Cryptography.2.2.1\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -126,8 +129,8 @@
       <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1001\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="MySql.Data, Version=8.1.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>..\packages\MySql.Data.8.1.0\lib\net48\MySql.Data.dll</HintPath>
+    <Reference Include="MySql.Data, Version=8.2.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.2.0\lib\net48\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -257,6 +260,12 @@
     <Compile Include="Main_Menu\Menu_Tools\FRM_Get_Keyword.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Main_Menu\Menu_Tools\FRM_Move_File_Error.designer.vb">
+      <DependentUpon>FRM_Move_File_Error.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Main_Menu\Menu_Tools\FRM_Move_File_Error.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Main_Menu\Menu_Tools\FRM_Remove_Color_Image.Designer.vb">
       <DependentUpon>FRM_Remove_Color_Image.vb</DependentUpon>
     </Compile>
@@ -269,6 +278,12 @@
     <Compile Include="Main_Menu\Menu_Tools\FRM_Resize_SVG.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Main_Menu\Menu_Tools\FRM_Split_File.Designer.vb">
+      <DependentUpon>FRM_Split_File.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Main_Menu\Menu_Tools\FRM_Split_File.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Model\API_AI.vb" />
     <Compile Include="Model\ConverterImage.vb" />
     <Compile Include="Model\CryptographyZ.vb" />
@@ -277,6 +292,7 @@
     <Compile Include="Model\LabColor.vb" />
     <Compile Include="Model\Module_Excel.vb" />
     <Compile Include="Model\processCount.vb" />
+    <Compile Include="Model\ReadFile_CSV_Excel.vb" />
     <Compile Include="Model\recraft_ai.vb" />
     <Compile Include="SqlConnection\FRM_Main_SettingSQL.designer.vb">
       <DependentUpon>FRM_Main_SettingSQL.vb</DependentUpon>
@@ -372,11 +388,17 @@
     <EmbeddedResource Include="Main_Menu\Menu_Tools\FRM_Get_Keyword.resx">
       <DependentUpon>FRM_Get_Keyword.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Main_Menu\Menu_Tools\FRM_Move_File_Error.resx">
+      <DependentUpon>FRM_Move_File_Error.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main_Menu\Menu_Tools\FRM_Remove_Color_Image.resx">
       <DependentUpon>FRM_Remove_Color_Image.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main_Menu\Menu_Tools\FRM_Resize_SVG.resx">
       <DependentUpon>FRM_Resize_SVG.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main_Menu\Menu_Tools\FRM_Split_File.resx">
+      <DependentUpon>FRM_Split_File.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SqlConnection\FRM_Main_SettingSQL.resx">
       <DependentUpon>FRM_Main_SettingSQL.vb</DependentUpon>

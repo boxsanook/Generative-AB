@@ -10,13 +10,22 @@
     End Function
 
     Public Function TimeStampToDateTime(ByVal TimeStampX As String) As String
-        ' Assuming RegistryB.str_accessTokenExpiresAt is a Unix timestamp
-        Dim unixTimestamp As Long = Long.Parse(RegistryB.str_accessTokenExpiresAt)
-        ' Convert Unix timestamp to DateTimeOffset
-        Dim expirationTime As DateTimeOffset = DateTimeOffset.FromUnixTimeSeconds(unixTimestamp)
-        ' Add 7 seconds to the expiration time
-        expirationTime = expirationTime.AddHours(7)
-        Return expirationTime.ToString("yyyy-MM-dd HH:mm:ss")
+        Dim unixTimestamp As Long = Long.Parse(DateTime.Now)
+        Try
+            ' Assuming RegistryB.str_accessTokenExpiresAt is a Unix timestamp
+            unixTimestamp = Long.Parse(RegistryB.str_accessTokenExpiresAt)
+            ' Convert Unix timestamp to DateTimeOffset
+            Dim expirationTime As DateTimeOffset = DateTimeOffset.FromUnixTimeSeconds(unixTimestamp)
+            ' Add 7 seconds to the expiration time
+            expirationTime = expirationTime.AddHours(7)
+            Return expirationTime.ToString("yyyy-MM-dd HH:mm:ss")
+        Catch ex As Exception
+            Dim expirationTime As DateTimeOffset = DateTimeOffset.FromUnixTimeSeconds(unixTimestamp)
+            ' Add 7 seconds to the expiration time
+            expirationTime = expirationTime.AddHours(7)
+            Return expirationTime.ToString("yyyy-MM-dd HH:mm:ss")
+        End Try
+
     End Function
     Public Function UnixTimeStampToDateTime(ByVal unixTimeStamp As Double) As DateTime
         Try

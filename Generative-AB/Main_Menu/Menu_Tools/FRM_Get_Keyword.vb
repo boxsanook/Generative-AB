@@ -40,7 +40,7 @@ Public Class FRM_Get_Keyword
         openFileDialog.Multiselect = True ' Allow multiple file selection
         ImageListBox.Items.Clear()
         ' Filter the types of files to show in the dialog
-        openFileDialog.Filter = "Image Files|*.png;*.jpg;*.jpeg;"
+        openFileDialog.Filter = "Image Files|*.png;*.jpg;*.jpeg;*.svg;"
 
         If openFileDialog.ShowDialog() = DialogResult.OK Then
             ' Get the selected file paths
@@ -124,7 +124,13 @@ Public Class FRM_Get_Keyword
 
 
                 Dim img64 As String
-                img64 = ConverterImage.ConvertImageToBase64(filePath)
+                If fileInfo.Extension.ToUpper = ".svg".ToUpper Then
+                    img64 = ConverterImage.ConvertSvgTobase64(filePath)
+                Else
+                    img64 = ConverterImage.ConvertImageToBase64(filePath)
+                End If
+
+
                 Dim dtJson As New DataTable
                 dtJson.Columns.Add(New DataColumn("ImageData", GetType(String)))
                 dtJson.Columns.Add(New DataColumn("type_file", GetType(String)))
@@ -231,7 +237,7 @@ Public Class FRM_Get_Keyword
             For Each item As DataRow In dataX.Rows
                 Dim inputText As String = item("keywords").ToString().ToString()
                 'MessageBox.Show(inputText)
-                Dim words() As String = inputText.Split(","c, " "c) ' Split the input text by commas and spaces
+                Dim words() As String = inputText.Split(","c) ' Split the input text by commas and spaces
                 Dim uniqueWords As New HashSet(Of String)(StringComparer.OrdinalIgnoreCase) ' Use a HashSet to store unique words 
                 ' Loop through the words, adding them to the HashSet
                 Dim words2 As String = Replace(item("description").ToString() & " " & item("Filename").ToString(), ".", "")
@@ -253,9 +259,9 @@ Public Class FRM_Get_Keyword
                     Next
                 End If
 
-                Dim finalResult As String = String.Join(", ", result)
+                Dim finalResult As String = String.Join(",", result)
                 inputText = inputText & ", " & finalResult
-                Dim words3() As String = inputText.Split(","c, " "c) ' Split the input text by commas and spaces
+                Dim words3() As String = inputText.Split(","c) ' Split the input text by commas and spaces
                 For Each word As String In words3
                     If Not String.IsNullOrWhiteSpace(word) Then
                         uniqueWords.Add(word.Trim()) ' Trim to remove leading/trailing spaces

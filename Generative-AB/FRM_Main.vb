@@ -219,5 +219,11 @@
         ShowAbout.ShowDialog()
     End Sub
 
+    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+        openChildForm(New FRM_Split_File())
+        ResetButtonAppearance(PanelSideMenu)
+        Dim clickedButton As Button = DirectCast(sender, Button)
+        active_button(clickedButton)
 
+    End Sub
 End Class

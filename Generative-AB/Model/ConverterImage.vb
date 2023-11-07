@@ -29,7 +29,7 @@ Public Class ConverterImage
         Dim base64String As String = Nothing
         ' Create a new MagickImage object from an SVG file
         Using svgImage As New MagickImage(svgFilePath)
-            svgImage.Resize(100, 100)
+            svgImage.Resize(150, 150)
             ' Set the format to PNG (or any other desired format)
             svgImage.Format = MagickFormat.Png
             ' Convert the SVG image to PNG

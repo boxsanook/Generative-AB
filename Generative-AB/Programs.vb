@@ -20,6 +20,8 @@ Module Programs
                 '    API_register.WEB_Register = "http://127.0.0.1:801/My_API/"
                 'End If 
             End If
+            'ModuleSQLconfig.GetSQLSetting()
+            'Application.Run(New FRM_Main())
 
             'ProcessCount.Main_ProcessCount()
             If RegistryB.GetValueFromRegistry("Cliente_ID") IsNot Nothing Then
