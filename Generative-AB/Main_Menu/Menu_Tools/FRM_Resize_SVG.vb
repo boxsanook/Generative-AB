@@ -11,7 +11,7 @@ Public Class FRM_Resize_SVG
     Private Sub btnStart_Click(sender As Object, e As EventArgs) Handles btnStart.Click
         If ImageListBox.Items.Count > 0 Then
             For Each xItem As String In ImageListBox.Items
-                Image_Drawing.ResizeSVG(xItem, Com_Zoom.Text)
+                Image_Drawing.ResizeSVG(xItem, Com_Zoom.Text, MinSize.Text, set_max.Checked)
             Next
             MessageBox.Show("Working Finished.")
         End If
@@ -40,4 +40,7 @@ Public Class FRM_Resize_SVG
         End If
     End Sub
 
+    Private Sub Skip_existing_files_CheckedChanged(sender As Object, e As EventArgs) Handles Skip_existing_files.CheckedChanged
+
+    End Sub
 End Class

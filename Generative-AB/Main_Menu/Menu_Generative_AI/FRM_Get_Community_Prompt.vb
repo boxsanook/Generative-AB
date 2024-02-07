@@ -1,4 +1,6 @@
 ﻿Imports System.ComponentModel
+Imports System.IO
+Imports System.Net
 Imports System.Text.RegularExpressions
 Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
@@ -238,6 +240,68 @@ Public Class FRM_Get_Community_Prompt
                 Dim export_to As String = selectedFolderPath & "\no_data_" & formattedDate & "_PickingAndLabel.xlsx"
                 Module_Excel.ExportToExcel(DataExcell, export_to)
             End If
+
+        End If
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Dim STR_yourToken As String = RegistryB.str_accessToken
+        Dim STR_yourProject As String = RegistryB.str_projectCode
+        Dim file_image_type As String = ".png"
+        For Each row As DataGridViewRow In DataExcell.Rows
+            ' Check if the row is not the header row
+            If Not row.IsNewRow Then
+                ' Access the cell values for each column in the current row
+                Dim image_id As String = row.Cells("image_id").Value.ToString()
+
+                Dim file_url As String = $"{recraft_ai.baseUrl}/{STR_yourProject}/image/{image_id}"
+                Threading.Thread.Sleep(800)
+                Using stream As Stream = recraft_ai.download_file_checkImage(STR_yourToken, STR_yourProject, file_url)
+                    file_image_type = API_AI.CheckImage_Format(stream)
+                End Using
+                Dim output_folder As String = ModuleSQLconfig.Set_ImagePath & "\" & Replace(TXT_filter.Text, " ", "_") & "\" & file_image_type & "\"
+                output_folder = output_folder.Replace("\\", "\")
+
+                If Not Directory.Exists(output_folder) Then
+                    Directory.CreateDirectory(output_folder)
+                End If
+
+                Dim filename_svg As String = $"{Replace(image_id, "-", "")}.{file_image_type}"
+                Dim output_path_svg As String = Path.Combine(output_folder, filename_svg)
+                Dim jpg_status As HttpStatusCode
+                jpg_status = API_AI.download_file(STR_yourToken, STR_yourProject, file_url, output_path_svg)
+
+
+                ' Process or display the values as needed
+                'Console.WriteLine($"Cell 1: {cell1Value}, Cell 2: {cell2Value}")
+            End If
+        Next
+
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Dim openFileDialog1 As New OpenFileDialog()
+        openFileDialog1.Filter = "Excel Files (*.xls; *.xlsx)|*.xls;*.xlsx"
+        openFileDialog1.Title = "Select an Excel File"
+        If openFileDialog1.ShowDialog() = DialogResult.OK Then
+            Dim selectedFilePath As String = openFileDialog1.FileName
+
+            Dim New_load As New FRM_PopupFormExcel()
+            New_load.selectedFilePath = selectedFilePath
+            New_load.WindowState = FormWindowState.Normal
+            New_load.StartPosition = FormStartPosition.CenterScreen
+            New_load.RunLoadExcel()
+            New_load.ShowDialog()
+            Dim DataGiffExcell As New DataTable
+            DataGiffExcell = New_load.Get_Data
+            ClearDataExcell()
+            'DataExcell.DataSource = DataGiffExcell
+            'DataExcell.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
+            'DataExcell.AutoResizeColumns()
+            DataExcell.DataSource = DataGiffExcell
+            DataExcell.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
+            DataExcell.AutoResizeColumns()
+
 
         End If
     End Sub

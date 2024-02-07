@@ -4,7 +4,7 @@ Imports ImageMagick
 
 Public Class Image_Drawing
 
-    Public Shared Sub ResizeSVG(svgXmlFilePath As String, xSize As Integer)
+    Public Shared Sub ResizeSVG(svgXmlFilePath As String, xSize As Integer, MinSize As String, set_max As Boolean)
         ' Load the SVG XML document 
         Dim xmlDoc As New XmlDocument()
         xmlDoc.Load(svgXmlFilePath)
@@ -22,11 +22,23 @@ Public Class Image_Drawing
             If Integer.TryParse(widthAttribute.Value, svgWidth) AndAlso Integer.TryParse(heightAttribute.Value, svgHeight) Then
                 ' Now you have the width and height values, and you can manipulate them as needed
                 ' For example, you can resize the SVG here
-                widthAttribute.Value = svgWidth * xSize
-                heightAttribute.Value = svgHeight * xSize
-                ' Save the modified XML to a new file or overwrite the original file
-                Dim outputSvgXmlFilePath As String = svgXmlFilePath
-                xmlDoc.Save(outputSvgXmlFilePath)
+                If svgWidth < MinSize Then
+                    widthAttribute.Value = svgWidth * xSize
+                    heightAttribute.Value = svgHeight * xSize
+                    ' Save the modified XML to a new file or overwrite the original file
+                    Dim outputSvgXmlFilePath As String = svgXmlFilePath
+                    xmlDoc.Save(outputSvgXmlFilePath)
+                Else
+                    If set_max = True Then
+                        widthAttribute.Value = MinSize
+                        heightAttribute.Value = MinSize
+                        ' Save the modified XML to a new file or overwrite the original file
+                        Dim outputSvgXmlFilePath As String = svgXmlFilePath
+                        xmlDoc.Save(outputSvgXmlFilePath)
+                    End If
+                End If
+
+
             Else
                 Console.WriteLine("Failed to parse width and height attributes.")
             End If

@@ -56,7 +56,7 @@ Partial Class FRM_Split_File
         Me.BarraTitulo.Controls.Add(Me.MeClose)
         Me.BarraTitulo.Dock = System.Windows.Forms.DockStyle.Top
         Me.BarraTitulo.Location = New System.Drawing.Point(0, 0)
-        Me.BarraTitulo.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.BarraTitulo.Margin = New System.Windows.Forms.Padding(4)
         Me.BarraTitulo.Name = "BarraTitulo"
         Me.BarraTitulo.Size = New System.Drawing.Size(1067, 47)
         Me.BarraTitulo.TabIndex = 22
@@ -65,7 +65,7 @@ Partial Class FRM_Split_File
         '
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
         Me.PictureBox1.Location = New System.Drawing.Point(24, 7)
-        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(35, 36)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -93,7 +93,7 @@ Partial Class FRM_Split_File
         Me.MeClose.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.MeClose.ForeColor = System.Drawing.Color.Red
         Me.MeClose.Location = New System.Drawing.Point(1017, 0)
-        Me.MeClose.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.MeClose.Margin = New System.Windows.Forms.Padding(4)
         Me.MeClose.Name = "MeClose"
         Me.MeClose.Size = New System.Drawing.Size(51, 47)
         Me.MeClose.TabIndex = 4
@@ -149,7 +149,7 @@ Partial Class FRM_Split_File
         '
         Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button2.Location = New System.Drawing.Point(936, 62)
-        Me.Button2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(4)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(100, 28)
         Me.Button2.TabIndex = 57
@@ -172,7 +172,7 @@ Partial Class FRM_Split_File
         'TextBox1
         '
         Me.TextBox1.Location = New System.Drawing.Point(128, 2)
-        Me.TextBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TextBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(225, 22)
         Me.TextBox1.TabIndex = 43
@@ -220,7 +220,7 @@ Partial Class FRM_Split_File
         Me.txt_SourcePath.Dock = System.Windows.Forms.DockStyle.Fill
         Me.txt_SourcePath.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_SourcePath.Location = New System.Drawing.Point(131, 0)
-        Me.txt_SourcePath.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txt_SourcePath.Margin = New System.Windows.Forms.Padding(4)
         Me.txt_SourcePath.Name = "txt_SourcePath"
         Me.txt_SourcePath.Size = New System.Drawing.Size(766, 30)
         Me.txt_SourcePath.TabIndex = 40
@@ -247,7 +247,7 @@ Partial Class FRM_Split_File
         Me.LoadImage.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LoadImage.ForeColor = System.Drawing.Color.LightGray
         Me.LoadImage.Location = New System.Drawing.Point(936, 20)
-        Me.LoadImage.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.LoadImage.Margin = New System.Windows.Forms.Padding(4)
         Me.LoadImage.Name = "LoadImage"
         Me.LoadImage.Size = New System.Drawing.Size(124, 34)
         Me.LoadImage.TabIndex = 41
@@ -263,7 +263,7 @@ Partial Class FRM_Split_File
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.BarraTitulo)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "FRM_Split_File"
         Me.Text = "FRM_Split_File"
         Me.BarraTitulo.ResumeLayout(False)

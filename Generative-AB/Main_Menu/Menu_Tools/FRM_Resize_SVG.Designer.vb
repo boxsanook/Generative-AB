@@ -26,6 +26,7 @@ Partial Class FRM_Resize_SVG
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.ImageListBox = New System.Windows.Forms.ListBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.MinSize = New System.Windows.Forms.TextBox()
         Me.btnStart = New System.Windows.Forms.Button()
         Me.btnStop = New System.Windows.Forms.Button()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
@@ -42,12 +43,17 @@ Partial Class FRM_Resize_SVG
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.MeText = New System.Windows.Forms.Label()
         Me.MeClose = New System.Windows.Forms.Button()
+        Me.set_max = New System.Windows.Forms.CheckBox()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.Panel5.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.BarraTitulo.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox3
@@ -57,9 +63,9 @@ Partial Class FRM_Resize_SVG
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox3.Controls.Add(Me.ImageListBox)
         Me.GroupBox3.ForeColor = System.Drawing.Color.White
-        Me.GroupBox3.Location = New System.Drawing.Point(12, 233)
+        Me.GroupBox3.Location = New System.Drawing.Point(12, 290)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(867, 251)
+        Me.GroupBox3.Size = New System.Drawing.Size(867, 194)
         Me.GroupBox3.TabIndex = 26
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Import File "
@@ -74,13 +80,15 @@ Partial Class FRM_Resize_SVG
         Me.ImageListBox.Location = New System.Drawing.Point(3, 18)
         Me.ImageListBox.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.ImageListBox.Name = "ImageListBox"
-        Me.ImageListBox.Size = New System.Drawing.Size(861, 230)
+        Me.ImageListBox.Size = New System.Drawing.Size(861, 173)
         Me.ImageListBox.TabIndex = 29
         '
         'GroupBox2
         '
         Me.GroupBox2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox2.Controls.Add(Me.Panel2)
+        Me.GroupBox2.Controls.Add(Me.set_max)
         Me.GroupBox2.Controls.Add(Me.btnStart)
         Me.GroupBox2.Controls.Add(Me.btnStop)
         Me.GroupBox2.Controls.Add(Me.ProgressBar1)
@@ -92,9 +100,19 @@ Partial Class FRM_Resize_SVG
         Me.GroupBox2.ForeColor = System.Drawing.Color.White
         Me.GroupBox2.Location = New System.Drawing.Point(12, 54)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(867, 159)
+        Me.GroupBox2.Size = New System.Drawing.Size(867, 208)
         Me.GroupBox2.TabIndex = 25
         Me.GroupBox2.TabStop = False
+        '
+        'MinSize
+        '
+        Me.MinSize.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.MinSize.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.MinSize.Location = New System.Drawing.Point(105, 0)
+        Me.MinSize.Name = "MinSize"
+        Me.MinSize.Size = New System.Drawing.Size(121, 30)
+        Me.MinSize.TabIndex = 54
+        Me.MinSize.Text = "1000"
         '
         'btnStart
         '
@@ -102,7 +120,7 @@ Partial Class FRM_Resize_SVG
         Me.btnStart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnStart.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White
         Me.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnStart.Location = New System.Drawing.Point(78, 100)
+        Me.btnStart.Location = New System.Drawing.Point(80, 151)
         Me.btnStart.Name = "btnStart"
         Me.btnStart.Size = New System.Drawing.Size(43, 40)
         Me.btnStart.TabIndex = 53
@@ -114,7 +132,7 @@ Partial Class FRM_Resize_SVG
         Me.btnStop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnStop.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White
         Me.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnStop.Location = New System.Drawing.Point(127, 100)
+        Me.btnStop.Location = New System.Drawing.Point(129, 151)
         Me.btnStop.Name = "btnStop"
         Me.btnStop.Size = New System.Drawing.Size(43, 40)
         Me.btnStop.TabIndex = 52
@@ -124,7 +142,7 @@ Partial Class FRM_Resize_SVG
         '
         Me.ProgressBar1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ProgressBar1.Location = New System.Drawing.Point(176, 108)
+        Me.ProgressBar1.Location = New System.Drawing.Point(178, 159)
         Me.ProgressBar1.Name = "ProgressBar1"
         Me.ProgressBar1.Size = New System.Drawing.Size(437, 23)
         Me.ProgressBar1.TabIndex = 50
@@ -213,7 +231,7 @@ Partial Class FRM_Resize_SVG
         '
         Me.Skip_existing_files.AutoSize = True
         Me.Skip_existing_files.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.Skip_existing_files.Location = New System.Drawing.Point(401, 58)
+        Me.Skip_existing_files.Location = New System.Drawing.Point(552, 59)
         Me.Skip_existing_files.Name = "Skip_existing_files"
         Me.Skip_existing_files.Size = New System.Drawing.Size(193, 28)
         Me.Skip_existing_files.TabIndex = 43
@@ -288,6 +306,53 @@ Partial Class FRM_Resize_SVG
         Me.MeClose.Text = "X"
         Me.MeClose.UseVisualStyleBackColor = True
         '
+        'set_max
+        '
+        Me.set_max.AutoSize = True
+        Me.set_max.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.set_max.Location = New System.Drawing.Point(359, 91)
+        Me.set_max.Name = "set_max"
+        Me.set_max.Size = New System.Drawing.Size(125, 28)
+        Me.set_max.TabIndex = 55
+        Me.set_max.Text = "Set = Max"
+        Me.set_max.UseVisualStyleBackColor = True
+        '
+        'Panel2
+        '
+        Me.Panel2.Controls.Add(Me.MinSize)
+        Me.Panel2.Controls.Add(Me.Label3)
+        Me.Panel2.Controls.Add(Me.Label4)
+        Me.Panel2.Location = New System.Drawing.Point(80, 91)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(272, 30)
+        Me.Panel2.TabIndex = 56
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(235, Byte), Integer), CType(CType(42, Byte), Integer), CType(CType(83, Byte), Integer))
+        Me.Label3.Location = New System.Drawing.Point(0, 0)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(105, 25)
+        Me.Label3.TabIndex = 44
+        Me.Label3.Text = "Max Size :"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(235, Byte), Integer), CType(CType(42, Byte), Integer), CType(CType(83, Byte), Integer))
+        Me.Label4.Location = New System.Drawing.Point(226, 0)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(46, 25)
+        Me.Label4.TabIndex = 55
+        Me.Label4.Text = "/ Px"
+        '
         'FRM_Resize_SVG
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -310,6 +375,8 @@ Partial Class FRM_Resize_SVG
         Me.BarraTitulo.ResumeLayout(False)
         Me.BarraTitulo.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -333,4 +400,9 @@ Partial Class FRM_Resize_SVG
     Private WithEvents PictureBox1 As PictureBox
     Public WithEvents MeText As Label
     Private WithEvents MeClose As Button
+    Friend WithEvents MinSize As TextBox
+    Friend WithEvents Panel2 As Panel
+    Private WithEvents Label3 As Label
+    Private WithEvents Label4 As Label
+    Friend WithEvents set_max As CheckBox
 End Class

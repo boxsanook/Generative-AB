@@ -117,7 +117,7 @@ Public Class FRM_Get_Keyword
             Dim fileInfo As New FileInfo(filePath)
             Dim fileNameOnly As String = Path.GetFileName(filePath)
             'Application.DoEvents()
-
+            fileNameOnly = Replace(fileNameOnly, "'", "")
             'Dim Check As String = $"uniqueId='{uniqueId}' And Filename ='{fileNameOnly}'"
             Dim CheckINC As String = $" Filename ='{fileNameOnly}' and description <>''  "
             If dbHelper.GetRowCount(tableName, CheckINC) <= 0 Then
@@ -148,39 +148,44 @@ Public Class FRM_Get_Keyword
                         .keywords = ""
                     }
                 response = JsonConvert.DeserializeAnonymousType(JsonWord, response)
+                Try
+                    If response.status.ToUpper() = "OK" Then
+                        ' Create a table
+                        Dim imageTypeColumns As New Dictionary(Of String, Object)()
+                        imageTypeColumns.Add("uniqueId", uniqueId)
+                        imageTypeColumns.Add("Filename", fileNameOnly)
+                        imageTypeColumns.Add("title", ReplaseTXT(response.title))
+                        imageTypeColumns.Add("description", ReplaseTXT(response.description))
+                        imageTypeColumns.Add("keywords", ReplaseTXT(response.keywords))
+                        Dim Check As String = $"uniqueId='{uniqueId}' And Filename ='{fileNameOnly}'"
+                        If dbHelper.GetRowCount(tableName, Check) <= 0 Then
+                            dbHelper.InsertData(tableName, imageTypeColumns)
+                        End If
 
-                If response.status.ToUpper() = "OK" Then
-                    ' Create a table
-                    Dim imageTypeColumns As New Dictionary(Of String, Object)()
-                    imageTypeColumns.Add("uniqueId", uniqueId)
-                    imageTypeColumns.Add("Filename", fileNameOnly)
-                    imageTypeColumns.Add("title", response.title)
-                    imageTypeColumns.Add("description", response.description)
-                    imageTypeColumns.Add("keywords", response.keywords)
-                    Dim Check As String = $"uniqueId='{uniqueId}' And Filename ='{fileNameOnly}'"
-                    If dbHelper.GetRowCount(tableName, Check) <= 0 Then
-                        dbHelper.InsertData(tableName, imageTypeColumns)
+                    Else
+                        Dim imageTypeColumns As New Dictionary(Of String, Object)()
+                        imageTypeColumns.Add("uniqueId", uniqueId)
+                        imageTypeColumns.Add("Filename", fileNameOnly)
+                        imageTypeColumns.Add("title", response.message)
+                        imageTypeColumns.Add("description", String.Empty)
+                        imageTypeColumns.Add("keywords", String.Empty)
+
+                        'Dim Check As String = $"uniqueId='{uniqueId}' And Filename ='{fileNameOnly}'"
+                        Dim Check As String = $" Filename ='{fileNameOnly}' and   description <>''  "
+                        If dbHelper.GetRowCount(tableName, Check) <= 0 Then
+                            dbHelper.InsertData(tableName, imageTypeColumns)
+                        End If
+
                     End If
+                Catch ex As Exception
+                    MessageBox.Show(ex.Message, "Inser Error")
+                End Try
 
-                Else
-                    Dim imageTypeColumns As New Dictionary(Of String, Object)()
-                    imageTypeColumns.Add("uniqueId", uniqueId)
-                    imageTypeColumns.Add("Filename", fileNameOnly)
-                    imageTypeColumns.Add("title", response.message)
-                    imageTypeColumns.Add("description", String.Empty)
-                    imageTypeColumns.Add("keywords", String.Empty)
-
-                    'Dim Check As String = $"uniqueId='{uniqueId}' And Filename ='{fileNameOnly}'"
-                    Dim Check As String = $" Filename ='{fileNameOnly}' and   description <>''  "
-                    If dbHelper.GetRowCount(tableName, Check) <= 0 Then
-                        dbHelper.InsertData(tableName, imageTypeColumns)
-                    End If
-
-                End If
             Else
+
                 Dim imageTypeColumns As New Dictionary(Of String, Object)()
                 imageTypeColumns.Add("uniqueId", uniqueId)
-                Dim Check As String = $" Filename ='{fileNameOnly}'   "
+                Dim Check As String = $" Filename ='{ fileNameOnly}'   "
                 dbHelper.UpdateData(tableName, imageTypeColumns, Check)
 
             End If
@@ -188,7 +193,18 @@ Public Class FRM_Get_Keyword
         Next
 
     End Sub
+    Public Function ReplaseTXT(originalString As String) As String
 
+        ' Array of replacement values
+        Dim replacementArray As String() = {"\", "/", "'", """"}
+
+        ' Replace occurrences in the original string
+        For i As Integer = 0 To replacementArray.Length - 1
+            Dim placeholder As String = ""
+            originalString = originalString.Replace(placeholder, replacementArray(i))
+        Next
+        Return originalString
+    End Function
     Private Sub bgWorker_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles bgWorker.ProgressChanged
         'Me.lblResult.Text = (e.ProgressPercentage.ToString() + "%")
 

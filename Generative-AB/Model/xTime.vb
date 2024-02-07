@@ -10,7 +10,8 @@
     End Function
 
     Public Function TimeStampToDateTime(ByVal TimeStampX As String) As String
-        Dim unixTimestamp As Long = Long.Parse(DateTime.Now)
+        Dim unixTimestamp As Long = DateTimeOffset.UtcNow.ToUnixTimeSeconds()
+
         Try
             ' Assuming RegistryB.str_accessTokenExpiresAt is a Unix timestamp
             unixTimestamp = Long.Parse(RegistryB.str_accessTokenExpiresAt)

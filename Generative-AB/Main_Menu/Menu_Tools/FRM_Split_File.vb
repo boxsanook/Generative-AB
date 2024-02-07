@@ -50,7 +50,7 @@ Public Class FRM_Split_File
             Dim Irow As Integer = 0
             Dim MoveFileTo As String = 0
             For Each rowx As String In ImageListBox.Items
-                If Irow > TextBox1.Text Then
+                If Irow >= TextBox1.Text Then
                     MoveFileTo = MoveFileTo + 1
                     Irow = 0
                     FilesInFolder.CheckNewDirectory(txt_SourcePath.Text & "\" & MoveFileTo)
@@ -64,9 +64,6 @@ Public Class FRM_Split_File
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Dim folderBrowserDialog As New FolderBrowserDialog()
-
-
-
         ' Show the dialog and check if the user clicked OK
         If folderBrowserDialog.ShowDialog() = DialogResult.OK Then
             ' Get the selected folder path
